@@ -112,4 +112,20 @@ document.addEventListener('keydown',function(e){
 if(find){find.onclick=function(e){if(e.target===find)close_()};
   res.onclick=function(e){if(e.target.closest('a'))close_()}}
 var sb=document.getElementById('sbtn');if(sb)sb.onclick=open_;
+
+/* dark/light theme toggle (top-right); dossier default is dark */
+var THKEY='ipx-theme';
+var savedTheme;try{savedTheme=localStorage.getItem(THKEY)}catch(e){}
+if(savedTheme==='light')document.documentElement.classList.add('light');
+var tbtn=document.createElement('button');
+tbtn.className='themebtn';tbtn.type='button';tbtn.setAttribute('aria-label','Toggle light mode');
+function _setThemeIcon(){tbtn.textContent=document.documentElement.classList.contains('light')?'☾':'☀'}
+_setThemeIcon();
+tbtn.onclick=function(){
+  document.documentElement.classList.toggle('light');
+  var light=document.documentElement.classList.contains('light');
+  try{localStorage.setItem(THKEY,light?'light':'dark')}catch(e){}
+  _setThemeIcon();
+};
+document.body.appendChild(tbtn);
 })();

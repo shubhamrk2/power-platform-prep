@@ -282,8 +282,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,.box:focus-visible{
   .pn{grid-template-columns:1fr}
   .facts{grid-template-columns:repeat(2,1fr)}
 }
+/* ---- theme toggle button (top-right) ---- */
+.themebtn{position:fixed;top:.85rem;right:1rem;z-index:55;width:40px;height:40px;border-radius:50%;
+  cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--tx2);
+  font-size:1.02rem;line-height:1;display:grid;place-items:center}
+.themebtn:hover{color:var(--acc);border-color:var(--acc)}
+
+/* ---- light theme (added on <html> by the toggle; dossier default is dark) ---- */
+html.light{
+  --bg:#f5f7fb; --panel:#ffffff; --panel2:#eef2f7; --line:#d9dfe8;
+  --tx:#141b26; --tx2:#3f4d63; --tx3:#6b7a90; --tint:#eaf1fb;
+}
+html.light body{background:var(--bg);color:var(--tx)}
+html.light .body strong{color:#0b1220}
+html.light code{background:#eef2f7;border-color:#d9dfe8;color:#1c3a5e}
+html.light .np:hover,html.light .np.on{background:#eef4ff}
+html.light .rfoot button{background:#eef2f7}
+html.light blockquote.q-warn,html.light .callout.c-warn{background:#fff7e8}
+html.light blockquote.q-deny,html.light .callout.c-deny,html.light .ans.a-trap{background:#fdecea}
+html.light blockquote.q-ok,html.light .callout.c-ok{background:#eaf7f0}
+html.light .sr{border-bottom-color:var(--line)}
+html.light td{border-bottom-color:var(--line)}
+html.light tbody tr:hover{background:#eef3f9}
+html.light #res a{border-bottom-color:var(--line)}
+html.light #res a:hover,html.light #res a.sel{background:#eef4ff;color:var(--tx)}
+html.light #find{background:rgba(20,30,45,.45)}
+html.light .themebtn{box-shadow:0 2px 8px rgba(0,0,0,.12)}
+
 @media print{
-  #rail,#burger,#top,#find,.pn,.strip,.copy,.anchor{display:none!important}
+  #rail,#burger,#top,#find,.pn,.strip,.copy,.anchor,.themebtn{display:none!important}
   main{margin:0}body{background:#fff;color:#000;font-size:11pt}
   .phead{background:none;border-bottom:2px solid #000}
   .body h2,.body h3{break-after:avoid}.codeblock,.tw,.ans{break-inside:avoid}
