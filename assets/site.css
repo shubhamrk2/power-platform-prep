@@ -4,8 +4,8 @@
   --ok:#3FD18B; --warn:#EFB13F; --deny:#F0655A;
   --say:#3FD18B; --know:#4DA3FF; --trap:#F0655A;
   --acc:#4DA3FF; --tint:#121A26; --hue:210;
-  --disp:"Chivo","Segoe UI",system-ui,-apple-system,sans-serif;
-  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --disp:"Century Gothic","Futura","URW Gothic","Avant Garde",system-ui,-apple-system,sans-serif;
+  --body:"Century Gothic","Futura","URW Gothic","Avant Garde",Georgia,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   --rail:296px; --wrap:1240px; --prose:86ch; --r:10px;
 }
