@@ -1,0 +1,654 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 07 — Lab Setup &amp; Costs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>:root{--acc:#7ED957;--tint:#152614;--h:140}</style>
+</head><body data-page="labs">
+<button id="burger" aria-label="Menu">&#9776;</button>
+<aside id="rail">
+ <div class="brand"><a href="index.html">
+   <div class="who">Shubham Singh</div>
+   <div class="role">Interview Dossier &middot; Aug 2026</div></a>
+   <div class="pmeter"><div class="bar"><div class="fill"></div></div>
+     <div class="lab"><span>ON THIS PAGE</span><span id="pct">0%</span></div></div>
+ </div>
+ <nav id="nav">
+   <a class="np" href="index.html" style="--h:210"><span class="n">&#9679;</span>Overview</a>
+   <a class="np" href="tenant-setup.html" style="--h:8"><span class="n">00</span>Tenant Setup</a><a class="np" href="profile.html" style="--h:45"><span class="n">01</span>Profile &amp; Evidence</a><a class="np" href="mcp-server.html" style="--h:160"><span class="n">02</span>MCP Server Deep Dive</a><a class="np" href="stories.html" style="--h:190"><span class="n">03</span>Domain &amp; STAR Stories</a><a class="np" href="seven-day-plan.html" style="--h:210"><span class="n">04</span>The 7-Day Plan</a><a class="np" href="question-bank.html" style="--h:265"><span class="n">05</span>Question Bank</a><a class="np" href="resume-cert-pay.html" style="--h:320"><span class="n">06</span>Resume · PL-600 · Pay</a><a class="np on" href="labs.html" style="--h:140"><span class="n">07</span>Lab Setup &amp; Costs</a><ul class="subs"><li><a href="#7-1-the-cost-table-the-headline">The Cost Table (The Headline)</a></li><li><a href="#7-2-the-tenant-microsoft-365-e5-free-trial-done">The Tenant — Microsoft 365 E5 Free Trial ✅ DONE</a></li><li><a href="#7-3-environment-setup">Environment Setup</a></li><li><a href="#7-4-tool-installation-copy-paste-commands">Tool Installation (Copy-Paste Commands)</a></li><li><a href="#7-5-coe-starter-kit-detailed-walkthrough">Coe Starter Kit: Detailed Walkthrough</a></li><li><a href="#7-6-dlp-lab-exact-steps">Dlp Lab: Exact Steps</a></li><li><a href="#7-7-copilot-studio-lab">Copilot Studio Lab</a></li><li><a href="#7-8-dataflows-power-query-m-lab">Dataflows / Power Query M Lab</a></li><li><a href="#7-9-model-driven-app-adaptive-cards-pad-labs">Model-Driven App, Adaptive Cards, Pad Labs</a></li><li><a href="#7-10-pipelines-lab-closes-your-stated-alm-gap">Pipelines Lab (Closes Your Stated Alm Gap)</a></li><li><a href="#7-11-troubleshooting-when-things-break">Troubleshooting: When Things Break</a></li><li><a href="#7-12-lab-hygiene-and-safety-rules">Lab Hygiene And Safety Rules</a></li><li><a href="#7-13-azure-free-trial-labs">Azure Free Trial Labs</a></li><li><a href="#7-14-azure-cost-control-and-teardown">Azure Cost Control And Teardown</a></li></ul><a class="np" href="logistics.html" style="--h:25"><span class="n">08</span>Research &amp; Logistics</a>
+ </nav>
+ <div class="rfoot"><button id="sbtn">SEARCH /</button>
+   <button id="resetc">RESET <span id="ccount"></span></button></div>
+</aside>
+<main><header class="phead"><div class="wrap">
+ <div class="crumb"><span class="dot"></span><a href="index.html">Dossier</a>
+   <span>/</span><span>Hands-on</span></div>
+ <span class="pnum">PART 07</span>
+ <h1>Lab Setup &amp; Costs</h1><p class="bl">Your tenant, every lab step by step, and what to do when it breaks.</p>
+ <div class="strip" style="--sh:140"><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="cur"></i><i class=""></i></div>
+</div></header>
+<div class="wrap"><div class="body"><p><strong>PURPOSE</strong></p>
+<p>Everything you need to stand up a personal Power Platform lab on your own laptop, what each piece costs, how to get it, and what to do when it breaks.</p>
+<p>READ THIS BEFORE DAY 1. The tenant signup is the critical path for the entire week - if it stalls, Days 2, 3 and 4 all stall with it.</p>
+<h3 id="7-1-the-cost-table-the-headline" class="h2"><span class="hnum">7.1</span>The Cost Table (The Headline)<a class="anchor" href="#7-1-the-cost-table-the-headline" aria-label="Link to section">#</a></h3>
+<div class="tw"><table>
+<thead><tr><th>Thing</th><th>Cost</th><th>How</th></tr></thead>
+<tbody>
+<tr class="r-ok"><td><strong>Tenant (E5, global admin)</strong></td><td><strong>Free 30-day trial</strong></td><td><strong>Microsoft 365 E5 free trial — ✅ done 31 Aug, ₹0</strong></td></tr>
+<tr><td>Power Platform / Dataverse in it</td><td>Included</td><td>Comes with the dev tenant</td></tr>
+<tr><td>CoE Starter Kit</td><td>Free</td><td>Microsoft-published solution, free download</td></tr>
+<tr><td>DLP policy authoring</td><td>Free</td><td>Admin center feature, no licence</td></tr>
+<tr><td>PAC CLI</td><td>Free</td><td><code>dotnet tool install</code>, or VS Code extension</td></tr>
+<tr><td>Copilot Studio</td><td>Free trial</td><td>Time-limited trial, typically no card required</td></tr>
+<tr><td>Power Automate Desktop</td><td>Free</td><td>Built into Windows 11 — you already have it</td></tr>
+<tr><td>Power Platform admin PowerShell</td><td>Free</td><td><code>Install-Module</code> from PowerShell Gallery</td></tr>
+<tr><td>Postman</td><td>Free</td><td>Free tier is more than enough</td></tr>
+<tr><td>VS Code</td><td>Free</td><td>Plus Power Platform Tools extension</td></tr>
+<tr><td>Git</td><td>Free</td><td>For source-controlling unpacked solutions</td></tr>
+<tr><td>PL-600 exam</td><td><strong>~USD 165</strong> (regional pricing)</td><td><strong>The only real cost.</strong> See Part 6 §6.2 for free/discounted routes</td></tr>
+</tbody></table></div>
+<p><strong>TOTAL CASH REQUIRED FOR THE ENTIRE 7-DAY PLAN: ZERO.</strong></p>
+<h4 id="important-caveat-on-this-table-read-it" class="h3">IMPORTANT CAVEAT ON THIS TABLE - READ IT<a class="anchor" href="#important-caveat-on-this-table-read-it" aria-label="Link to section">#</a></h4>
+<p>Microsoft changes program terms, trial lengths, and eligibility rules regularly. The table above reflects how these programs have generally worked, but I have NOT verified today's exact terms. Specifically:</p>
+<ul>
+<li>The Microsoft 365 Developer Program is effectively closed — it now requires</li>
+</ul>
+<p>a Visual Studio subscription and rejected this application outright. The E5 free trial is the working route (and gives the same tenant admin).</p>
+<ul>
+<li>The E5 trial requires a payment method and auto-converts after 30 days.</li>
+</ul>
+<p>Indian cards can be fiddly: a Mastercard was rejected as "invalid card number" where a Visa worked, and PAN is requested for GST compliance.</p>
+<ul>
+<li>Copilot Studio trial length has varied (commonly 30 or 60 days).</li>
+<li>Exam pricing is regional; India pricing differs from the USD list price.</li>
+<li>Free trial terms can change, including whether a card is requested.</li>
+</ul>
+<p>TREAT THE TABLE AS "WHAT TO EXPECT", NOT AS A GUARANTEE. Verify each at signup. Everything is either free or has a free path, so the worst case is that a specific route closes and you use the fallback documented below - not that you have to pay.</p>
+<h3 id="7-2-the-tenant-microsoft-365-e5-free-trial-done" class="h2"><span class="hnum">7.2</span>The Tenant — Microsoft 365 E5 Free Trial ✅ DONE<a class="anchor" href="#7-2-the-tenant-microsoft-365-e5-free-trial-done" aria-label="Link to section">#</a></h3>
+<div class="callout c-ok"><strong>STATUS: PROVISIONED 31 AUGUST 2026. ₹0 CHARGED. TENANT ADMIN CONFIRMED.</strong></div>
+<p>Full setup record, credentials template and troubleshooting: <strong>PART 0</strong>.</p>
+<h4 id="why-a-tenant-of-your-own-is-the-whole-point" class="h3">Why a tenant of your own is the whole point<a class="anchor" href="#why-a-tenant-of-your-own-is-the-whole-point" aria-label="Link to section">#</a></h4>
+<p>You need <strong>tenant-level admin</strong>. At T-Mobile you were a maker inside someone else's governed tenant — which is precisely why DLP sits as a 🔴 on your scorecard. Only your own tenant lets you author tenant DLP policies, deploy the CoE Kit properly, and create and manage environments.</p>
+<h4 id="the-route-that-worked" class="h3">The route that worked<a class="anchor" href="#the-route-that-worked" aria-label="Link to section">#</a></h4>
+<p><strong>Microsoft 365 E5 free trial</strong> — <a href="https://urldefense.com/v3/__https://www.microsoft.com/microsoft-365/enterprise/office365-e5__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlLdGQPVI$">https://www.microsoft.com/microsoft-365/enterprise/office365-e5</a></p>
+<ul>
+<li>30 days, ₹0 today, full E5 including Power Platform and Dataverse</li>
+<li>You become <strong>global admin</strong> of a brand-new tenant</li>
+<li>Requires a payment method; <strong>auto-converts to paid after 30 days</strong></li>
+<li>You invent the tenant domain: <code>yourname.onmicrosoft.com</code></li>
+</ul>
+<div class="callout c-warn"><strong>⚠️ CANCEL BY 1 OCTOBER 2026.</strong> admin.microsoft.com → Billing → Your products. Reminder set for 25 September. Cancelling early still leaves the tenant usable for the remainder of the term.</div>
+<h4 id="the-route-that-did-not-work-don-t-retry-it" class="h3">The route that did NOT work — don't retry it<a class="anchor" href="#the-route-that-did-not-work-don-t-retry-it" aria-label="Link to section">#</a></h4>
+<div class="callout c-deny"><strong>Microsoft 365 Developer Program</strong> returned <em>"You don't currently qualify for a sandbox subscription."</em> Microsoft narrowed that program to effectively require a Visual Studio subscription; it rejects most applicants regardless of what they enter on the form. It is not a form you can fill in better. Skip it.</div>
+<h4 id="signup-friction-recorded-in-case-you-repeat-this" class="h3">Signup friction, recorded in case you repeat this<a class="anchor" href="#signup-friction-recorded-in-case-you-repeat-this" aria-label="Link to section">#</a></h4>
+<ul>
+<li><strong>Mastercard rejected</strong> as "invalid card number" — a Visa went through.</li>
+</ul>
+<p>Indian cards fail Microsoft signups regularly for regulatory reasons (RBI card-on-file rules, international transactions disabled by default on many issuers). Check your banking app's international toggle.</p>
+<ul>
+<li><strong>PAN requested</strong> — normal for Indian GST compliance on Microsoft</li>
+</ul>
+<p>subscriptions. Verify you are on a genuine <code>microsoft.com</code> domain first.</p>
+<ul>
+<li><strong>Final page appeared to stall</strong> after submit — it had actually succeeded.</li>
+</ul>
+<p>Before resubmitting a signup, check admin.microsoft.com: resubmitting a successful signup can create a duplicate subscription.</p>
+<ul>
+<li><strong>Company field</strong>: "Accenture" is fine on a profile field, but for the E5</li>
+</ul>
+<p>trial the company name becomes your <strong>tenant's organisation name</strong>, so use your own name — you are not authorised to create a tenant that appears to represent your employer.</p>
+<ul>
+<li><strong>Job title</strong>: Developer / Power Platform Developer.</li>
+</ul>
+<h4 id="verification-do-this-before-investing-a-day-in-coe-kit" class="h3">Verification — do this before investing a day in CoE Kit<a class="anchor" href="#verification-do-this-before-investing-a-day-in-coe-kit" aria-label="Link to section">#</a></h4>
+<div class="codeblock"><span class="lang">powershell</span><pre><code>Install-Module -Name Microsoft.PowerApps.Administration.PowerShell -Force -Scope CurrentUser
+Add-PowerAppsAccount
+Get-DlpPolicy</code></pre><button class="copy" type="button">copy</button></div>
+<ul>
+<li><strong>Returns <code>{}</code></strong> → PASS. Authenticated, zero policies, which is correct for</li>
+</ul>
+<p>a new tenant. <strong>This is what happened.</strong> You have tenant admin.</p>
+<ul>
+<li><strong>Access denied / authorization error</strong> → you do not have tenant admin.</li>
+</ul>
+<p>Confirm from the browser too: <strong><a href="https://urldefense.com/v3/__https://admin.powerplatform.microsoft.com__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlBJ67dw2$">https://admin.powerplatform.microsoft.com</a></strong> → <strong>Policies → Data policies</strong> visible in the left nav.</p>
+<h4 id="if-the-tenant-becomes-unusable-mid-week" class="h3">If the tenant becomes unusable mid-week<a class="anchor" href="#if-the-tenant-becomes-unusable-mid-week" aria-label="Link to section">#</a></h4>
+<p><strong>Fastest fix:</strong> create a fresh E5 trial with a different domain name. The tenant is days old and contains almost nothing, so replacing it beats fighting account recovery. Cancel the old subscription so both are covered by the 1 October deadline.</p>
+<p><strong>Last resort — Power Apps Developer Plan</strong> <a href="https://urldefense.com/v3/__https://powerapps.microsoft.com/developerplan__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlDgamOao$">https://powerapps.microsoft.com/developerplan</a> — free, instant, no card, no PAN, no expiry. <strong>But it is ENVIRONMENT-scoped, not TENANT-scoped:</strong></p>
+<div class="tw"><table>
+<thead><tr><th>Lab</th><th>On Developer Plan</th></tr></thead>
+<tbody>
+<tr class="r-ok"><td>PAC CLI, solutions, ALM, canvas &amp; model-driven apps, flows</td><td>✅ Yes</td></tr>
+<tr class="r-ok"><td>Dataflows / Power Query M, Adaptive Cards, PAD</td><td>✅ Yes</td></tr>
+<tr class="r-warn"><td>Copilot Studio</td><td>⚠️ Possibly limited</td></tr>
+<tr class="r-deny"><td><strong>Tenant DLP policy authoring</strong></td><td>❌ <strong>No</strong></td></tr>
+<tr class="r-deny"><td><strong>CoE Kit full deployment</strong></td><td>❌ Impaired (wants tenant-wide inventory)</td></tr>
+<tr class="r-deny"><td>Environment creation / Pipelines</td><td>❌ Limited</td></tr>
+</tbody></table></div>
+<p>That drops both of your 🔴 scorecard items. Honest interview line if it comes to that: <em>"I've worked inside DLP-governed environments as a maker — hitting connector restrictions and going through the exception process — and I know the model, but I haven't had tenant admin to author policies myself."</em></p>
+<h3 id="7-3-environment-setup" class="h2"><span class="hnum">7.3</span>Environment Setup<a class="anchor" href="#7-3-environment-setup" aria-label="Link to section">#</a></h3>
+<p>CREATE THREE ENVIRONMENTS (mirrors your T-Mobile estate, and you need them for the Pipelines lab on Day 3):</p>
+<p>Power Platform Admin Center -&gt; Environments -&gt; New</p>
+<ol>
+<li>Name: DEV    | Type: Sandbox     | Dataverse: Yes</li>
+<li>Name: TEST   | Type: Sandbox     | Dataverse: Yes</li>
+<li>Name: PROD   | Type: Production  | Dataverse: Yes</li>
+</ol>
+<p>(optional) 4. Name: COE | Type: Production | Dataverse: Yes</p>
+<ul>
+<li>CoE Kit docs recommend a dedicated environment. If capacity is tight,</li>
+</ul>
+<p>deploy CoE into DEV and note that you did.</p>
+<div class="callout c-warn"><strong>CAPACITY WARNING</strong></div>
+<p>A developer tenant has limited Dataverse capacity. Creating four Dataverse environments may exhaust it. If you hit a capacity error:</p>
+<ul>
+<li>Delete any auto-created trial environments you do not need</li>
+<li>Use three environments instead of four (put CoE in DEV)</li>
+<li>Check Admin Center -&gt; Resources -&gt; Capacity to see what is consuming it</li>
+</ul>
+<p><strong>NAMING NOTE FOR INTERVIEW</strong></p>
+<p>Say this if environment strategy comes up: "In my own tenant I used DEV/TEST/PROD; at T-Mobile it was DEV/STG/UAT/PROD. The principle either way is that production is managed-only and nobody customises directly in it."</p>
+<h3 id="7-4-tool-installation-copy-paste-commands" class="h2"><span class="hnum">7.4</span>Tool Installation (Copy-Paste Commands)<a class="anchor" href="#7-4-tool-installation-copy-paste-commands" aria-label="Link to section">#</a></h3>
+<h4 id="pac-cli" class="h3">PAC CLI<a class="anchor" href="#pac-cli" aria-label="Link to section">#</a></h4>
+<p>OPTION A - .NET tool (recommended, gives you the full CLI): Prerequisite: .NET SDK 6.0 or later. Check with:  dotnet --version If missing, install from <a href="https://urldefense.com/v3/__https://dotnet.microsoft.com/download__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlKyfzrXc$">https://dotnet.microsoft.com/download</a></p>
+<div class="codeblock"><pre><code>  dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+
+  Verify:   pac help
+  Update:   dotnet tool update --global Microsoft.PowerApps.CLI.Tool</code></pre><button class="copy" type="button">copy</button></div>
+<p>OPTION B - VS Code extension: Install "Power Platform Tools" from the VS Code marketplace. Bundles PAC CLI and gives you a UI over it. Fine, but learn the command line - that is what the JD asks for.</p>
+<p><strong>FIRST COMMANDS TO RUN:</strong></p>
+<div class="codeblock"><pre><code>  pac auth create --environment https://&lt;yourorg&gt;.crm.dynamics.com
+  pac auth list
+  pac org who
+
+  If `pac org who` returns your identity, PAC CLI is working.</code></pre><button class="copy" type="button">copy</button></div>
+<h4 id="power-platform-admin-powershell-modules" class="h3">POWER PLATFORM ADMIN POWERSHELL MODULES<a class="anchor" href="#power-platform-admin-powershell-modules" aria-label="Link to section">#</a></h4>
+<p>Run PowerShell as Administrator (or use -Scope CurrentUser):</p>
+<div class="codeblock"><pre><code>  Install-Module -Name Microsoft.PowerApps.Administration.PowerShell -Force
+  Install-Module -Name Microsoft.PowerApps.PowerShell -AllowClobber -Force
+
+  # If execution policy blocks it:
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre><button class="copy" type="button">copy</button></div>
+<p><strong>FIRST COMMANDS:</strong></p>
+<div class="codeblock"><pre><code>  Add-PowerAppsAccount
+  Get-AdminPowerAppEnvironment
+  Get-DlpPolicy
+
+  If Get-DlpPolicy runs without error, you have tenant admin and DLP will work.
+  THIS IS THE SINGLE BEST TEST that your tenant is fit for the Day 3 lab.</code></pre><button class="copy" type="button">copy</button></div>
+<p>NOTE: there is also a newer Microsoft.PowerPlatform.Administration.PowerShell module. The older modules above are what most documentation and interview questions reference; know that both exist.</p>
+<h4 id="other-tooling" class="h3">OTHER TOOLING<a class="anchor" href="#other-tooling" aria-label="Link to section">#</a></h4>
+<p>VS Code            <a href="https://urldefense.com/v3/__https://code.visualstudio.com__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlCZoXpXq$">https://code.visualstudio.com</a> + extension: "Power Platform Tools" Git                <a href="https://urldefense.com/v3/__https://git-scm.com__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlN1zpW1V$">https://git-scm.com</a> Postman            <a href="https://urldefense.com/v3/__https://www.postman.com/downloads/__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlOAg9J8c$">https://www.postman.com/downloads/</a> (free tier) Power Automate     Already on Windows 11. Search "Power Automate" in Start. Desktop          If missing: Microsoft Store, or <a href="https://urldefense.com/v3/__https://learn.microsoft.com/power-automate/desktop-flows/install__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlCcBLOxj$">https://learn.microsoft.com/power-automate/desktop-flows/install</a> .NET SDK           <a href="https://urldefense.com/v3/__https://dotnet.microsoft.com/download__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlKyfzrXc$">https://dotnet.microsoft.com/download</a> (for PAC CLI) Python             Optional - only if you want the HTML converter in PART 6</p>
+<h3 id="7-5-coe-starter-kit-detailed-walkthrough" class="h2"><span class="hnum">7.5</span>Coe Starter Kit: Detailed Walkthrough<a class="anchor" href="#7-5-coe-starter-kit-detailed-walkthrough" aria-label="Link to section">#</a></h3>
+<p>This is the highest-risk lab in the week. Budget the full day. It WILL throw errors - that is expected and is actually the valuable part.</p>
+<p><strong>BEFORE YOU START</strong></p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Read the official setup docs first, properly, not skimmed:</span></li>
+</ul>
+<p><a href="https://urldefense.com/v3/__https://learn.microsoft.com/power-platform/guidance/coe/setup__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlJoUv_4P$">https://learn.microsoft.com/power-platform/guidance/coe/setup</a></p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Download the kit: <a href="https://urldefense.com/v3/__https://aka.ms/CoEStarterKitDownload__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlNZ_fN5u$">https://aka.ms/CoEStarterKitDownload</a></span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Decide which environment it goes in (dedicated COE env, or DEV)</span></li>
+</ul>
+<p><strong>STEP 1 - CREATE CONNECTIONS FIRST</strong></p>
+<p>The import will fail or stall if connections do not already exist. Create these in the target environment BEFORE importing:</p>
+<ul>
+<li>Power Platform for Admins</li>
+<li>Power Automate Management</li>
+<li>Power Apps for Admins</li>
+<li>Dataverse</li>
+<li>Office 365 Users</li>
+<li>Office 365 Outlook</li>
+<li>(others per the current docs - the list changes between versions)</li>
+</ul>
+<p><strong>STEP 2 - IMPORT CORE COMPONENTS (MANAGED)</strong></p>
+<p>Solutions -&gt; Import solution -&gt; the CoE Core Components managed zip. You will be asked to map connections and set environment variables.</p>
+<p><strong>STEP 3 - SET ENVIRONMENT VARIABLES</strong></p>
+<p>Typical ones (names vary by version):</p>
+<ul>
+<li>Admin eMail            (your tenant admin address)</li>
+<li>TenantID               (from Azure portal, or <code>pac org who</code>)</li>
+<li>PowerApps Maker env... (URLs)</li>
+<li>Various feature toggles</li>
+</ul>
+<p><strong>MISSING OR WRONG ENV VARS ARE THE #1 CAUSE OF FLOWS FAILING LATER.</strong></p>
+<p><strong>STEP 4 - TURN ON THE INVENTORY FLOWS IN ORDER</strong></p>
+<p>The docs specify an order. Do not just enable everything at once. Start with the Admin | Sync Template flows. Run them manually first rather than waiting for the schedule.</p>
+<p><strong>STEP 5 - WATCH THEM FAIL, THEN DEBUG</strong></p>
+<p>EXPECT: authentication errors, missing env vars, throttling on large tenants, permission errors on the admin connectors. In a small dev tenant there is very little to inventory, so runs are fast - which is an advantage for learning.</p>
+<p><strong>FOR EACH FAILURE, WRITE DOWN:</strong></p>
+<ul>
+<li>Which flow</li>
+<li>What the error said</li>
+<li>What the root cause was</li>
+<li>How you fixed it</li>
+</ul>
+<p>THREE OF THESE = your CoE interview answer. This is the deliverable of Day 2, more than the working install.</p>
+<p><strong>STEP 6 - EXPLORE WHAT IT BUILT</strong></p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Open the CoE Admin Command Center app</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Look at the inventory tables: Environment, App, Flow, Maker, Connector</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">NOTICE THE PARALLEL: this is the same inventory your MCP server produces.</span></li>
+</ul>
+<p>Say so in interview - it is a genuinely strong observation.</p>
+<p><strong>STEP 7 - OPTIONAL</strong></p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Import Governance Components (adds compliance/approval processes and</span></li>
+</ul>
+<p>DLP Impact Analysis - directly relevant to your DLP gap)</p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Set up the Power BI dashboard if you have Power BI Desktop and time.</span></li>
+</ul>
+<p>SKIP IF SHORT ON TIME - it adds hours and little interview value.</p>
+<p><strong>COMMON COE PROBLEMS AND FIXES</strong></p>
+<p>"Flow fails with 403"          -&gt; the connection identity lacks tenant admin rights; re-create the connection as the global admin account "Env var is blank"             -&gt; set it in Solutions &gt; Default &gt; env vars, or via the Setup Wizard app "Import fails on dependency"   -&gt; import prerequisite solutions first; read the import log XML, it names the component "Inventory tables empty"       -&gt; the sync flows have not run, or ran and failed; check run history, not just the flow's on/off state "Throttled"                    -&gt; normal on real tenants; rare on a dev tenant</p>
+<h3 id="7-6-dlp-lab-exact-steps" class="h2"><span class="hnum">7.6</span>Dlp Lab: Exact Steps<a class="anchor" href="#7-6-dlp-lab-exact-steps" aria-label="Link to section">#</a></h3>
+<p>This converts your weakest scorecard item. Do it carefully.</p>
+<p><strong>PART A - CREATE A TENANT-LEVEL POLICY</strong></p>
+<ol>
+<li><a href="https://urldefense.com/v3/__https://admin.powerplatform.microsoft.com__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlBJ67dw2$">https://admin.powerplatform.microsoft.com</a> -&gt; Policies -&gt; Data policies</li>
+<li>+ New Policy. Name it "Tenant Baseline".</li>
+<li>Assign connectors to groups:</li>
+</ol>
+<ul>
+<li>Business:     Dataverse, SharePoint, Office 365 Outlook, Teams</li>
+<li>Non-Business: (leave the default bucket)</li>
+<li>Blocked:      Twitter/X, Dropbox, and similar consumer connectors</li>
+</ul>
+<ol>
+<li>SET THE DEFAULT GROUP for new connectors -&gt; choose Non-Business.</li>
+</ol>
+<p>UNDERSTAND WHY: Microsoft ships new connectors continuously. Whatever you set as default is where they land automatically. Defaulting to Business is how tenants accidentally allow data egress.</p>
+<ol>
+<li>Scope: apply to all environments, or exclude one for the next test.</li>
+<li>Save.</li>
+</ol>
+<p><strong>PART B - CREATE AN ENVIRONMENT-LEVEL POLICY</strong></p>
+<ol>
+<li>New policy, scope it to a SINGLE environment (e.g. DEV).</li>
+<li>Make it deliberately different from the tenant policy.</li>
+<li>Observe how they combine. KEY LEARNING: the effective policy is the most</li>
+</ol>
+<p>restrictive combination - an environment policy cannot loosen what a tenant policy restricts.</p>
+<p>PART C - TEST THE ACTUAL IMPACT (this is the bit that gives you a real answer)</p>
+<ol>
+<li>In an environment covered by the policy, build a simple flow that uses TWO</li>
+</ol>
+<p>connectors currently in the SAME group. Save it. It works.</p>
+<ol>
+<li>Now go and move ONE of those connectors to a different group in the policy.</li>
+</ol>
+<p>Save and publish the policy.</p>
+<ol>
+<li>Go back to the flow. Open it. Try to save it.</li>
+<li>OBSERVE AND WRITE DOWN:</li>
+</ol>
+<ul>
+<li>The flow was not deleted or instantly stopped</li>
+<li>It fails on save / publish / next run, with a DLP error naming the</li>
+</ul>
+<p>violation</p>
+<ul>
+<li>A running flow does not retroactively die the instant you publish</li>
+</ul>
+<p>THIS IS THE DETAIL INTERVIEWERS PROBE. Most people assume DLP kills flows immediately. Knowing the actual behaviour proves you tested it.</p>
+<p><strong>PART D - POWERSHELL</strong></p>
+<div class="codeblock"><pre><code>  Add-PowerAppsAccount
+  Get-DlpPolicy
+  Get-DlpPolicy | Select-Object -ExpandProperty displayName
+  # Explore New-DlpPolicy and Set-DlpPolicy syntax (read before running)</code></pre><button class="copy" type="button">copy</button></div>
+<p><strong>PART E - THINK ABOUT IMPACT ASSESSMENT</strong></p>
+<p>Question to be able to answer: "How do you know what a policy change will break BEFORE you publish it?" Answer: you inventory which apps and flows use the affected connectors and in what combinations. CoE Kit's DLP Impact Analysis does this. Without CoE, you script it against the admin APIs - which is precisely what your MCP server's find_flows_using_connector tool does. TIE THOSE TOGETHER IN INTERVIEW. It is a strong connection.</p>
+<div class="callout c-warn"><strong>WHAT YOU CAN HONESTLY SAY AFTERWARDS</strong></div>
+<p>"I've authored DLP policies at tenant and environment level in my own tenant, including testing the impact on a live flow - the behaviour people get wrong is that tightening a policy doesn't kill running flows instantly, it fails them on next save or run, which is why impact assessment before publishing matters. What I haven't done is own DLP across a large production tenant with an active maker community and an exception process."</p>
+<h3 id="7-7-copilot-studio-lab" class="h2"><span class="hnum">7.7</span>Copilot Studio Lab<a class="anchor" href="#7-7-copilot-studio-lab" aria-label="Link to section">#</a></h3>
+<p>TIMING: activate the trial on DAY 4, not earlier. Trial clocks are typically 30-60 days; you want it live during your interview window.</p>
+<ol>
+<li><a href="https://urldefense.com/v3/__https://copilotstudio.microsoft.com__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlEWhO2aW$">https://copilotstudio.microsoft.com</a> - sign in with your dev tenant admin</li>
+<li>Start the trial when prompted</li>
+<li>Create an agent</li>
+</ol>
+<p>BUILD THIS SPECIFIC AGENT (it mirrors your domain and demos well): a) First create a simple Dataverse table in DEV, e.g. "Request" with columns: Request Number (text), Requester (text), Status (choice), Submitted (date) Add 3-4 sample rows. USE FAKE DATA. Nothing from T-Mobile. b) Create the agent. Write AGENT INSTRUCTIONS - the persona and rules. c) Add a KNOWLEDGE SOURCE - upload a short document (write a one-page FAQ). d) Create a custom TOPIC with trigger phrases like "check my request status". e) Create a Power Automate flow that queries the Request table by number. f) Add it as an ACTION on the agent, wire inputs and outputs. g) Test in the test pane. Debug why it does not call the action correctly the first time - THIS IS THE LEARNING. h) PUBLISH to a channel (the demo website channel is easiest).</p>
+<p>VOCABULARY TO LEARN PROPERLY (you described this loosely earlier - fix that) AGENT INSTRUCTIONS   The persona/system prompt: what it is, tone, rules, what it must not do TOPICS               Trigger phrases + a node tree (questions, conditions, messages, actions). The deterministic path. GENERATIVE ANSWERS   RAG over knowledge sources when no topic matches KNOWLEDGE SOURCES    SharePoint, public websites, Dataverse, uploaded files ACTIONS              Connector calls, Power Automate flows, custom/REST, or (increasingly) other agents CHANNELS             Where it is deployed: Teams, web, Demo site, custom AUTHENTICATION       None / Microsoft Entra / manual - determines what data the agent can reach and as whom ORCHESTRATION        Classic topic-matching vs generative orchestration where the model decides which topics/actions to invoke</p>
+<p>YOUR DIFFERENTIATED ANSWER (rehearse it) "Having built MCP servers, I approach agent design as tool design. What determines whether an agent is useful isn't the topic tree - it's whether the actions are scoped correctly, described well enough for the model to pick the right one, and safe when it picks wrong. In Copilot Studio that's action design plus authentication scope. In my MCP server it was tool descriptions plus write-gating at discovery time. Same problem, different wrapper."</p>
+<h3 id="7-8-dataflows-power-query-m-lab" class="h2"><span class="hnum">7.8</span>Dataflows / Power Query M Lab<a class="anchor" href="#7-8-dataflows-power-query-m-lab" aria-label="Link to section">#</a></h3>
+<ol>
+<li>Create a source file. Make a CSV with ~20 rows of FAKE data - e.g.</li>
+</ol>
+<p>EmployeeID, FirstName, LastName, Department, StartDate, Status DO NOT USE ANY REAL T-MOBILE DATA. Invent it.</p>
+<ol>
+<li>Power Apps maker portal -&gt; Dataflows -&gt; New dataflow</li>
+<li>Choose Text/CSV (or Excel), upload the file</li>
+<li>In Power Query editor, perform ALL of these and read the M after each:</li>
+</ol>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Promote headers</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Change column types</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Remove a column</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Rename a column</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Filter rows (e.g. Status = Active)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Add a custom column (e.g. FullName = FirstName &amp; " " &amp; LastName)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Split a column</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Group by + aggregate (count per Department)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Merge queries (create a second small CSV of Departments and join)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Append queries (union two similar tables)</span></li>
+</ul>
+<ol>
+<li>Open Advanced Editor. Read the M:</li>
+</ol>
+<p>let Source = Csv.Document(File.Contents("..."), [Delimiter=","]), Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]), Typed = Table.TransformColumnTypes(Promoted, {{"EmployeeID", type text}}), Filtered = Table.SelectRows(Typed, each [Status] = "Active") in Filtered</p>
+<p>UNDERSTAND: each step is a named variable referencing the previous one. <code>let ... in</code> defines bindings and returns the final expression. <code>each</code> is shorthand for a single-parameter function, <code>_</code> is the implicit parameter.</p>
+<ol>
+<li>Map the output to a Dataverse table. Choose Load to existing or new table.</li>
+<li>Set the KEY COLUMN for upsert. Understand: without a key, you get inserts</li>
+</ol>
+<p>and duplicates on every refresh; with one, you get upsert behaviour.</p>
+<ol>
+<li>Run the refresh. Check the Dataverse table.</li>
+</ol>
+<p><strong>CONCEPTS TO KNOW FOR INTERVIEW</strong></p>
+<p>QUERY FOLDING   Power Query pushes transformations back to the source as native queries where it can (e.g. SQL WHERE clauses). Folding BREAKS at certain steps - custom functions, some merges, index columns - after which everything is processed locally and performance collapses. You check with "View Native Query". INCREMENTAL     Only refresh changed data based on a date column, rather than REFRESH       reloading everything. Essential at volume. STANDARD vs     Standard dataflows write to Dataverse. Analytical dataflows ANALYTICAL    write to Azure Data Lake in CDM format for analytics. DATAFLOW vs     Dataflow = scheduled ETL, good for bulk/reference data. FLOW          Cloud flow = event-driven, good for per-record business logic. Using a cloud flow for bulk ETL is a classic anti-pattern.</p>
+<div class="callout c-warn"><strong>YOUR HONEST FRAME</strong></div>
+<p>"My integration work has been API-first - REST and flows, plus Python for bulk reconciliation - rather than dataflow-based. I've since worked through Power Query and M for Dataverse ingestion including query folding and upsert key mapping. The data-modelling instinct transfers; the tool was new to me."</p>
+<h3 id="7-9-model-driven-app-adaptive-cards-pad-labs" class="h2"><span class="hnum">7.9</span>Model-Driven App, Adaptive Cards, Pad Labs<a class="anchor" href="#7-9-model-driven-app-adaptive-cards-pad-labs" aria-label="Link to section">#</a></h3>
+<h4 id="model-driven-app-closes-a-soft-spot-in-must-have-1" class="h3">MODEL-DRIVEN APP (closes a soft spot in must-have #1)<a class="anchor" href="#model-driven-app-closes-a-soft-spot-in-must-have-1" aria-label="Link to section">#</a></h4>
+<ol>
+<li>Use the Request table from the Copilot Studio lab</li>
+<li>Maker portal -&gt; Apps -&gt; New app -&gt; Model-driven</li>
+<li>Configure and understand each:</li>
+</ol>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">MAIN FORM - add fields, sections, tabs; set a field as required</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">VIEW - add columns, set filter and sort; make it the default view</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">SITEMAP - add the table to navigation, create an area and group</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">BUSINESS RULE - e.g. if Status = Rejected, make a Reason field required</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Publish and open the app</span></li>
+</ul>
+<ol>
+<li>Understand what you got for free: responsive layout, security-role</li>
+</ol>
+<p>trimming, standard command bar, search, and full accessibility.</p>
+<p>BE READY TO ANSWER: "Canvas vs model-driven?" - see PART 5 Q31.</p>
+<h4 id="adaptive-cards-explicit-jd-requirement" class="h3">ADAPTIVE CARDS (explicit JD requirement)<a class="anchor" href="#adaptive-cards-explicit-jd-requirement" aria-label="Link to section">#</a></h4>
+<ol>
+<li><a href="https://urldefense.com/v3/__https://adaptivecards.io/designer__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlFdbCFSJ$">https://adaptivecards.io/designer</a> - build a card visually, read the JSON</li>
+<li>Understand the schema: body (TextBlock, Input.Text, Input.ChoiceSet,</li>
+</ol>
+<p>FactSet, ColumnSet), actions (Action.Submit, Action.OpenUrl, Action.ShowCard), version and schema fields</p>
+<ol>
+<li>In Power Automate, use the Teams connector action</li>
+</ol>
+<p>"Post adaptive card and wait for a response"</p>
+<ol>
+<li>Post a card to yourself in Teams with an approve/reject choice</li>
+<li>Capture the response and branch on it</li>
+</ol>
+<p>TIE IT TO YOUR EXPERIENCE: this is the mechanism behind the dual-route approval answer in PART 5 Q51. Adaptive Card in Teams -&gt; Action.Submit -&gt; flow writes decision to YOUR Dataverse table as source of truth, rather than relying on the Approvals connector. Building it makes that answer concrete rather than theoretical.</p>
+<h4 id="power-automate-desktop-be-precise-about-what-you-claim" class="h3">POWER AUTOMATE DESKTOP (be precise about what you claim)<a class="anchor" href="#power-automate-desktop-be-precise-about-what-you-claim" aria-label="Link to section">#</a></h4>
+<ol>
+<li>Open Power Automate Desktop (built into Windows 11)</li>
+<li>Build one simple ATTENDED desktop flow:</li>
+</ol>
+<ul>
+<li>Launch Excel, read a range, loop rows, write to a text file, or</li>
+<li>Open a browser, fill a form, extract data</li>
+</ul>
+<ol>
+<li>Learn the vocabulary: actions, UI elements, selectors, variables,</li>
+</ol>
+<p>subflows, error handling blocks, recorder</p>
+<p>UNDERSTAND WHAT UNATTENDED REQUIRES (even though you will not build it):</p>
+<ul>
+<li>A machine or machine group registered to the environment</li>
+<li>Stored credentials on the machine (or Entra-based sign-in)</li>
+<li>Unattended RPA capacity add-on licensing</li>
+<li>Work distribution: typically a queue or a Dataverse table as a work list</li>
+<li>Robust error handling - nobody is watching when it fails</li>
+<li>Monitoring and alerting on run failures</li>
+<li>VM hosting (this is where the JD's "Azure VM administration for RPA</li>
+</ul>
+<p>hosting" good-to-have comes from)</p>
+<p>YOUR HONEST LINE: state exactly what you did at T-Mobile. If attended only, say attended. Then demonstrate you know what unattended entails. Precision here reads as senior; blurring reads as bluffing.</p>
+<h3 id="7-10-pipelines-lab-closes-your-stated-alm-gap" class="h2"><span class="hnum">7.10</span>Pipelines Lab (Closes Your Stated Alm Gap)<a class="anchor" href="#7-10-pipelines-lab-closes-your-stated-alm-gap" aria-label="Link to section">#</a></h3>
+<ol>
+<li>Set up Power Platform Pipelines:</li>
+</ol>
+<p><a href="https://urldefense.com/v3/__https://learn.microsoft.com/power-platform/alm/set-up-pipelines__;!!OrxsNty6D4my!4kkKqn6aZsGuGgfCtrMYSBM5MEG_Ka5fUReWyJSmkz5WategmrrTT-ygcV1jrjS2QJdCr5zSZTmEp58QnEw7XNI4NdWhlFAROwtj$">https://learn.microsoft.com/power-platform/alm/set-up-pipelines</a> This installs a pipelines host environment and the Deployment Pipeline Configuration app.</p>
+<ol>
+<li>Create a pipeline: DEV (dev env) -&gt; TEST -&gt; PROD</li>
+<li>Build a trivial solution in DEV: one table, one flow, one app</li>
+<li>Add a connection reference and an environment variable to it deliberately</li>
+<li>Deploy through the pipeline and OBSERVE:</li>
+</ol>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Where you are asked to bind connection references</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Where you set environment variable values per stage</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">What the validation step catches</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">That the solution arrives MANAGED downstream</span></li>
+</ul>
+<ol>
+<li>Deliberately break something (remove a required env var value) and watch</li>
+</ol>
+<p>the deployment fail. Read the error.</p>
+<p><strong>WHAT YOU CAN THEN SAY:</strong></p>
+<p>"At T-Mobile promotions were script-driven and I built tooling around the risky parts - connection reference extraction, comparison, and rebinding - because that's where Power Platform ALM actually breaks, not the solution package. I've since set up native Pipelines end to end, and the gates map onto exactly the failure modes I was guarding against manually."</p>
+<h3 id="7-11-troubleshooting-when-things-break" class="h2"><span class="hnum">7.11</span>Troubleshooting: When Things Break<a class="anchor" href="#7-11-troubleshooting-when-things-break" aria-label="Link to section">#</a></h3>
+<p>"I can't create an environment - capacity error" -&gt; Dev tenants have limited Dataverse capacity. Delete unused environments. Admin Center -&gt; Resources -&gt; Capacity to see what is consuming it.</p>
+<p>"pac auth create opens a browser then fails" -&gt; Check you are signing in with the DEV TENANT account, not your work account. If your machine is domain-joined to T-Mobile, the browser may auto-sign-in with the wrong identity. Use an InPrivate window, or <code>pac auth create --environment &lt;url&gt; --username &lt;devtenant upn&gt;</code>.</p>
+<p>"PowerShell: Install-Module is blocked" -&gt; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -&gt; Or add -Scope CurrentUser to Install-Module if you lack admin rights</p>
+<p>"Get-DlpPolicy returns nothing / access denied" -&gt; You are not tenant admin, OR you are signed in as the wrong account. Run Add-PowerAppsAccount again and check the account. If you are on the Power Apps Developer Plan (not a full tenant), DLP is not available - see the fallback note in SECTION 7.2.</p>
+<p>"CoE flows all failing with 403 / unauthorised" -&gt; The connections were created by an account without tenant-wide admin rights. Delete and re-create them as the global admin.</p>
+<p>"Copilot Studio: trial not available in my region / tenant" -&gt; Check the tenant region. Dev tenants are typically created in a default region; some previews are region-limited. If unavailable, document what you know conceptually and be honest that you could not get hands-on access.</p>
+<p>"Corporate laptop blocks everything" -&gt; DO THIS WORK ON YOUR PERSONAL LAPTOP, as you planned. Do not attempt to install tooling or sign into personal tenants on the T-Mobile/Accenture machine. Beyond the technical friction, it is a policy problem you do not need.</p>
+<p>"My dataflow refresh fails on the Dataverse load" -&gt; Usually a type mismatch or a missing required column on the target table. Check that every required (business-required) Dataverse column is mapped.</p>
+<p>"I ran out of time"</p>
+<p><strong>-&gt; PRIORITY ORDER IF YOU MUST CUT:</strong></p>
+<ol>
+<li>KEEP: STAR story rehearsal (Days 6-7) - highest value, always</li>
+<li>KEEP: DLP lab - closes your weakest scorecard item, only ~3 hours</li>
+<li>KEEP: PAC CLI - quick, explicitly named in the JD</li>
+<li>CUT FIRST: Power BI dashboard for CoE</li>
+<li>CUT SECOND: Office Scripts</li>
+<li>CUT THIRD: the CoE Governance Components (keep Core)</li>
+<li>CUT FOURTH: Pipelines lab (you can speak to it honestly without)</li>
+</ol>
+<h3 id="7-12-lab-hygiene-and-safety-rules" class="h2"><span class="hnum">7.12</span>Lab Hygiene And Safety Rules<a class="anchor" href="#7-12-lab-hygiene-and-safety-rules" aria-label="Link to section">#</a></h3>
+<p><strong>NON-NEGOTIABLE RULES</strong></p>
+<ol>
+<li>PERSONAL LAPTOP ONLY. Never install this tooling or sign into personal</li>
+</ol>
+<p>tenants on your T-Mobile or Accenture machine.</p>
+<ol>
+<li>NEVER USE REAL T-MOBILE DATA. Not in a dataflow CSV, not in a Dataverse</li>
+</ol>
+<p>table, not in a Copilot Studio knowledge source, not in a screenshot. Invent everything. This is a physical security system - the standard is higher than usual.</p>
+<ol>
+<li>NEVER COPY T-MOBILE CODE OR SOLUTIONS into your personal tenant. Your MCP</li>
+</ol>
+<p>server is a grey area - it is your own code but was built in a work context on a work machine. DO NOT publish it publicly, do not push it to a public GitHub, and do not hand the repo to an interviewer. DESCRIBE it instead. If you want a portfolio artifact, write a sanitised architecture summary with no client identifiers and no code.</p>
+<ol>
+<li>NO CLIENT IDENTIFIERS ANYWHERE. No employee names, card numbers, facility</li>
+</ol>
+<p>names, internal URLs, service account names, transaction IDs, or tenant GUIDs in anything you produce for the job search.</p>
+<ol>
+<li>USE A PASSWORD MANAGER for the dev tenant credentials. You will forget them.</li>
+</ol>
+<ol>
+<li>IF YOU SHOW ANYTHING IN INTERVIEW, show your PERSONAL tenant labs - the</li>
+</ol>
+<p>CoE install, the DLP policy, the Copilot Studio agent. Never the client's system. Screen-sharing a client's production environment in a job interview would be a serious mistake and interviewers notice.</p>
+<p><strong>WHY THIS MATTERS BEYOND COMPLIANCE</strong></p>
+<p>How you handle your current client's confidentiality is a live demonstration of how you would handle THEIRS. An interviewer who sees you volunteer restraint - "I'd rather not go into specifics, it's a physical security system, but the pattern was..." - is watching a consultant they could put in front of a regulated client. That is a hiring signal, not an obstacle.</p>
+<h3 id="7-13-azure-free-trial-labs" class="h2"><span class="hnum">7.13</span>Azure Free Trial Labs<a class="anchor" href="#7-13-azure-free-trial-labs" aria-label="Link to section">#</a></h3>
+<div class="callout c-ok"><strong>YOU HAVE AN ACTIVE AZURE FREE TRIAL.</strong> That unlocks the entire <em>good-to-have</em> Azure column on the JD, and — importantly — it converts your <strong>Power Automate Desktop / RPA</strong> rating from PARTIAL to a genuinely defensible claim, because you can host an unattended PAD machine on a real VM.</div>
+<p>These labs are the second tenant in your kit. The Power Platform labs (7.5&ndash;7.10) run in your <strong>M365 E5 tenant</strong>. The labs below run in your <strong>Azure subscription</strong>. Keep them straight in your head — they authenticate separately and bill separately.</p>
+<div class="callout c-warn"><strong>THE AZURE TRIAL IS NOT LIKE THE E5 TRIAL.</strong> The E5 trial is a flat 30-day term. The Azure free account is <strong>USD 200 of credit for 30 days</strong> plus 12 months of a few free services. <strong>A running VM burns that credit by the hour.</strong> The single rule that keeps this free is in §7.14: <strong>deallocate every VM the moment you stop using it.</strong> Read §7.14 before you create anything.</p></div>
+<h4 id="what-azure-closes-on-this-jd" class="h3">What Azure closes on this JD<a class="anchor" href="#what-azure-closes-on-this-jd" aria-label="Link to section">#</a></h4>
+<div class="tw"><table>
+<thead><tr><th>Azure skill</th><th>JD line it satisfies</th><th>Lab</th></tr></thead>
+<tbody>
+<tr class="r-ok"><td>VM administration for RPA hosting</td><td>Good-to-have · <em>and</em> upgrades must-have #7 (PAD/RPA)</td><td>Lab A</td></tr>
+<tr class="r-ok"><td>Key Vault</td><td>Good-to-have · ties to "secure credentials" (Q67)</td><td>Lab B</td></tr>
+<tr class="r-ok"><td>Logic Apps</td><td>Good-to-have · the Power Automate vs Logic Apps question (Q50)</td><td>Lab C</td></tr>
+<tr class="r-ok"><td>Azure DevOps pipelines</td><td>Good-to-have · ALM at scale (Q59)</td><td>Lab D</td></tr>
+<tr class="r-ok"><td>Networking — service tags, IP allowlisting</td><td>Good-to-have · "networking basics"</td><td>Lab E</td></tr>
+<tr class="r-ok"><td>Entra ID app registrations</td><td>Good-to-have — <strong>already STRONG</strong> from your MCP work</td><td>Confirm only</td></tr>
+<tr class="r-deny"><td>DLP, CoE, Dataflows, Copilot Studio, MDA, Adaptive Cards</td><td>Must-haves — <strong>NOT Azure</strong>. Use the E5 tenant (7.5&ndash;7.9)</td><td>&mdash;</td></tr>
+</tbody></table></div>
+<div class="callout c-warn"><strong>PRIORITY.</strong> If you only do one Azure lab, do <strong>Lab A</strong> — it is the only one that moves a <em>must-have</em>. The rest are good-to-haves that make you sound complete when the interviewer wanders into Azure.</div>
+<h4 id="azure-prerequisites-and-cli-setup" class="h3">Prerequisites and CLI setup<a class="anchor" href="#azure-prerequisites-and-cli-setup" aria-label="Link to section">#</a></h4>
+<p>Do this once. It gets you authenticated and gives you a single resource group so everything you create is easy to delete in one command later.</p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code># Install the Azure CLI (Windows)
+winget install --id Microsoft.AzureCLI -e
+
+# Sign in with the account that owns the Azure free trial
+az login
+
+# Confirm which subscription you are on — make sure it is the trial
+az account show --output table
+
+# Create ONE resource group to hold every lab resource.
+# Deleting this group later deletes everything and stops all billing.
+az group create --name rg-pp-lab --location centralindia</code></pre><button class="copy" type="button">copy</button></div>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Azure CLI installed and <code>az login</code> succeeded</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt"><code>az account show</code> confirms you are on the <strong>free trial</strong> subscription, not a work one</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Resource group <code>rg-pp-lab</code> created (choose the region nearest you; <code>centralindia</code> for Gurugram)</span></li>
+</ul>
+<div class="callout c-deny"><strong>WRONG-TENANT TRAP.</strong> If your laptop is domain-joined, <code>az login</code> may silently pick your Accenture/T-Mobile identity. Check <code>az account show</code> every time. If it is wrong: <code>az logout</code>, then <code>az login --use-device-code</code> and sign in explicitly with your personal trial account.</div>
+<h4 id="lab-a-vm-for-unattended-power-automate-desktop" class="h3">Lab A &mdash; VM for unattended Power Automate Desktop<a class="anchor" href="#lab-a-vm-for-unattended-power-automate-desktop" aria-label="Link to section">#</a></h4>
+<p>This is the highest-value Azure lab because it touches a <strong>must-have</strong>. The production pattern for unattended RPA is: a cloud flow triggers a desktop flow that runs on a VM with <strong>nobody logged in</strong>. You are going to build exactly that shape.</p>
+<p><strong>STEP 1 &mdash; CREATE THE VM</strong></p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code># B2s is the smallest size that runs PAD comfortably.
+# The free-tier B1s (1 GB RAM) is too small — it WILL choke on PAD.
+az vm create --resource-group rg-pp-lab --name vm-pad-01 --image Win2022Datacenter --size Standard_B2s --admin-username azureuser --admin-password "&lt;Choose-A-Strong-P@ssword-1&gt;" --public-ip-sku Standard
+
+# Get the public IP you will RDP into
+az vm show -d -g rg-pp-lab -n vm-pad-01 --query publicIps -o tsv</code></pre><button class="copy" type="button">copy</button></div>
+<p><strong>STEP 2 &mdash; CONNECT AND INSTALL PAD</strong></p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">RDP to the public IP (Windows: <code>mstsc</code>) as <code>azureuser</code></span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Install Power Automate Desktop on the VM (Microsoft Store, or the MSI installer)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Install the <strong>on-premises data gateway</strong> / machine runtime so the VM can be registered to your environment</span></li>
+</ul>
+<p><strong>STEP 3 &mdash; REGISTER THE MACHINE (this is the actual skill)</strong></p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">In PAD on the VM: sign in with your <strong>E5 tenant</strong> maker account and register this machine to your environment</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">In the maker portal &rarr; <strong>Monitor &rarr; Machines</strong>, confirm the VM appears</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Create a <strong>machine credential</strong> (the Windows account the unattended run signs in as) — this is the part people fumble</span></li>
+</ul>
+<p><strong>STEP 4 &mdash; TRIGGER IT UNATTENDED</strong></p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Build a trivial desktop flow on the VM (e.g. open Notepad, write a timestamped line, save)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Build a cloud flow that runs the desktop flow, choosing the <strong>Attended &rarr; switch to Unattended</strong> run mode against your registered machine</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt"><strong>Disconnect the RDP session</strong> (don't sign out), trigger the cloud flow, and confirm the desktop flow still ran on the VM with no interactive session</span></li>
+</ul>
+<div class="callout c-warn"><strong>THE MOMENT IT STOPS BILLING.</strong> When you finish a session, deallocate — <code>az vm deallocate -g rg-pp-lab -n vm-pad-01</code>. "Stopped (deallocated)" means compute billing stops; only the small disk cost remains. Simply shutting down from inside Windows does <strong>not</strong> deallocate — it keeps billing.</div>
+<div class="ans a-say"><span class="tag">say this</span><div class="ans-b"><p>"I've stood up an unattended PAD machine on an Azure VM — registered it to the environment, created the machine credential the unattended run signs in under, and triggered a desktop flow from a cloud flow with no interactive session. So I understand the full unattended chain: VM hosting, machine registration, credential management, and the capacity licensing it needs at scale."</p></div></div>
+<h4 id="lab-b-key-vault-and-secrets-in-a-flow" class="h3">Lab B &mdash; Key Vault and secrets in a flow<a class="anchor" href="#lab-b-key-vault-and-secrets-in-a-flow" aria-label="Link to section">#</a></h4>
+<p>Directly relevant to must-have integration and to the "how do you secure credentials?" question (Q67). Near-zero cost — secrets are effectively free.</p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code># Vault names are globally unique — append something random.
+az keyvault create --resource-group rg-pp-lab --name kv-pplab-&lt;yourinitials&gt;01 --location centralindia
+
+# Store a FAKE secret — never a real client credential
+az keyvault secret set --vault-name kv-pplab-&lt;yourinitials&gt;01 --name CcureApiKey --value "fake-demo-value-not-real"
+
+# Read it back
+az keyvault secret show --vault-name kv-pplab-&lt;yourinitials&gt;01 --name CcureApiKey --query value -o tsv</code></pre><button class="copy" type="button">copy</button></div>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Vault created and the fake secret stored and read back from the CLI</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">In a cloud flow, add the <strong>Azure Key Vault</strong> connector &rarr; <strong>Get secret</strong>, and pull the value at run time</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Understand the access model: the connection identity needs an <strong>access policy</strong> (or RBAC role) granting <em>Get</em> on secrets — without it the connector 403s</span></li>
+</ul>
+<p>CONCEPTS TO KNOW: Key Vault <strong>access policies vs RBAC</strong> (RBAC is the current default); <strong>managed identity</strong> as the passwordless way for a VM or app to read a secret; and <strong>secret versioning</strong> — every <em>set</em> creates a new version and the old one still resolves until you disable it.</p>
+<div class="ans a-say"><span class="tag">say this</span><div class="ans-b"><p>"For secrets I default to Key Vault with a managed identity rather than storing credentials in connection references or environment variables — the app reads the secret at run time and nothing sensitive lives in the solution. In my MCP server I gated writes and kept credentials out of the tool surface for the same reason: the secret should never be the thing that leaks."</p></div></div>
+<h4 id="lab-c-logic-apps" class="h3">Lab C &mdash; Logic Apps<a class="anchor" href="#lab-c-logic-apps" aria-label="Link to section">#</a></h4>
+<p>The point of this lab is not to become a Logic Apps expert — it is to be able to compare it to Power Automate with your hands, not from a blog post (Q50).</p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Portal &rarr; create a <strong>Logic App (Consumption)</strong> in <code>rg-pp-lab</code></span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Build: <strong>Recurrence</strong> trigger &rarr; <strong>HTTP</strong> GET a public test API &rarr; <strong>Parse JSON</strong> &rarr; <strong>Condition</strong></span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Open <strong>Code view</strong> and read the workflow JSON — notice it is the same designer engine as Power Automate</span></li>
+</ul>
+<div class="tw"><table>
+<thead><tr><th>&nbsp;</th><th>Power Automate</th><th>Logic Apps</th></tr></thead>
+<tbody>
+<tr><td>Lives in</td><td>Power Platform environment</td><td>Azure resource group</td></tr>
+<tr><td>Billed by</td><td>User/flow licensing, seeded with M365</td><td>Per-action consumption (or hosting plan)</td></tr>
+<tr><td>Source control / IaC</td><td>Solutions, Pipelines</td><td>ARM/Bicep, Azure DevOps</td></tr>
+<tr><td>Who owns it</td><td>Makers / business</td><td>Azure / IT / pro-dev</td></tr>
+<tr><td>Best for</td><td>Business process, approvals, in-M365 work</td><td>High-volume system integration, DevOps-managed</td></tr>
+</tbody></table></div>
+<div class="ans a-know"><span class="tag">the model</span><div class="ans-b"><p>Same underlying workflow engine, different <em>governance surface</em>. Power Automate is maker-owned and licensed through M365; Logic Apps is Azure-owned, consumption-billed, and deploys as infrastructure-as-code. You reach for Logic Apps when volume, cost predictability, or DevOps ownership matters more than citizen-developer accessibility.</p></div></div>
+<h4 id="lab-d-azure-devops-pipelines" class="h3">Lab D &mdash; Azure DevOps pipelines<a class="anchor" href="#lab-d-azure-devops-pipelines" aria-label="Link to section">#</a></h4>
+<p>Azure DevOps is <strong>free for up to 5 users</strong> and does not consume your Azure credit. This closes the "Power Platform Pipelines vs Azure DevOps" question (Q59) with real experience of both.</p>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Create a free org and project at <a href="https://dev.azure.com">dev.azure.com</a></span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Install the <strong>Power Platform Build Tools</strong> extension into the org</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Create a <strong>service connection</strong> to your DEV environment using the app registration from the Entra lab (service principal auth)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Build a pipeline: <strong>Export Solution</strong> (from DEV, managed) &rarr; publish artifact &rarr; <strong>Import Solution</strong> (into TEST)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Run it, watch the solution move, then <strong>break it</strong> (bad service connection) and read the failure</span></li>
+</ul>
+<div class="ans a-know"><span class="tag">the model</span><div class="ans-b"><p><strong>Power Platform Pipelines</strong> = in-product, maker-friendly, zero YAML, but limited customisation. <strong>Azure DevOps</strong> = full control, gates, approvals, YAML, integrates with the rest of your CI/CD, but heavier to stand up. Small teams / citizen-dev estates &rarr; native Pipelines. Enterprise with existing DevOps &rarr; ADO. You have now built both, so you can answer from experience, not preference.</p></div></div>
+<h4 id="lab-e-networking-basics" class="h3">Lab E &mdash; Networking basics<a class="anchor" href="#lab-e-networking-basics" aria-label="Link to section">#</a></h4>
+<p>Short lab. The JD asks for "networking basics such as service tags and IP allowlisting" — you just need to have touched a Network Security Group and know what a service tag is. Network Security Groups are <strong>free</strong>.</p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code># Lock RDP on the Lab A VM down to only YOUR public IP (IP allowlisting)
+az network nsg rule create --resource-group rg-pp-lab --nsg-name vm-pad-01NSG --name Allow-RDP-MyIP --priority 300 --access Allow --protocol Tcp --direction Inbound --destination-port-ranges 3389 --source-address-prefixes &lt;your.public.ip&gt;/32
+
+# Example of a SERVICE TAG instead of a raw IP range:
+# --source-address-prefixes PowerPlatform
+# Service tags are Microsoft-maintained named IP groups, so you allowlist
+# "the Power Platform service" without tracking its changing IP ranges yourself.</code></pre><button class="copy" type="button">copy</button></div>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Restricted RDP on the VM to your own IP with an NSG rule</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Can explain a <strong>service tag</strong>: a named, Microsoft-maintained set of IP ranges (e.g. <code>PowerPlatform</code>, <code>AzureKeyVault</code>) you reference instead of hard-coding IPs</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Can explain <strong>IP allowlisting</strong>: default-deny inbound, then allow only known sources — the same instinct as your DLP default-to-Non-Business call</span></li>
+</ul>
+<h4 id="entra-id-app-registration" class="h3">Entra ID app registration<a class="anchor" href="#entra-id-app-registration" aria-label="Link to section">#</a></h4>
+<p>You are <strong>already STRONG</strong> here — three auth modes in your MCP server, service principal and client-credentials flows, the AADSTS65002 story. This is a 15-minute <em>confirmation</em>, and it produces the service principal Lab D needs.</p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code># Register an app for Power Platform ALM automation
+az ad app create --display-name "pp-alm-spn"
+
+# Create the service principal for that app (note the appId from above)
+az ad sp create --id &lt;appId&gt;
+
+# Generate a client secret
+az ad app credential reset --id &lt;appId&gt;</code></pre><button class="copy" type="button">copy</button></div>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">App registered; service principal created; client secret captured (store it in Key Vault from Lab B)</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">In Power Platform Admin Center, add the app as an <strong>Application User</strong> in DEV/TEST and assign a security role</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Use it as the identity for the Lab D service connection — now the whole chain is service-principal driven, no personal credentials in the pipeline</span></li>
+</ul>
+<h4 id="what-you-can-honestly-say-azure" class="h3">What you can honestly say &mdash; Azure<a class="anchor" href="#what-you-can-honestly-say-azure" aria-label="Link to section">#</a></h4>
+<div class="callout c-ok"><p>"On the Azure side I've hosted an unattended Power Automate Desktop machine on a VM, secured credentials with Key Vault and a managed identity, built a Power Platform ALM pipeline in Azure DevOps off a service principal, stood up a Logic App to compare it against Power Automate, and locked a VM down with an NSG using service tags and IP allowlisting. Entra app registrations I already knew well from building the auth layer of my MCP server. What I haven't done is run any of this at production scale in Azure — this is lab depth, deliberately, and I'd be precise about that."</p></div>
+<div class="callout c-warn"><strong>DO NOT OVERCLAIM.</strong> One week of Azure labs is "hands-on at lab scale," not "administered Azure in production." The honest version above is stronger than a bluff an interviewer can puncture in two follow-ups. Azure is <em>good-to-have</em> here — you do not need to inflate it.</div>
+<h3 id="7-14-azure-cost-control-and-teardown" class="h2"><span class="hnum">7.14</span>Azure Cost Control And Teardown<a class="anchor" href="#7-14-azure-cost-control-and-teardown" aria-label="Link to section">#</a></h3>
+<div class="callout c-deny"><strong>THE ONE RULE:</strong> a running VM is the only thing here that burns credit fast. <strong>Deallocate it when you stop.</strong> Everything else (Key Vault, Logic Apps at lab volume, NSGs, Azure DevOps) is effectively free.</div>
+<p><strong>END OF EVERY SESSION</strong></p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code># Stop compute billing on the VM (keep it for next time)
+az vm deallocate --resource-group rg-pp-lab --name vm-pad-01
+
+# Confirm it says "VM deallocated"
+az vm get-instance-view -g rg-pp-lab -n vm-pad-01 --query "instanceView.statuses[1].displayStatus" -o tsv</code></pre><button class="copy" type="button">copy</button></div>
+<p><strong>WHEN YOU ARE DONE WITH ALL AZURE LABS</strong></p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code># Deletes the VM, disk, vault, logic app, NSG — everything in one command.
+# This is why every lab used the SAME resource group.
+az group delete --name rg-pp-lab --yes --no-wait</code></pre><button class="copy" type="button">copy</button></div>
+<ul class="checks">
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Set a <strong>Cost Management budget alert</strong> at, say, USD 20 so email warns you before the credit moves</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">VM is <strong>deallocated</strong> (not just "stopped" from inside Windows) whenever you are not actively using it</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Resource group deleted once the interview window has passed</span></li>
+<li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Diarised: cancel/lapse the Azure trial before it converts, same as the E5 trial deadline</span></li>
+</ul>
+<div class="callout c-warn"><strong>SAME HYGIENE AS §7.12 APPLIES.</strong> Personal laptop only, no real T-Mobile data or credentials in any vault, NSG, or VM, and no client identifiers anywhere. A Key Vault full of fake demo values is a lab; a Key Vault with a real client key on a personal trial is a problem.</div>
+<div class="pn"><a href="resume-cert-pay.html"><div class="d">&larr; Part 06</div><div class="t">Resume · PL-600 · Pay</div></a><a class="nx" href="logistics.html"><div class="d">Part 08 &rarr;</div><div class="t">Research &amp; Logistics</div></a></div></div></div></main>
+<div id="find" role="dialog" aria-label="Search"><div class="fb">
+ <input id="q" placeholder="Search every part&hellip;" autocomplete="off" spellcheck="false">
+ <div id="res"></div>
+ <div class="fh">&uarr;&darr; move &nbsp;&middot;&nbsp; ENTER open &nbsp;&middot;&nbsp; ESC close</div>
+</div></div>
+<button id="top" aria-label="Top">&uarr;</button>
+<script>var SEARCH=[{"t": "Tenant Setup", "p": "Part 00", "u": "tenant-setup.html", "h": 8}, {"t": "Your tenant at a glance", "p": "Part 00", "u": "tenant-setup.html#your-tenant-at-a-glance", "h": 8}, {"t": "Your tenant identifiers", "p": "Part 00", "u": "tenant-setup.html#your-tenant-identifiers", "h": 8}, {"t": "Why this route, and why the other one failed", "p": "Part 00", "u": "tenant-setup.html#why-this-route-and-why-the-other-one-failed", "h": 8}, {"t": "⚠️ The one thing that must not slip", "p": "Part 00", "u": "tenant-setup.html#the-one-thing-that-must-not-slip", "h": 8}, {"t": "What the tenant unlocks", "p": "Part 00", "u": "tenant-setup.html#what-the-tenant-unlocks", "h": 8}, {"t": "Immediate next steps", "p": "Part 00", "u": "tenant-setup.html#immediate-next-steps", "h": 8}, {"t": "1. Verify tenant admin in the browser *(2 min)*", "p": "Part 00", "u": "tenant-setup.html#1-verify-tenant-admin-in-the-browser-2-min", "h": 8}, {"t": "2. Create three environments *(15 min)*", "p": "Part 00", "u": "tenant-setup.html#2-create-three-environments-15-min", "h": 8}, {"t": "3. Install PAC CLI *(10 min)*", "p": "Part 00", "u": "tenant-setup.html#3-install-pac-cli-10-min", "h": 8}, {"t": "4. Admin PowerShell — already done ✅", "p": "Part 00", "u": "tenant-setup.html#4-admin-powershell-already-done", "h": 8}, {"t": "The other two time-gated items", "p": "Part 00", "u": "tenant-setup.html#the-other-two-time-gated-items", "h": 8}, {"t": "Accenture internal job board", "p": "Part 00", "u": "tenant-setup.html#accenture-internal-job-board", "h": 8}, {"t": "Microsoft Virtual Training Days — free exam voucher", "p": "Part 00", "u": "tenant-setup.html#microsoft-virtual-training-days-free-exam-voucher", "h": 8}, {"t": "Today's checklist", "p": "Part 00", "u": "tenant-setup.html#today-s-checklist", "h": 8}, {"t": "⚠️ Two rules that apply from this moment", "p": "Part 00", "u": "tenant-setup.html#two-rules-that-apply-from-this-moment", "h": 8}, {"t": "If the tenant breaks mid-week", "p": "Part 00", "u": "tenant-setup.html#if-the-tenant-breaks-mid-week", "h": 8}, {"t": "Profile & Evidence", "p": "Part 01", "u": "profile.html", "h": 45}, {"t": "Interview Preparation Master Document", "p": "Part 01", "u": "profile.html#interview-preparation-master-document", "h": 45}, {"t": "Who You Are (The Factual Base)", "p": "Part 01", "u": "profile.html#1-1-who-you-are-the-factual-base", "h": 45}, {"t": "Hard Evidence From Your Codebase", "p": "Part 01", "u": "profile.html#1-2-hard-evidence-from-your-codebase", "h": 45}, {"t": "The Revised Scorecard (Post-Correction)", "p": "Part 01", "u": "profile.html#1-3-the-revised-scorecard-post-correction", "h": 45}, {"t": "Your Three Positioning Pillars", "p": "Part 01", "u": "profile.html#1-4-your-three-positioning-pillars", "h": 45}, {"t": "Handling The Three Hard Objections", "p": "Part 01", "u": "profile.html#1-5-handling-the-three-hard-objections", "h": 45}, {"t": "What Not To Say (Guardrails)", "p": "Part 01", "u": "profile.html#1-6-what-not-to-say-guardrails", "h": 45}, {"t": "The Accenture Internal Option (Do Not Skip)", "p": "Part 01", "u": "profile.html#1-7-the-accenture-internal-option-do-not-skip", "h": 45}, {"t": "MCP Server Deep Dive", "p": "Part 02", "u": "mcp-server.html", "h": 160}, {"t": "What It Is, In One Paragraph", "p": "Part 02", "u": "mcp-server.html#2-1-what-it-is-in-one-paragraph", "h": 160}, {"t": "Architecture", "p": "Part 02", "u": "mcp-server.html#2-2-architecture", "h": 160}, {"t": "Authentication: Your Best Technical Story", "p": "Part 02", "u": "mcp-server.html#2-3-authentication-your-best-technical-story", "h": 160}, {"t": "MODE 1: DELEGATED / INTERACTIVE (the default)", "p": "Part 02", "u": "mcp-server.html#mode-1-delegated-interactive-the-default", "h": 160}, {"t": "MODE 2: SERVICE PRINCIPAL / CLIENT CREDENTIALS", "p": "Part 02", "u": "mcp-server.html#mode-2-service-principal-client-credentials", "h": 160}, {"t": "MODE 3: ROPC (Resource Owner Password Credentials)", "p": "Part 02", "u": "mcp-server.html#mode-3-ropc-resource-owner-password-credentials", "h": 160}, {"t": "THE AADSTS65002 DISCOVERY (your single best technical anecdote)", "p": "Part 02", "u": "mcp-server.html#the-aadsts65002-discovery-your-single-best-technical-anecdot", "h": 160}, {"t": "THE _audience_key DEFENSIVE GUARD (shows senior thinking)", "p": "Part 02", "u": "mcp-server.html#the-audience-key-defensive-guard-shows-senior-thinking", "h": 160}, {"t": "Corporate Tls Interception (The Zscaler Problem)", "p": "Part 02", "u": "mcp-server.html#2-4-corporate-tls-interception-the-zscaler-problem", "h": 160}, {"t": "The Tool Surface (What The 111 Tools Actually Do)", "p": "Part 02", "u": "mcp-server.html#2-5-the-tool-surface-what-the-111-tools-actually-do", "h": 160}, {"t": "The Safety Model (Governance Credibility)", "p": "Part 02", "u": "mcp-server.html#2-6-the-safety-model-governance-credibility", "h": 160}, {"t": "Name Resolution (_Resolve_Args) - The Ux Design Decision", "p": "Part 02", "u": "mcp-server.html#2-7-name-resolution-resolve-args-the-ux-design-decision", "h": 160}, {"t": "Bugs You Found And Fixed (All Real, All Defensible)", "p": "Part 02", "u": "mcp-server.html#2-8-bugs-you-found-and-fixed-all-real-all-defensible", "h": 160}, {"t": "Likely Deep-Dive Questions On The Mcp Server", "p": "Part 02", "u": "mcp-server.html#2-9-likely-deep-dive-questions-on-the-mcp-server", "h": 160}, {"t": "The Ukg Mcp Server (Your Proof Of Repeatability)", "p": "Part 02", "u": "mcp-server.html#2-10-the-ukg-mcp-server-your-proof-of-repeatability", "h": 160}, {"t": "Domain & STAR Stories", "p": "Part 03", "u": "stories.html", "h": 190}, {"t": "The platform at real production scale", "p": "Part 03", "u": "stories.html#3-1-the-platform-at-real-production-scale", "h": 190}, {"t": "Live production volume — this is the headline", "p": "Part 03", "u": "stories.html#live-production-volume-this-is-the-headline", "h": 190}, {"t": "Month-by-month throughput", "p": "Part 03", "u": "stories.html#month-by-month-throughput", "h": 190}, {"t": "⚠️ The pagination trap — live in this system today", "p": "Part 03", "u": "stories.html#the-pagination-trap-live-in-this-system-today", "h": 190}, {"t": "The four environments", "p": "Part 03", "u": "stories.html#the-four-environments", "h": 190}, {"t": "What the platform contains", "p": "Part 03", "u": "stories.html#what-the-platform-contains", "h": 190}, {"t": "Say this, and say it early", "p": "Part 03", "u": "stories.html#say-this-and-say-it-early", "h": 190}, {"t": "The business domain in plain language", "p": "Part 03", "u": "stories.html#3-2-the-business-domain-in-plain-language", "h": 190}, {"t": "Vocabulary — define these cleanly", "p": "Part 03", "u": "stories.html#vocabulary-define-these-cleanly", "h": 190}, {"t": "The data model", "p": "Part 03", "u": "stories.html#3-3-the-data-model", "h": 190}, {"t": "The 21 production tables", "p": "Part 03", "u": "stories.html#the-21-production-tables", "h": 190}, {"t": "Four tables in DEV/STG but NOT production", "p": "Part 03", "u": "stories.html#four-tables-in-dev-stg-but-not-production", "h": 190}, {"t": "`ba_approvalstatus` — you reverse-engineered this", "p": "Part 03", "u": "stories.html#ba-approvalstatus-you-reverse-engineered-this", "h": 190}, {"t": "⚠️ Three empty tables in production — be ready", "p": "Part 03", "u": "stories.html#three-empty-tables-in-production-be-ready", "h": 190}, {"t": "Modelling questions to be ready for", "p": "Part 03", "u": "stories.html#modelling-questions-to-be-ready-for", "h": 190}, {"t": "The 50 flows", "p": "Part 03", "u": "stories.html#3-4-the-50-flows", "h": 190}, {"t": "Request intake — the routing engine (11 flows)", "p": "Part 03", "u": "stories.html#request-intake-the-routing-engine-11-flows", "h": 190}, {"t": "Approval routing (7 flows) — mostly live in production", "p": "Part 03", "u": "stories.html#approval-routing-7-flows-mostly-live-in-production", "h": 190}, {"t": "Access control integration (6 flows)", "p": "Part 03", "u": "stories.html#access-control-integration-6-flows", "h": 190}, {"t": "Lifecycle: expiry, termination, review (6 flows)", "p": "Part 03", "u": "stories.html#lifecycle-expiry-termination-review-6-flows", "h": 190}, {"t": "Badge fulfilment (5) · Dashboards (5) · Group sync (4) · Ops (7)", "p": "Part 03", "u": "stories.html#badge-fulfilment-5-dashboards-5-group-sync-4-ops-7", "h": 190}, {"t": "Configuration & secrets — 55 environment variables", "p": "Part 03", "u": "stories.html#3-5-configuration-secrets-55-environment-variables", "h": 190}, {"t": "Four external systems, all environment-configurable", "p": "Part 03", "u": "stories.html#four-external-systems-all-environment-configurable", "h": 190}, {"t": "Eleven role-based Entra AD groups", "p": "Part 03", "u": "stories.html#eleven-role-based-entra-ad-groups", "h": 190}, {"t": "Business rules as configuration", "p": "Part 03", "u": "stories.html#business-rules-as-configuration", "h": 190}, {"t": "The canvas app — full extraction", "p": "Part 03", "u": "stories.html#3-6-the-canvas-app-full-extraction", "h": 190}, {"t": "Identity", "p": "Part 03", "u": "stories.html#identity", "h": 190}, {"t": "All 30 screens, by control weight", "p": "Part 03", "u": "stories.html#all-30-screens-by-control-weight", "h": 190}, {"t": "Six personas in one app", "p": "Part 03", "u": "stories.html#six-personas-in-one-app", "h": 190}, {"t": "163 data sources", "p": "Part 03", "u": "stories.html#163-data-sources", "h": 190}, {"t": "Power Fx usage across the whole app — the honest picture", "p": "Part 03", "u": "stories.html#power-fx-usage-across-the-whole-app-the-honest-picture", "h": 190}, {"t": "App Checker — 1,264 findings", "p": "Part 03", "u": "stories.html#app-checker-1-264-findings", "h": 190}, {"t": "PROD lint: 131 issues vs STG 77", "p": "Part 03", "u": "stories.html#prod-lint-131-issues-vs-stg-77", "h": 190}, {"t": "The integration architecture", "p": "Part 03", "u": "stories.html#3-7-the-integration-architecture", "h": 190}, {"t": "The bidirectional sync — your best architecture answer", "p": "Part 03", "u": "stories.html#the-bidirectional-sync-your-best-architecture-answer", "h": 190}, {"t": "Loop prevention — expect the follow-up", "p": "Part 03", "u": "stories.html#loop-prevention-expect-the-follow-up", "h": 190}, {"t": "Testing approach", "p": "Part 03", "u": "stories.html#testing-approach", "h": 190}, {"t": "ALM — including the unshipped delta", "p": "Part 03", "u": "stories.html#3-8-alm-including-the-unshipped-delta", "h": 190}, {"t": "⚠️ The finding you documented yourself: PROD is 131 builds behind STG", "p": "Part 03", "u": "stories.html#the-finding-you-documented-yourself-prod-is-131-builds-behin", "h": 190}, {"t": "⚠️ Two unmanaged solutions in production", "p": "Part 03", "u": "stories.html#two-unmanaged-solutions-in-production", "h": 190}, {"t": "⚠️ Three connections in error state — in both STG and PROD", "p": "Part 03", "u": "stories.html#three-connections-in-error-state-in-both-stg-and-prod", "h": 190}, {"t": "What you actually did", "p": "Part 03", "u": "stories.html#what-you-actually-did", "h": 190}, {"t": "The honest gap", "p": "Part 03", "u": "stories.html#the-honest-gap", "h": 190}, {"t": "Your ten STAR stories", "p": "Part 03", "u": "stories.html#3-9-your-ten-star-stories", "h": 190}, {"t": "STAR 1 — The submit-button race condition *(best \"subtle bug\")*", "p": "Part 03", "u": "stories.html#star-1-the-submit-button-race-condition-best-subtle-bug", "h": 190}, {"t": "STAR 2 — The silent pagination bug *(attention to detail)*", "p": "Part 03", "u": "stories.html#star-2-the-silent-pagination-bug-attention-to-detail", "h": 190}, {"t": "STAR 3 — Cross-environment reconciliation *(regulated rigour)*", "p": "Part 03", "u": "stories.html#star-3-cross-environment-reconciliation-regulated-rigour", "h": 190}, {"t": "STAR 4 — The vendor escalation *(best pure-consulting story)*", "p": "Part 03", "u": "stories.html#star-4-the-vendor-escalation-best-pure-consulting-story", "h": 190}, {"t": "STAR 5 — Building the MCP server *(initiative)*", "p": "Part 03", "u": "stories.html#star-5-building-the-mcp-server-initiative", "h": 190}, {"t": "STAR 6 — Corporate TLS interception *(debugging depth)*", "p": "Part 03", "u": "stories.html#star-6-corporate-tls-interception-debugging-depth", "h": 190}, {"t": "STAR 7 — Requirements shaping *(client-facing)*", "p": "Part 03", "u": "stories.html#star-7-requirements-shaping-client-facing", "h": 190}, {"t": "STAR 8 — The N+1 performance fix *(engineering judgement)*", "p": "Part 03", "u": "stories.html#star-8-the-n-1-performance-fix-engineering-judgement", "h": 190}, {"t": "STAR 9 — Production incident and revert *(ownership)*", "p": "Part 03", "u": "stories.html#star-9-production-incident-and-revert-ownership", "h": 190}, {"t": "STAR 10 — The undocumented option set *(leaving things better)*", "p": "Part 03", "u": "stories.html#star-10-the-undocumented-option-set-leaving-things-better", "h": 190}, {"t": "Mapping stories to question types", "p": "Part 03", "u": "stories.html#3-10-mapping-stories-to-question-types", "h": 190}, {"t": "⚠️ Confidentiality — read before every interview", "p": "Part 03", "u": "stories.html#3-11-confidentiality-read-before-every-interview", "h": 190}, {"t": "The 7-Day Plan", "p": "Part 04", "u": "seven-day-plan.html", "h": 210}, {"t": "TENANT — ALREADY DONE ✅", "p": "Part 04", "u": "seven-day-plan.html#tenant-already-done", "h": 210}, {"t": "Day 1 - Foundation + Tenant Setup", "p": "Part 04", "u": "seven-day-plan.html#day-1-foundation-tenant-setup", "h": 210}, {"t": "DAY 2 - CoE STARTER KIT (the long pole - budget the whole day)", "p": "Part 04", "u": "seven-day-plan.html#day-2-coe-starter-kit-the-long-pole-budget-the-whole-day", "h": 210}, {"t": "Day 3 - Dlp + Pac Cli + Alm Pipelines", "p": "Part 04", "u": "seven-day-plan.html#day-3-dlp-pac-cli-alm-pipelines", "h": 210}, {"t": "Day 4 - Copilot Studio + Dataflows/Power Query M", "p": "Part 04", "u": "seven-day-plan.html#day-4-copilot-studio-dataflows-power-query-m", "h": 210}, {"t": "Day 5 - Remaining Gaps + Self-Audit", "p": "Part 04", "u": "seven-day-plan.html#day-5-remaining-gaps-self-audit", "h": 210}, {"t": "Day 6 - Stories And Answers (Highest Value Day)", "p": "Part 04", "u": "seven-day-plan.html#day-6-stories-and-answers-highest-value-day", "h": 210}, {"t": "Day 7 - Consolidation And Mock Rounds", "p": "Part 04", "u": "seven-day-plan.html#day-7-consolidation-and-mock-rounds", "h": 210}, {"t": "DAY 8 - RESUME (see PART 6 for full construction guide)", "p": "Part 04", "u": "seven-day-plan.html#day-8-resume-see-part-6-for-full-construction-guide", "h": 210}, {"t": "DAY 9 — APPLY", "p": "Part 04", "u": "seven-day-plan.html#day-9-apply", "h": 210}, {"t": "[ ] Dev tenant provisioned", "p": "Part 04", "u": "seven-day-plan.html#dev-tenant-provisioned", "h": 210}, {"t": "Question Bank", "p": "Part 05", "u": "question-bank.html", "h": 265}, {"t": "Opening And Fit Questions", "p": "Part 05", "u": "question-bank.html#5-1-opening-and-fit-questions", "h": 265}, {"t": "Q1: \"Tell me about yourself.\"", "p": "Part 05", "u": "question-bank.html#q1-tell-me-about-yourself", "h": 265}, {"t": "Q2: \"Why are you leaving Accenture / looking to move?\"", "p": "Part 05", "u": "question-bank.html#q2-why-are-you-leaving-accenture-looking-to-move", "h": 265}, {"t": "Q3: \"Why this role / why us?\"", "p": "Part 05", "u": "question-bank.html#q3-why-this-role-why-us", "h": 265}, {"t": "Q4: \"What's your notice period?\"", "p": "Part 05", "u": "question-bank.html#q4-what-s-your-notice-period", "h": 265}, {"t": "Q5: \"Walk me through your resume.\"", "p": "Part 05", "u": "question-bank.html#q5-walk-me-through-your-resume", "h": 265}, {"t": "Q6: \"What are your strengths?\"", "p": "Part 05", "u": "question-bank.html#q6-what-are-your-strengths", "h": 265}, {"t": "Q7: \"What's your biggest weakness?\"", "p": "Part 05", "u": "question-bank.html#q7-what-s-your-biggest-weakness", "h": 265}, {"t": "Q8: \"Where do you see yourself in 3-5 years?\"", "p": "Part 05", "u": "question-bank.html#q8-where-do-you-see-yourself-in-3-5-years", "h": 265}, {"t": "Q9: \"How do you keep your skills current?\"", "p": "Part 05", "u": "question-bank.html#q9-how-do-you-keep-your-skills-current", "h": 265}, {"t": "The Hard Objections (Rehearse These Most)", "p": "Part 05", "u": "question-bank.html#5-2-the-hard-objections-rehearse-these-most", "h": 265}, {"t": "Q10: \"You have 3.5 years. This is a Senior Consultant role.\"", "p": "Part 05", "u": "question-bank.html#q10-you-have-3-5-years-this-is-a-senior-consultant-role", "h": 265}, {"t": "Q11: \"You haven't done DLP at tenant scale.\"", "p": "Part 05", "u": "question-bank.html#q11-you-haven-t-done-dlp-at-tenant-scale", "h": 265}, {"t": "Q12: \"Have you deployed the CoE Starter Kit?\"", "p": "Part 05", "u": "question-bank.html#q12-have-you-deployed-the-coe-starter-kit", "h": 265}, {"t": "Q13: \"Tell me about your Copilot Studio experience.\"", "p": "Part 05", "u": "question-bank.html#q13-tell-me-about-your-copilot-studio-experience", "h": 265}, {"t": "Q14: \"Have you run RPA at production scale?\"", "p": "Part 05", "u": "question-bank.html#q14-have-you-run-rpa-at-production-scale", "h": 265}, {"t": "Q15: \"Why no PL-600 yet?\"", "p": "Part 05", "u": "question-bank.html#q15-why-no-pl-600-yet", "h": 265}, {"t": "Q16: \"Most of your experience is one client and one domain.\"", "p": "Part 05", "u": "question-bank.html#q16-most-of-your-experience-is-one-client-and-one-domain", "h": 265}, {"t": "Q17: \"You're based where? This role is Gurugram.\"", "p": "Part 05", "u": "question-bank.html#q17-you-re-based-where-this-role-is-gurugram", "h": 265}, {"t": "Power Platform Technical: Dataverse", "p": "Part 05", "u": "question-bank.html#5-3-power-platform-technical-dataverse", "h": 265}, {"t": "Q18: \"Explain the difference between a choice column and a lookup.\"", "p": "Part 05", "u": "question-bank.html#q18-explain-the-difference-between-a-choice-column-and-a-loo", "h": 265}, {"t": "Q19: \"What's the difference between a business rule, a business process flow,", "p": "Part 05", "u": "question-bank.html#q19-what-s-the-difference-between-a-business-rule-a-business", "h": 265}, {"t": "Q20: \"When would you use a real-time (synchronous) workflow vs asynchronous?\"", "p": "Part 05", "u": "question-bank.html#q20-when-would-you-use-a-real-time-synchronous-workflow-vs-a", "h": 265}, {"t": "Q21: \"Explain the Dataverse plugin execution pipeline.\"", "p": "Part 05", "u": "question-bank.html#q21-explain-the-dataverse-plugin-execution-pipeline", "h": 265}, {"t": "Q22: \"How do you handle bulk data operations in Dataverse?\"", "p": "Part 05", "u": "question-bank.html#q22-how-do-you-handle-bulk-data-operations-in-dataverse", "h": 265}, {"t": "Q23: \"What are alternate keys and why do they matter for integration?\"", "p": "Part 05", "u": "question-bank.html#q23-what-are-alternate-keys-and-why-do-they-matter-for-integ", "h": 265}, {"t": "Q24: \"How does Dataverse security work?\"", "p": "Part 05", "u": "question-bank.html#q24-how-does-dataverse-security-work", "h": 265}, {"t": "Q25: \"What's the difference between an owner team, access team, and Entra group", "p": "Part 05", "u": "question-bank.html#q25-what-s-the-difference-between-an-owner-team-access-team-", "h": 265}, {"t": "Q26: \"Explain solution layering.\"", "p": "Part 05", "u": "question-bank.html#q26-explain-solution-layering", "h": 265}, {"t": "Q27: \"Managed vs unmanaged solutions?\"", "p": "Part 05", "u": "question-bank.html#q27-managed-vs-unmanaged-solutions", "h": 265}, {"t": "Q28: \"What is a publisher and why does the prefix matter?\"", "p": "Part 05", "u": "question-bank.html#q28-what-is-a-publisher-and-why-does-the-prefix-matter", "h": 265}, {"t": "Q29: \"How do you do a soft delete / audit trail in Dataverse?\"", "p": "Part 05", "u": "question-bank.html#q29-how-do-you-do-a-soft-delete-audit-trail-in-dataverse", "h": 265}, {"t": "Q30: \"What's the difference between FetchXML and OData/Web API?\"", "p": "Part 05", "u": "question-bank.html#q30-what-s-the-difference-between-fetchxml-and-odata-web-api", "h": 265}, {"t": "Power Platform Technical: Canvas And Model-Driven", "p": "Part 05", "u": "question-bank.html#5-4-power-platform-technical-canvas-and-model-driven", "h": 265}, {"t": "Q31: \"Canvas vs model-driven - when do you choose which?\"", "p": "Part 05", "u": "question-bank.html#q31-canvas-vs-model-driven-when-do-you-choose-which", "h": 265}, {"t": "Q32: \"What is delegation in canvas apps and why does it matter?\"", "p": "Part 05", "u": "question-bank.html#q32-what-is-delegation-in-canvas-apps-and-why-does-it-matter", "h": 265}, {"t": "Q33: \"Explain the difference between Collect, ClearCollect, Set, and UpdateContext.\"", "p": "Part 05", "u": "question-bank.html#q33-explain-the-difference-between-collect-clearcollect-set-", "h": 265}, {"t": "Q34: \"How do you optimise a slow canvas app?\"", "p": "Part 05", "u": "question-bank.html#q34-how-do-you-optimise-a-slow-canvas-app", "h": 265}, {"t": "Q35: \"What's the difference between DisplayMode and OnSelect for a button?\"", "p": "Part 05", "u": "question-bank.html#q35-what-s-the-difference-between-displaymode-and-onselect-f", "h": 265}, {"t": "Q36: \"How do you handle errors in a canvas app?\"", "p": "Part 05", "u": "question-bank.html#q36-how-do-you-handle-errors-in-a-canvas-app", "h": 265}, {"t": "Q37: \"How do you version and roll back a canvas app?\"", "p": "Part 05", "u": "question-bank.html#q37-how-do-you-version-and-roll-back-a-canvas-app", "h": 265}, {"t": "Q38: \"What is a .msapp file?\"", "p": "Part 05", "u": "question-bank.html#q38-what-is-a-msapp-file", "h": 265}, {"t": "Q39: \"How do you source-control a canvas app?\"", "p": "Part 05", "u": "question-bank.html#q39-how-do-you-source-control-a-canvas-app", "h": 265}, {"t": "Q40: \"What are component libraries?\"", "p": "Part 05", "u": "question-bank.html#q40-what-are-component-libraries", "h": 265}, {"t": "Power Platform Technical: Power Automate", "p": "Part 05", "u": "question-bank.html#5-5-power-platform-technical-power-automate", "h": 265}, {"t": "Q41: \"Walk me through the trigger types.\"", "p": "Part 05", "u": "question-bank.html#q41-walk-me-through-the-trigger-types", "h": 265}, {"t": "Q42: \"How do you handle errors and retries in a cloud flow?\"", "p": "Part 05", "u": "question-bank.html#q42-how-do-you-handle-errors-and-retries-in-a-cloud-flow", "h": 265}, {"t": "Q43: \"How do you handle concurrency in flows?\"", "p": "Part 05", "u": "question-bank.html#q43-how-do-you-handle-concurrency-in-flows", "h": 265}, {"t": "Q44: \"What are the throttling limits and how do you design around them?\"", "p": "Part 05", "u": "question-bank.html#q44-what-are-the-throttling-limits-and-how-do-you-design-aro", "h": 265}, {"t": "Q45: \"Child flows - when and why?\"", "p": "Part 05", "u": "question-bank.html#q45-child-flows-when-and-why", "h": 265}, {"t": "Q46: \"How do you pass data between flows?\"", "p": "Part 05", "u": "question-bank.html#q46-how-do-you-pass-data-between-flows", "h": 265}, {"t": "Q47: \"What is a connection reference and why does it exist?\"", "p": "Part 05", "u": "question-bank.html#q47-what-is-a-connection-reference-and-why-does-it-exist", "h": 265}, {"t": "Q48: \"Environment variables - definition vs value?\"", "p": "Part 05", "u": "question-bank.html#q48-environment-variables-definition-vs-value", "h": 265}, {"t": "Q49: \"How do you debug a failed flow run?\"", "p": "Part 05", "u": "question-bank.html#q49-how-do-you-debug-a-failed-flow-run", "h": 265}, {"t": "Q50: \"What's the difference between Power Automate and Logic Apps?\"", "p": "Part 05", "u": "question-bank.html#q50-what-s-the-difference-between-power-automate-and-logic-a", "h": 265}, {"t": "Q51: \"How would you implement an approval that can be actioned from Teams,", "p": "Part 05", "u": "question-bank.html#q51-how-would-you-implement-an-approval-that-can-be-actioned", "h": 265}, {"t": "Alm, Governance, Dlp, Coe", "p": "Part 05", "u": "question-bank.html#5-6-alm-governance-dlp-coe", "h": 265}, {"t": "Q52: \"Describe your ALM process.\"", "p": "Part 05", "u": "question-bank.html#q52-describe-your-alm-process", "h": 265}, {"t": "Q53: \"What's in your solution vs. what isn't?\"", "p": "Part 05", "u": "question-bank.html#q53-what-s-in-your-solution-vs-what-isn-t", "h": 265}, {"t": "Q54: \"How do you move reference/config DATA between environments?\"", "p": "Part 05", "u": "question-bank.html#q54-how-do-you-move-reference-config-data-between-environmen", "h": 265}, {"t": "Q55: \"Explain DLP policies.\"", "p": "Part 05", "u": "question-bank.html#q55-explain-dlp-policies", "h": 265}, {"t": "Q56: \"How would you design DLP for a client starting from scratch?\"", "p": "Part 05", "u": "question-bank.html#q56-how-would-you-design-dlp-for-a-client-starting-from-scra", "h": 265}, {"t": "Q57: \"What is the CoE Starter Kit and what does it do?\"", "p": "Part 05", "u": "question-bank.html#q57-what-is-the-coe-starter-kit-and-what-does-it-do", "h": 265}, {"t": "Q58: \"How do you decide environment strategy for a client?\"", "p": "Part 05", "u": "question-bank.html#q58-how-do-you-decide-environment-strategy-for-a-client", "h": 265}, {"t": "Q59: \"Power Platform Pipelines vs Azure DevOps - which and why?\"", "p": "Part 05", "u": "question-bank.html#q59-power-platform-pipelines-vs-azure-devops-which-and-why", "h": 265}, {"t": "Q60: \"What is solution checker and what does it catch?\"", "p": "Part 05", "u": "question-bank.html#q60-what-is-solution-checker-and-what-does-it-catch", "h": 265}, {"t": "Q61: \"How do you handle a solution that won't import?\"", "p": "Part 05", "u": "question-bank.html#q61-how-do-you-handle-a-solution-that-won-t-import", "h": 265}, {"t": "Integration And Architecture", "p": "Part 05", "u": "question-bank.html#5-7-integration-and-architecture", "h": 265}, {"t": "Q62: \"How do you integrate Power Platform with an external REST API?\"", "p": "Part 05", "u": "question-bank.html#q62-how-do-you-integrate-power-platform-with-an-external-res", "h": 265}, {"t": "Q63: \"Why put a wrapper API in front of a vendor system?\"", "p": "Part 05", "u": "question-bank.html#q63-why-put-a-wrapper-api-in-front-of-a-vendor-system", "h": 265}, {"t": "Q64: \"How do you make an integration idempotent?\"", "p": "Part 05", "u": "question-bank.html#q64-how-do-you-make-an-integration-idempotent", "h": 265}, {"t": "Q65: \"How do you handle bidirectional sync without loops?\"", "p": "Part 05", "u": "question-bank.html#q65-how-do-you-handle-bidirectional-sync-without-loops", "h": 265}, {"t": "Q66: \"What's your approach to API pagination?\"", "p": "Part 05", "u": "question-bank.html#q66-what-s-your-approach-to-api-pagination", "h": 265}, {"t": "Q67: \"How do you secure credentials in an integration?\"", "p": "Part 05", "u": "question-bank.html#q67-how-do-you-secure-credentials-in-an-integration", "h": 265}, {"t": "Q68: \"Design a badge request approval system on Power Platform.\" (WHITEBOARD)", "p": "Part 05", "u": "question-bank.html#q68-design-a-badge-request-approval-system-on-power-platform", "h": 265}, {"t": "Q69: \"Design an integration between Dataverse and a legacy SOAP system.\"", "p": "Part 05", "u": "question-bank.html#q69-design-an-integration-between-dataverse-and-a-legacy-soa", "h": 265}, {"t": "Q70: \"How do you approach performance troubleshooting?\"", "p": "Part 05", "u": "question-bank.html#q70-how-do-you-approach-performance-troubleshooting", "h": 265}, {"t": "Behavioural And Consulting", "p": "Part 05", "u": "question-bank.html#5-8-behavioural-and-consulting", "h": 265}, {"t": "Q71: \"Tell me about a time you disagreed with a stakeholder.\"", "p": "Part 05", "u": "question-bank.html#q71-tell-me-about-a-time-you-disagreed-with-a-stakeholder", "h": 265}, {"t": "Q72: \"Tell me about a time you failed.\"", "p": "Part 05", "u": "question-bank.html#q72-tell-me-about-a-time-you-failed", "h": 265}, {"t": "Q73: \"How do you handle an angry client?\"", "p": "Part 05", "u": "question-bank.html#q73-how-do-you-handle-an-angry-client", "h": 265}, {"t": "Q74: \"How do you explain technical concepts to non-technical people?\"", "p": "Part 05", "u": "question-bank.html#q74-how-do-you-explain-technical-concepts-to-non-technical-p", "h": 265}, {"t": "Q75: \"Describe your ideal working environment.\"", "p": "Part 05", "u": "question-bank.html#q75-describe-your-ideal-working-environment", "h": 265}, {"t": "Q76: \"How do you prioritise when everything is urgent?\"", "p": "Part 05", "u": "question-bank.html#q76-how-do-you-prioritise-when-everything-is-urgent", "h": 265}, {"t": "Q77: \"Tell me about a time you taught or mentored someone.\"", "p": "Part 05", "u": "question-bank.html#q77-tell-me-about-a-time-you-taught-or-mentored-someone", "h": 265}, {"t": "Q78: \"How do you handle scope creep?\"", "p": "Part 05", "u": "question-bank.html#q78-how-do-you-handle-scope-creep", "h": 265}, {"t": "Q79: \"You're the only consultant on a client site. Something's going wrong and", "p": "Part 05", "u": "question-bank.html#q79-you-re-the-only-consultant-on-a-client-site-something-s-", "h": 265}, {"t": "Questions To Ask Them (Always Have 5+ Ready)", "p": "Part 05", "u": "question-bank.html#5-9-questions-to-ask-them-always-have-5-ready", "h": 265}, {"t": "Rapid-Fire Facts To Have Ready", "p": "Part 05", "u": "question-bank.html#5-10-rapid-fire-facts-to-have-ready", "h": 265}, {"t": "Resume · PL-600 · Pay", "p": "Part 06", "u": "resume-cert-pay.html", "h": 320}, {"t": "Resume Construction (Day 8)", "p": "Part 06", "u": "resume-cert-pay.html#6-1-resume-construction-day-8", "h": 320}, {"t": "HEADER", "p": "Part 06", "u": "resume-cert-pay.html#header", "h": 320}, {"t": "PROFESSIONAL SUMMARY (3-4 lines, rewrite for THIS job)", "p": "Part 06", "u": "resume-cert-pay.html#professional-summary-3-4-lines-rewrite-for-this-job", "h": 320}, {"t": "SKILLS SECTION (mirror the JD's own words)", "p": "Part 06", "u": "resume-cert-pay.html#skills-section-mirror-the-jd-s-own-words", "h": 320}, {"t": "EXPERIENCE - THE MAIN BLOCK", "p": "Part 06", "u": "resume-cert-pay.html#experience-the-main-block", "h": 320}, {"t": "PROJECTS / TOOLING (separate section - this is your differentiator)", "p": "Part 06", "u": "resume-cert-pay.html#projects-tooling-separate-section-this-is-your-differentiato", "h": 320}, {"t": "EDUCATION AND CERTIFICATIONS", "p": "Part 06", "u": "resume-cert-pay.html#education-and-certifications", "h": 320}, {"t": "RESUME REVIEW CHECKLIST", "p": "Part 06", "u": "resume-cert-pay.html#resume-review-checklist", "h": 320}, {"t": "Pl-600 Strategy (Including The Voucher Problem)", "p": "Part 06", "u": "resume-cert-pay.html#6-2-pl-600-strategy-including-the-voucher-problem", "h": 320}, {"t": "FIRST: SHOULD YOU EVEN TAKE IT BEFORE APPLYING?", "p": "Part 06", "u": "resume-cert-pay.html#first-should-you-even-take-it-before-applying", "h": 320}, {"t": "THE COST PROBLEM - YOUR OPTIONS, CHEAPEST FIRST", "p": "Part 06", "u": "resume-cert-pay.html#the-cost-problem-your-options-cheapest-first", "h": 320}, {"t": "WHAT PL-600 ACTUALLY COVERS (and why it fits your gaps)", "p": "Part 06", "u": "resume-cert-pay.html#what-pl-600-actually-covers-and-why-it-fits-your-gaps", "h": 320}, {"t": "PL-600 STUDY PLAN (4-6 WEEKS, AFTER YOU APPLY)", "p": "Part 06", "u": "resume-cert-pay.html#pl-600-study-plan-4-6-weeks-after-you-apply", "h": 320}, {"t": "IF YOU DON'T HAVE IT WHEN YOU INTERVIEW (you won't)", "p": "Part 06", "u": "resume-cert-pay.html#if-you-don-t-have-it-when-you-interview-you-won-t", "h": 320}, {"t": "Salary And Negotiation", "p": "Part 06", "u": "resume-cert-pay.html#6-3-salary-and-negotiation", "h": 320}, {"t": "BEFORE YOU APPLY: KNOW YOUR THREE NUMBERS", "p": "Part 06", "u": "resume-cert-pay.html#before-you-apply-know-your-three-numbers", "h": 320}, {"t": "THE RECRUITER SCREEN: \"WHAT ARE YOUR SALARY EXPECTATIONS?\"", "p": "Part 06", "u": "resume-cert-pay.html#the-recruiter-screen-what-are-your-salary-expectations", "h": 320}, {"t": "YOUR LEVERAGE POINTS (use these explicitly)", "p": "Part 06", "u": "resume-cert-pay.html#your-leverage-points-use-these-explicitly", "h": 320}, {"t": "IF THE OFFER IS BELOW TARGET", "p": "Part 06", "u": "resume-cert-pay.html#if-the-offer-is-below-target", "h": 320}, {"t": "THE ACCENTURE COUNTER-OFFER", "p": "Part 06", "u": "resume-cert-pay.html#the-accenture-counter-offer", "h": 320}, {"t": "Converting These Files To Html", "p": "Part 06", "u": "resume-cert-pay.html#6-4-converting-these-files-to-html", "h": 320}, {"t": "Final Checklist Before You Apply", "p": "Part 06", "u": "resume-cert-pay.html#6-5-final-checklist-before-you-apply", "h": 320}, {"t": "Closing Note", "p": "Part 06", "u": "resume-cert-pay.html#closing-note", "h": 320}, {"t": "Lab Setup & Costs", "p": "Part 07", "u": "labs.html", "h": 140}, {"t": "The Cost Table (The Headline)", "p": "Part 07", "u": "labs.html#7-1-the-cost-table-the-headline", "h": 140}, {"t": "IMPORTANT CAVEAT ON THIS TABLE - READ IT", "p": "Part 07", "u": "labs.html#important-caveat-on-this-table-read-it", "h": 140}, {"t": "The Tenant — Microsoft 365 E5 Free Trial ✅ DONE", "p": "Part 07", "u": "labs.html#7-2-the-tenant-microsoft-365-e5-free-trial-done", "h": 140}, {"t": "Why a tenant of your own is the whole point", "p": "Part 07", "u": "labs.html#why-a-tenant-of-your-own-is-the-whole-point", "h": 140}, {"t": "The route that worked", "p": "Part 07", "u": "labs.html#the-route-that-worked", "h": 140}, {"t": "The route that did NOT work — don't retry it", "p": "Part 07", "u": "labs.html#the-route-that-did-not-work-don-t-retry-it", "h": 140}, {"t": "Signup friction, recorded in case you repeat this", "p": "Part 07", "u": "labs.html#signup-friction-recorded-in-case-you-repeat-this", "h": 140}, {"t": "Verification — do this before investing a day in CoE Kit", "p": "Part 07", "u": "labs.html#verification-do-this-before-investing-a-day-in-coe-kit", "h": 140}, {"t": "If the tenant becomes unusable mid-week", "p": "Part 07", "u": "labs.html#if-the-tenant-becomes-unusable-mid-week", "h": 140}, {"t": "Environment Setup", "p": "Part 07", "u": "labs.html#7-3-environment-setup", "h": 140}, {"t": "Tool Installation (Copy-Paste Commands)", "p": "Part 07", "u": "labs.html#7-4-tool-installation-copy-paste-commands", "h": 140}, {"t": "PAC CLI", "p": "Part 07", "u": "labs.html#pac-cli", "h": 140}, {"t": "POWER PLATFORM ADMIN POWERSHELL MODULES", "p": "Part 07", "u": "labs.html#power-platform-admin-powershell-modules", "h": 140}, {"t": "OTHER TOOLING", "p": "Part 07", "u": "labs.html#other-tooling", "h": 140}, {"t": "Coe Starter Kit: Detailed Walkthrough", "p": "Part 07", "u": "labs.html#7-5-coe-starter-kit-detailed-walkthrough", "h": 140}, {"t": "Dlp Lab: Exact Steps", "p": "Part 07", "u": "labs.html#7-6-dlp-lab-exact-steps", "h": 140}, {"t": "Copilot Studio Lab", "p": "Part 07", "u": "labs.html#7-7-copilot-studio-lab", "h": 140}, {"t": "Dataflows / Power Query M Lab", "p": "Part 07", "u": "labs.html#7-8-dataflows-power-query-m-lab", "h": 140}, {"t": "Model-Driven App, Adaptive Cards, Pad Labs", "p": "Part 07", "u": "labs.html#7-9-model-driven-app-adaptive-cards-pad-labs", "h": 140}, {"t": "MODEL-DRIVEN APP (closes a soft spot in must-have #1)", "p": "Part 07", "u": "labs.html#model-driven-app-closes-a-soft-spot-in-must-have-1", "h": 140}, {"t": "ADAPTIVE CARDS (explicit JD requirement)", "p": "Part 07", "u": "labs.html#adaptive-cards-explicit-jd-requirement", "h": 140}, {"t": "POWER AUTOMATE DESKTOP (be precise about what you claim)", "p": "Part 07", "u": "labs.html#power-automate-desktop-be-precise-about-what-you-claim", "h": 140}, {"t": "Pipelines Lab (Closes Your Stated Alm Gap)", "p": "Part 07", "u": "labs.html#7-10-pipelines-lab-closes-your-stated-alm-gap", "h": 140}, {"t": "Troubleshooting: When Things Break", "p": "Part 07", "u": "labs.html#7-11-troubleshooting-when-things-break", "h": 140}, {"t": "Lab Hygiene And Safety Rules", "p": "Part 07", "u": "labs.html#7-12-lab-hygiene-and-safety-rules", "h": 140}, {"t": "Research & Logistics", "p": "Part 08", "u": "logistics.html", "h": 25}, {"t": "Researching The Employer (Do This Before Applying)", "p": "Part 08", "u": "logistics.html#8-1-researching-the-employer-do-this-before-applying", "h": 25}, {"t": "The Erp Angle (Potentially Important, Currently Under-Covered)", "p": "Part 08", "u": "logistics.html#8-2-the-erp-angle-potentially-important-currently-under-cove", "h": 25}, {"t": "Licensing (Comes Up More Than People Expect)", "p": "Part 08", "u": "logistics.html#8-3-licensing-comes-up-more-than-people-expect", "h": 25}, {"t": "Topics Not Yet Covered (Technical Odds And Ends)", "p": "Part 08", "u": "logistics.html#8-4-topics-not-yet-covered-technical-odds-and-ends", "h": 25}, {"t": "Application Tactics", "p": "Part 08", "u": "logistics.html#8-5-application-tactics", "h": 25}, {"t": "Interview Logistics", "p": "Part 08", "u": "logistics.html#8-6-interview-logistics", "h": 25}, {"t": "Red Flags To Watch For (Evaluate Them Too)", "p": "Part 08", "u": "logistics.html#8-7-red-flags-to-watch-for-evaluate-them-too", "h": 25}, {"t": "The Things That Lose Offers (Unrelated To Skill)", "p": "Part 08", "u": "logistics.html#8-8-the-things-that-lose-offers-unrelated-to-skill", "h": 25}, {"t": "If You Don'T Get It", "p": "Part 08", "u": "logistics.html#8-9-if-you-don-t-get-it", "h": 25}, {"t": "Honest Limitations Of This Document Set", "p": "Part 08", "u": "logistics.html#8-10-honest-limitations-of-this-document-set", "h": 25}, {"t": "The One-Page Summary (If You Read Nothing Else)", "p": "Part 08", "u": "logistics.html#8-11-the-one-page-summary-if-you-read-nothing-else", "h": 25}, {"t": "Azure Free Trial Labs", "p": "Part 07", "u": "labs.html#7-13-azure-free-trial-labs", "h": 140}, {"t": "What Azure Closes On This JD", "p": "Part 07", "u": "labs.html#what-azure-closes-on-this-jd", "h": 140}, {"t": "Azure Prerequisites And CLI Setup", "p": "Part 07", "u": "labs.html#azure-prerequisites-and-cli-setup", "h": 140}, {"t": "Lab A - VM For Unattended Power Automate Desktop", "p": "Part 07", "u": "labs.html#lab-a-vm-for-unattended-power-automate-desktop", "h": 140}, {"t": "Lab B - Key Vault And Secrets In A Flow", "p": "Part 07", "u": "labs.html#lab-b-key-vault-and-secrets-in-a-flow", "h": 140}, {"t": "Lab C - Logic Apps", "p": "Part 07", "u": "labs.html#lab-c-logic-apps", "h": 140}, {"t": "Lab D - Azure DevOps Pipelines", "p": "Part 07", "u": "labs.html#lab-d-azure-devops-pipelines", "h": 140}, {"t": "Lab E - Networking Basics", "p": "Part 07", "u": "labs.html#lab-e-networking-basics", "h": 140}, {"t": "Entra ID App Registration", "p": "Part 07", "u": "labs.html#entra-id-app-registration", "h": 140}, {"t": "What You Can Honestly Say - Azure", "p": "Part 07", "u": "labs.html#what-you-can-honestly-say-azure", "h": 140}, {"t": "Azure Cost Control And Teardown", "p": "Part 07", "u": "labs.html#7-14-azure-cost-control-and-teardown", "h": 140}, {"t": "The Real Market Range (Researched)", "p": "Part 06", "u": "resume-cert-pay.html#the-real-market-range-researched", "h": 320}, {"t": "Salary Negotiation - Questions & Model Answers", "p": "Part 06", "u": "resume-cert-pay.html#salary-negotiation-questions-and-model-answers", "h": 320}];</script>
+<script src="assets/site.js"></script>
+</body></html>
