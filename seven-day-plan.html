@@ -5,7 +5,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
-<style>:root{--acc:#4DA3FF;--tint:#0F1E31;--h:210}</style>
+<style>:root{--acc:#4DA3FF;--tint:#0F1E31;--h:210}
+.proj{background:#0d1f15;border-left:3px solid #3FD18B;padding:1.25rem 1.5rem;margin:2rem 0;border-radius:0 var(--r) var(--r) 0}
+.proj h4{font-family:var(--disp);font-weight:700;color:#3FD18B;font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 .75rem}
+.proj-state{background:#0a1a2a;border-left:3px solid #4DA3FF;padding:1rem 1.5rem;margin:1rem 0;border-radius:0 var(--r) var(--r) 0;font-family:var(--mono);font-size:.82rem;color:#a8c7fa}
+.proj-state strong{color:#7dc4fa}
+.proj ul{margin:.5rem 0 .5rem 1.2rem}
+.proj ul li{margin:.25rem 0}
+.proj code{background:#1a2e1a;padding:.1em .3em;border-radius:3px;font-size:.85em}
+.proj table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:.82rem}
+.proj table th{background:#1a3020;color:#3FD18B;padding:.4rem .6rem;text-align:left;font-family:var(--disp)}
+.proj table td{padding:.35rem .6rem;border-bottom:1px solid #1e3020;vertical-align:top}
+.proj table tr:nth-child(even) td{background:#0f2018}
+.proj .callout{background:#0f2a2a;border-left:3px solid #3FD18B;padding:.6rem 1rem;margin:.75rem 0;font-size:.85rem}
+</style>
 </head><body data-page="seven-day-plan">
 <button id="burger" aria-label="Menu">&#9776;</button>
 <aside id="rail">
@@ -17,7 +30,7 @@
  </div>
  <nav id="nav">
    <a class="np" href="index.html" style="--h:210"><span class="n">&#9679;</span>Overview</a>
-   <a class="np" href="tenant-setup.html" style="--h:8"><span class="n">00</span>Tenant Setup</a><a class="np" href="profile.html" style="--h:45"><span class="n">01</span>Profile &amp; Evidence</a><a class="np" href="mcp-server.html" style="--h:160"><span class="n">02</span>MCP Server Deep Dive</a><a class="np" href="stories.html" style="--h:190"><span class="n">03</span>Domain &amp; STAR Stories</a><a class="np on" href="seven-day-plan.html" style="--h:210"><span class="n">04</span>The 7-Day Plan</a><ul class="subs"><li><a href="#day-1-foundation-tenant-setup">Day 1 - Foundation + Tenant Setup</a></li><li><a href="#day-2-coe-starter-kit-the-long-pole-budget-the-whole-day">DAY 2 - CoE STARTER KIT (the long pole - budget the whole day)</a></li><li><a href="#day-3-dlp-pac-cli-alm-pipelines">Day 3 - Dlp + Pac Cli + Alm Pipelines</a></li><li><a href="#day-4-copilot-studio-dataflows-power-query-m">Day 4 - Copilot Studio + Dataflows/Power Query M</a></li><li><a href="#day-5-remaining-gaps-self-audit">Day 5 - Remaining Gaps + Self-Audit</a></li><li><a href="#day-6-stories-and-answers-highest-value-day">Day 6 - Stories And Answers (Highest Value Day)</a></li><li><a href="#day-7-consolidation-and-mock-rounds">Day 7 - Consolidation And Mock Rounds</a></li><li><a href="#day-8-resume-see-part-6-for-full-construction-guide">DAY 8 - RESUME (see PART 6 for full construction guide)</a></li><li><a href="#dev-tenant-provisioned">[ ] Dev tenant provisioned</a></li></ul><a class="np" href="question-bank.html" style="--h:265"><span class="n">05</span>Question Bank</a><a class="np" href="resume-cert-pay.html" style="--h:320"><span class="n">06</span>Resume · PL-600 · Pay</a><a class="np" href="labs.html" style="--h:140"><span class="n">07</span>Lab Setup &amp; Costs</a><a class="np" href="logistics.html" style="--h:25"><span class="n">08</span>Research &amp; Logistics</a><a class="np" href="glossary.html" style="--h:290"><span class="n">09</span>Glossary</a>
+   <a class="np" href="tenant-setup.html" style="--h:8"><span class="n">00</span>Tenant Setup</a><a class="np" href="profile.html" style="--h:45"><span class="n">01</span>Profile &amp; Evidence</a><a class="np" href="mcp-server.html" style="--h:160"><span class="n">02</span>MCP Server Deep Dive</a><a class="np" href="stories.html" style="--h:190"><span class="n">03</span>Domain &amp; STAR Stories</a><a class="np on" href="seven-day-plan.html" style="--h:210"><span class="n">04</span>The 7-Day Plan</a><ul class="subs"><li><a href="#project-overview">TechOps Project Overview</a></li><li><a href="#day-1-foundation-tenant-setup">Day 1 - Foundation + Tenant Setup</a></li><li><a href="#day-2-coe-starter-kit-the-long-pole-budget-the-whole-day">DAY 2 - CoE STARTER KIT (the long pole - budget the whole day)</a></li><li><a href="#day-3-dlp-pac-cli-alm-pipelines">Day 3 - Dlp + Pac Cli + Alm Pipelines</a></li><li><a href="#day-4-copilot-studio-dataflows-power-query-m">Day 4 - Copilot Studio + Dataflows/Power Query M</a></li><li><a href="#day-5-remaining-gaps-self-audit">Day 5 - Remaining Gaps + Self-Audit</a></li><li><a href="#day-6-stories-and-answers-highest-value-day">Day 6 - Stories And Answers (Highest Value Day)</a></li><li><a href="#day-7-consolidation-and-mock-rounds">Day 7 - Consolidation And Mock Rounds</a></li><li><a href="#project-deliverable">Project: Demo &amp; Deliverable</a></li><li><a href="#day-8-resume-see-part-6-for-full-construction-guide">DAY 8 - RESUME (see PART 6 for full construction guide)</a></li><li><a href="#dev-tenant-provisioned">[ ] Dev tenant provisioned</a></li></ul><a class="np" href="question-bank.html" style="--h:265"><span class="n">05</span>Question Bank</a><a class="np" href="resume-cert-pay.html" style="--h:320"><span class="n">06</span>Resume · PL-600 · Pay</a><a class="np" href="labs.html" style="--h:140"><span class="n">07</span>Lab Setup &amp; Costs</a><a class="np" href="logistics.html" style="--h:25"><span class="n">08</span>Research &amp; Logistics</a><a class="np" href="glossary.html" style="--h:290"><span class="n">09</span>Glossary</a>
  </nav>
  <div class="rfoot"><button id="sbtn">SEARCH /</button>
    <button id="resetc">RESET <span id="ccount"></span></button></div>
@@ -51,6 +64,41 @@
 <p><strong>Nothing in this plan is blocked.</strong> Full setup record: PART 0.</p>
 <div class="callout c-warn">⚠️ <strong>The 30-day clock matters.</strong> Days 2-4 must happen this week while the tenant is live. This is also why Copilot Studio waits until Day 4 — its own trial clock starts on activation and you want it running during interviews.</div>
 <p>NEVER use your T-Mobile or Accenture account for any of this lab work.</p>
+
+<h2 id="project-overview" style="margin-top:2.5rem">THE PROJECT: TechOps Access Hub<a class="anchor" href="#project-overview" aria-label="Link to section">#</a></h2>
+<p>A real Power Platform solution built across Days 1–5, then used as live demo material on Days 6–7. By end of Day 5 you have a fully deployed system across PP-DEV / PP-UAT / PP-PROD that you can walk an interviewer through in 3 minutes — with every major platform pillar represented.</p>
+<p><strong>Why this project?</strong> It mirrors the T-Mobile access/approval domain, so you're not learning the domain — only the platform. It exercises every skill the interviewer will probe: Canvas App, Model-Driven App, parent + child flows, Copilot Studio, Dataflows, ALM Pipelines, DLP, CoE visibility, connection references, environment variables, and Security Roles.</p>
+
+<table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:.85rem">
+<thead><tr style="background:#131f30"><th style="padding:.4rem .7rem;text-align:left">Layer</th><th style="padding:.4rem .7rem;text-align:left">What you build</th><th style="padding:.4rem .7rem;text-align:left">Day</th></tr></thead>
+<tbody>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>Solution</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><code>TechOpsHub</code> — Publisher: <code>toh</code>, prefix: <code>toh_</code></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">1</td></tr>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>Dataverse Tables</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">toh_request, toh_requestitem, toh_employee, toh_auditlog</td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">1</td></tr>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>Canvas App</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">Employee Self-Service Portal (3 screens)</td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">1–2</td></tr>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>Power Automate</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">Parent submit flow + 2 child flows + SLA breach alert</td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">2–3</td></tr>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>DLP + ALM</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">Tenant policy + DEV override; pipeline DEV→UAT→PROD</td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">3</td></tr>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>Copilot Studio</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">TechOps Assistant bot — status checks, SLA answers</td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">4</td></tr>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>Dataflows</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">Employee directory CSV → toh_employee (upsert, daily refresh)</td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">4</td></tr>
+<tr><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40"><strong>Model-Driven App</strong></td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">IT Admin Portal — views, business rules, security roles</td><td style="padding:.35rem .7rem;border-bottom:1px solid #1e2e40">4</td></tr>
+<tr><td style="padding:.35rem .7rem"><strong>PROD Deploy + Demo</strong></td><td style="padding:.35rem .7rem">Full end-to-end tested in PP-PROD; 3-minute verbal script</td><td style="padding:.35rem .7rem">5–7</td></tr>
+</tbody></table>
+
+<p><strong>Environments (your real tenant):</strong></p>
+<ul>
+<li><strong>PP-DEV</strong> → <code>https://ppdev258.crm8.dynamics.com</code> — build everything here</li>
+<li><strong>PP-UAT</strong> → <code>https://ppuat258.crm8.dynamics.com</code> — deploy managed solution Day 3</li>
+<li><strong>PP-PROD</strong> → <code>https://ppprod258.crm8.dynamics.com</code> — final deploy Day 5, demo from here</li>
+</ul>
+
+<p><strong>Environment Variables in solution:</strong></p>
+<ul>
+<li><code>toh_SLAHours</code> — DEV: 48 / UAT: 24 / PROD: 8</li>
+<li><code>toh_ApprovalThreshold</code> — DEV: 1000 / UAT: 2500 / PROD: 5000</li>
+<li><code>toh_NotificationEmail</code> — your admin email in each env</li>
+<li><code>toh_ApprovalMode</code> — DEV: Auto / UAT: Manual / PROD: Manual</li>
+</ul>
+<p><strong>Connection References in solution:</strong> <code>toh_Outlook</code> (Office 365 Outlook) · <code>toh_Teams</code> (Microsoft Teams) · <code>toh_Approvals</code> (Approvals connector)</p>
+
 <h3 id="day-1-foundation-tenant-setup" class="h2">Day 1 - Foundation + Tenant Setup<a class="anchor" href="#day-1-foundation-tenant-setup" aria-label="Link to section">#</a></h3>
 <p>MORNING (4h) - Theory while the tenant provisions</p>
 <ul class="checks">
@@ -96,6 +144,72 @@ Get-AdminPowerAppEnvironment</code></pre><button class="copy" type="button">copy
 <li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Commit notes to a file as you go. You will forget details by Day 7.</span></li>
 </ul>
 <p>END-OF-DAY CHECK: can you run <code>pac org who</code> and see your own tenant? If yes, Day 1 succeeded.</p>
+
+<div class="proj">
+<h4>PROJECT TRACK — DAY 1: Dataverse Foundation &amp; Solution Scaffold</h4>
+<p>Replace the "trivial solution" with the real TechOps solution. Everything you do today is the foundation the rest of the week builds on.</p>
+
+<p><strong>Step 1 — Create Publisher &amp; Solution (PPAC or Maker Portal → PP-DEV)</strong></p>
+<ul>
+<li>Solutions → New solution: Display name <code>TechOps Hub</code>, Name <code>TechOpsHub</code></li>
+<li>New publisher: Display name <code>TechOps</code>, Name <code>toh</code>, Prefix <code>toh</code></li>
+<li>Version: 1.0.0.1</li>
+</ul>
+
+<p><strong>Step 2 — Create the four Dataverse tables inside the solution</strong></p>
+<ul>
+<li><strong>toh_request</strong> (Requests): add columns — toh_subject (Text, required), toh_description (Multiline), toh_type (Choice: Hardware/Software/Access/Travel), toh_priority (Choice: Low=1/Medium=2/High=3/Critical=4), toh_status (Choice: Draft/Submitted/In Review/Approved/Rejected/Completed), toh_estimatedcost (Currency), toh_duedate (Date Only), toh_approvalnotes (Multiline), toh_assignedto (Lookup→SystemUser), toh_requester (Lookup→SystemUser)</li>
+<li><strong>toh_requestitem</strong> (Request Items): toh_itemname (Text, required), toh_quantity (Whole Number), toh_unitcost (Currency), toh_request (Lookup→toh_request — this creates the 1:N relationship)</li>
+<li><strong>toh_employee</strong> (Employees): toh_fullname (required), toh_email (Text — set as Alternate Key), toh_department (Text), toh_manageremail (Text), toh_employeeid (Text — Alternate Key), toh_active (Two Options Yes/No)</li>
+<li><strong>toh_auditlog</strong> (Audit Log): toh_action (Text), toh_request (Lookup→toh_request), toh_performedby (Text, UPN), toh_timestamp (Date/Time)</li>
+</ul>
+
+<p><strong>Step 3 — Add Environment Variables to the solution</strong></p>
+<p>Solutions → TechOpsHub → Add existing → Environment Variable → New:</p>
+<ul>
+<li><code>toh_SLAHours</code> — Number, Current value: 48</li>
+<li><code>toh_ApprovalThreshold</code> — Number, Current value: 1000</li>
+<li><code>toh_NotificationEmail</code> — Text, Current value: your admin email</li>
+<li><code>toh_ApprovalMode</code> — Text, Current value: Auto</li>
+</ul>
+
+<p><strong>Step 4 — Add Connection References to the solution</strong></p>
+<ul>
+<li>New Connection Reference: <code>toh_Outlook</code>, Connector: Office 365 Outlook</li>
+<li>New Connection Reference: <code>toh_Teams</code>, Connector: Microsoft Teams</li>
+<li>New Connection Reference: <code>toh_Approvals</code>, Connector: Approvals</li>
+</ul>
+
+<p><strong>Step 5 — Canvas App skeleton (Employee Self-Service Portal)</strong></p>
+<ul>
+<li>Solutions → TechOpsHub → New → App → Canvas app</li>
+<li>HomeScreen: add a gallery with Items = <code>Filter(toh_requests, toh_status &lt;&gt; 'toh_status_completed')</code>; a label showing <code>"Open: " &amp; CountRows(Filter(toh_requests, toh_status = 'toh_status_submitted'))</code></li>
+<li>NewRequestScreen: text inputs for subject/cost, dropdowns for type/priority, a Submit button — leave OnSelect as placeholder <code>Notify("Coming Day 2")</code> for now</li>
+<li>StatusScreen: blank for now, just three screens so the navigation makes sense</li>
+</ul>
+
+<p><strong>Step 6 — PAC CLI auth against PP-DEV (real URLs)</strong></p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code>pac auth create --name DEV --environment https://ppdev258.crm8.dynamics.com
+pac auth create --name UAT --environment https://ppuat258.crm8.dynamics.com
+pac auth create --name PROD --environment https://ppprod258.crm8.dynamics.com
+pac auth list
+pac auth select --name DEV
+pac org who   # must show ppdev258</code></pre><button class="copy" type="button">copy</button></div>
+
+<div class="proj-state">
+<strong>PROJECT STATE AFTER DAY 1</strong><br>
+✅ Solution TechOpsHub (1.0.0.1) exists in PP-DEV<br>
+✅ 4 Dataverse tables created with all columns and relationships<br>
+✅ 4 Environment Variables defined (DEV values set)<br>
+✅ 3 Connection References scaffolded<br>
+✅ Canvas App shell — 3 screens, gallery wired to toh_request<br>
+✅ PAC CLI authenticated to DEV / UAT / PROD<br>
+⏳ Flows — Day 2<br>
+⏳ DLP + ALM — Day 3<br>
+⏳ Copilot Studio / Dataflows / MDA — Day 4
+</div>
+</div>
+
 <h3 id="day-2-coe-starter-kit-the-long-pole-budget-the-whole-day" class="h2">DAY 2 - CoE STARTER KIT (the long pole - budget the whole day)<a class="anchor" href="#day-2-coe-starter-kit-the-long-pole-budget-the-whole-day" aria-label="Link to section">#</a></h3>
 <p>WARNING: this WILL overrun if you rush it. The install is quick; getting the inventory flows actually running is where the hours go.</p>
 <p>MORNING (4h)</p>
@@ -133,6 +247,78 @@ Get-AdminPowerAppEnvironment</code></pre><button class="copy" type="button">copy
 <p>This becomes your CoE interview answer.</p>
 <p>WHAT YOU CAN NOW SAY (and it will be TRUE): "I've deployed the CoE Starter Kit in my own tenant - Core Components, inventory flows, the Command Center. The part that tripped me up was &lt;your real issue&gt;. What struck me is that it solves the same problem I'd solved from the other direction with my MCP server: knowing what actually exists across your environments."</p>
 <p>STILL DO NOT SAY: "I deployed CoE Kit in production."</p>
+
+<div class="proj">
+<h4>PROJECT TRACK — DAY 2: Approval Flows &amp; CoE Visibility</h4>
+<p>Build the core automation — the parent + child flow pattern that drives the whole approval lifecycle. Then verify CoE Kit shows your solution in inventory.</p>
+
+<p><strong>Flow A — TechOps - Submit Request (Parent)</strong></p>
+<p>Trigger: PowerApps (input: RequestId as text). Inside the solution, using connection reference <code>toh_Approvals</code>:</p>
+<ol>
+<li>Get a row by ID → Requests table, RequestId from trigger</li>
+<li>List rows → SystemUsers → filter: <code>internalemailaddress eq '@{triggerBody()?['RequesterId']}'</code> (get requester to find manager)</li>
+<li>Run child flow <strong>TechOps - Notify Manager (Child)</strong> — pass: ManagerEmail, RequesterName, Subject, Type, EstimatedCost, RequestId</li>
+<li>Run child flow <strong>TechOps - Create Audit Log (Child)</strong> — pass: RequestId, Action = "Request Submitted", PerformedBy = requester UPN</li>
+<li>Respond to PowerApp → <code>{"status":"submitted"}</code></li>
+</ol>
+
+<p><strong>Child Flow B — TechOps - Notify Manager (Child)</strong></p>
+<p>Trigger: Manually trigger a flow — inputs: ManagerEmail, RequesterName, Subject, Type, Cost, RequestId</p>
+<ol>
+<li>Start and wait for approval (Approvals connector via <code>toh_Approvals</code>): Title = <code>concat('Access Request: ', Subject, ' from ', RequesterName)</code>; Assigned to = ManagerEmail; Details = <code>concat('Type: ', Type, '\nEst. Cost: ₹', Cost)</code></li>
+<li>Condition — if <code>Outcome eq 'Approve'</code>:<br>
+  YES: Update row → Status = Approved; Send email (toh_Outlook) to requester: "Your request has been approved."<br>
+  NO: Update row → Status = Rejected, toh_approvalnotes = approval comments; Send email: "Your request was not approved."</li>
+<li>Respond → <code>{"result":"done"}</code></li>
+</ol>
+
+<p><strong>Child Flow C — TechOps - Create Audit Log (Child)</strong></p>
+<p>Trigger: Manually trigger — inputs: RequestId, Action, PerformedBy</p>
+<ol>
+<li>Create a new row → Audit Log table: toh_action = Action, toh_request = RequestId (lookup), toh_performedby = PerformedBy, toh_timestamp = <code>utcNow()</code></li>
+<li>Respond → <code>{"result":"logged"}</code></li>
+</ol>
+
+<p><strong>Wire up the Canvas App Submit button</strong></p>
+<div class="codeblock"><span class="lang">powerfx</span><pre><code>// NewRequestScreen → Submit button → OnSelect
+Patch(toh_requests, Defaults(toh_requests), {
+  toh_subject: SubjectInput.Text,
+  toh_type: TypeDropdown.Selected.Value,
+  toh_priority: PriorityDropdown.Selected.Value,
+  toh_status: 'toh_status_submitted',
+  toh_estimatedcost: Value(CostInput.Text),
+  toh_duedate: DateAdd(Today(),
+    Value(LookUp('Environment Variable Values',
+      'Environment Variable Definition'.'Schema Name' = "toh_SLAHours",
+      Value)) / 24, Days)
+});
+TechOpsSubmitFlow.Run(ThisItem.toh_requestid);
+Notify("Request submitted!", NotificationType.Success);
+Navigate(HomeScreen)</code></pre><button class="copy" type="button">copy</button></div>
+
+<p><strong>End-to-end test (do this before finishing Day 2)</strong></p>
+<ol>
+<li>Open canvas app → New Request → fill fields → Submit</li>
+<li>Check your email (you are the "manager") — you should receive an Approvals notification in Teams or email</li>
+<li>Approve it → verify toh_request row shows Status = Approved, email sent to requester</li>
+<li>Check toh_auditlog — should have one row: "Request Submitted"</li>
+</ol>
+
+<p><strong>CoE verification — TechOpsHub should appear in inventory</strong></p>
+<p>After CoE inventory flows run (Admin | Sync Template — Solutions): CoE Admin Command Center → Solutions view → find <code>TechOpsHub</code>. This is the proof that CoE governs your real solution. Screenshot it.</p>
+
+<div class="proj-state">
+<strong>PROJECT STATE AFTER DAY 2</strong><br>
+✅ Parent flow + 2 child flows running in PP-DEV (inside solution)<br>
+✅ End-to-end test: submit → Teams approval → approve → email → status updated<br>
+✅ Audit log writes on every submission<br>
+✅ Canvas App Submit wired to flow, env var toh_SLAHours drives due date<br>
+✅ CoE Kit shows TechOpsHub in solution inventory<br>
+⏳ DLP policies — Day 3<br>
+⏳ Deploy to PP-UAT — Day 3
+</div>
+</div>
+
 <h3 id="day-3-dlp-pac-cli-alm-pipelines" class="h2">Day 3 - Dlp + Pac Cli + Alm Pipelines<a class="anchor" href="#day-3-dlp-pac-cli-alm-pipelines" aria-label="Link to section">#</a></h3>
 <p>MORNING (3h) - DLP (converts your weakest item)</p>
 <ul class="checks">
@@ -197,6 +383,83 @@ Get-AdminPowerAppEnvironment</code></pre><button class="copy" type="button">copy
 <li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Note where connection references and env vars get bound during deploy</span></li>
 </ul>
 <p>NOW YOU CAN SAY: "At T-Mobile our promotions were script-driven and I built tooling around the risky parts. I've since set up native Power Platform Pipelines to deploy through DEV/TEST/PROD, and the validation gates map onto the same failure modes I was guarding against manually."</p>
+
+<div class="proj">
+<h4>PROJECT TRACK — DAY 3: DLP Proof + First ALM Deployment (DEV→UAT)</h4>
+<p>Create the DLP policies that govern TechOpsHub, then deploy the solution managed to PP-UAT via PAC CLI and Power Platform Pipelines. This is the single most interview-relevant day for governance architecture questions.</p>
+
+<p><strong>DLP — Tenant-level policy "TechOps Standard"</strong></p>
+<ul>
+<li>Business group (connectors that can work together): Office 365 Outlook, Microsoft Teams, Approvals, Dataverse, SharePoint, OneDrive, Office 365 Users</li>
+<li>Non-Business: HTTP, SQL Server, Azure Blob Storage</li>
+<li>Blocked: All custom connectors (default)</li>
+</ul>
+
+<p><strong>DLP — Environment-level policy on PP-DEV only: "TechOps DEV Override"</strong></p>
+<ul>
+<li>HTTP connector → moved to Business group</li>
+<li>Scope: PP-DEV environment only</li>
+<li>Effect: DEV can use Outlook + HTTP in the same flow (for raw API testing); UAT/PROD cannot</li>
+</ul>
+
+<p><strong>The DLP test that creates your war story</strong></p>
+<ol>
+<li>In PP-DEV: build a flow using Outlook (Business) + HTTP (Business via override) → it saves and runs</li>
+<li>Now auth to PP-UAT and try to save the same flow → it fails with DLP violation</li>
+<li>The key insight: <em>tenant policy applies everywhere; the environment override only loosens it in DEV. The most restrictive combination wins.</em> This is exactly what interviewers probe.</li>
+</ol>
+
+<p><strong>SLA Breach Alert flow (add to solution — scheduled)</strong></p>
+<p>Trigger: Recurrence — every 1 day, start at 08:00 UTC+5:30 (IST)</p>
+<ol>
+<li>List rows → toh_request table — OData filter: <code>toh_status ne 'toh_status_completed' and toh_status ne 'toh_status_rejected' and toh_duedate lt @{formatDateTime(utcNow(),'yyyy-MM-dd')}</code></li>
+<li>Apply to each: Send email (toh_Outlook to toh_NotificationEmail env var): Subject = <code>concat('[OVERDUE] ', item()?['toh_subject'])</code>; Body includes requester name, priority, due date</li>
+</ol>
+
+<p><strong>PAC CLI export and deploy (real commands against your environments)</strong></p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code>pac auth select --name DEV
+
+# Export managed from DEV
+pac solution export --name TechOpsHub --path ./exports/TechOpsHub_managed.zip --managed
+
+# Inspect the unpacked structure — this is source-control readiness
+pac solution unpack --zipfile ./exports/TechOpsHub_managed.zip --folder ./src/TechOpsHub
+# Look at: src/TechOpsHub/Other/Customizations.xml  (tables, choices, forms)
+# Look at: src/TechOpsHub/Workflows/*.json           (your 3 flows)
+# Look at: src/TechOpsHub/CanvasApps/*.msapp        (canvas app)
+
+# Deploy managed to UAT
+pac auth select --name UAT
+pac solution import --path ./exports/TechOpsHub_managed.zip --activate-plugins
+
+# When prompted for Connection References — create new connections in PP-UAT
+# When prompted for Environment Variables — set UAT values:
+#   toh_SLAHours = 24, toh_ApprovalThreshold = 2500, toh_ApprovalMode = Manual</code></pre><button class="copy" type="button">copy</button></div>
+
+<p><strong>Power Platform Pipeline (UI method alongside PAC CLI)</strong></p>
+<ol>
+<li>PPAC → Pipelines → New pipeline: "TechOps ALM Pipeline"</li>
+<li>Source: PP-DEV; Stage 1: PP-UAT (enable Solution Checker gate); Stage 2: PP-PROD (require manual approval)</li>
+<li>Deploy TechOpsHub through the UI pipeline — observe where connection references are re-bound per stage</li>
+<li>Note how Environment Variable values are set per stage — DEV=48, UAT=24, PROD=8 for SLAHours</li>
+</ol>
+
+<div class="proj-state">
+<strong>PROJECT STATE AFTER DAY 3</strong><br>
+✅ Tenant DLP policy "TechOps Standard" — Outlook/Teams/Approvals/Dataverse in Business<br>
+✅ PP-DEV environment policy "TechOps DEV Override" — HTTP in Business for DEV<br>
+✅ DLP precedence tested and documented (war story: HTTP flow works DEV, fails UAT)<br>
+✅ SLA Breach Alert scheduled flow added to solution<br>
+✅ TechOpsHub deployed managed to PP-UAT via PAC CLI<br>
+✅ PP-UAT connection references reconnected, env vars set for UAT<br>
+✅ Power Platform Pipeline DEV→UAT→PROD configured<br>
+✅ Solution unpacked to ./src/TechOpsHub — can explain file structure from memory<br>
+⏳ Copilot Studio bot — Day 4<br>
+⏳ Dataflows / employee import — Day 4<br>
+⏳ PROD deploy — Day 5
+</div>
+</div>
+
 <h3 id="day-4-copilot-studio-dataflows-power-query-m" class="h2">Day 4 - Copilot Studio + Dataflows/Power Query M<a class="anchor" href="#day-4-copilot-studio-dataflows-power-query-m" aria-label="Link to section">#</a></h3>
 <p>TIMING NOTE: Copilot Studio is TRIAL-BASED (typically 30-60 days). Activating it today means it is live for interviews over the next month. Do not activate earlier than this.</p>
 <p>MORNING (4h) - Copilot Studio (converts a PARTIAL)</p>
@@ -284,6 +547,91 @@ Get-AdminPowerAppEnvironment</code></pre><button class="copy" type="button">copy
 <li>Post one Adaptive Card to Teams from a Power Automate flow</li>
 <li>Understand: JSON schema, Action.Submit, actionable approvals in Teams</li>
 </ul>
+
+<div class="proj">
+<h4>PROJECT TRACK — DAY 4: Copilot Studio Bot + Dataflows + Model-Driven App</h4>
+<p>Three major additions today — all referencing the toh_request and toh_employee tables you built on Day 1.</p>
+
+<p><strong>Copilot Studio — "TechOps Assistant"</strong></p>
+<p>At copilotstudio.microsoft.com, inside your DEV tenant:</p>
+<ol>
+<li>New agent: Name = "TechOps Assistant"; Language = English (India)</li>
+<li>Agent instructions (system prompt):
+<div class="codeblock"><pre><code>You are TechOps Assistant, an IT service helper. Help employees check
+the status of their IT requests, understand SLAs, and find out how to
+submit new requests. Be concise and professional. Never fabricate
+status information — always query actual request data via the
+action provided.</code></pre><button class="copy" type="button">copy</button></div></li>
+<li>Topic 1 — <strong>Check Request Status</strong>: trigger phrases "status of my request", "where is my request", "check request", "request update"
+  <ul><li>Add an action → call Power Automate flow "TechOps - Get My Requests (Bot Action)"</li>
+  <li>That flow: trigger = HTTP GET (or "When an agent calls a flow"), lists toh_request rows filtered by requester email, returns JSON array</li>
+  <li>Bot displays result as adaptive card</li></ul></li>
+<li>Topic 2 — <strong>Submit New Request</strong>: trigger "I want to submit a request", "new request", "request equipment"
+  <ul><li>Response: "Visit the TechOps Self-Service portal. I can walk you through request types: Hardware, Software, Access, Travel."</li></ul></li>
+<li>Topic 3 — <strong>SLA Information</strong>: trigger "what is the SLA", "how long does approval take"
+  <ul><li>Response: "Current SLA is [toh_SLAHours] hours from submission to first action. Critical requests are prioritised within 4 hours."</li></ul></li>
+<li>Knowledge source: upload a 1-page text file — "TechOps Request FAQ" describing request types, eligibility, SLAs</li>
+<li>Publish → Deploy to Teams channel</li>
+<li>Test: open Teams, message the bot "check my request status" — it should call the flow and return your open requests</li>
+</ol>
+
+<p><strong>Dataflows — Employee Directory Import</strong></p>
+<p>Create a file <code>employees.csv</code> locally (15 rows — use fictional data, NOT real T-Mobile names):</p>
+<div class="codeblock"><span class="lang">csv</span><pre><code>employee_id,full_name,email,department,manager_email,active
+EMP001,Shubham Singh,admin@yourtenant.onmicrosoft.com,IT,cto@yourtenant.onmicrosoft.com,TRUE
+EMP002,Priya Verma,priya.verma@yourtenant.onmicrosoft.com,HR,hrhead@yourtenant.onmicrosoft.com,TRUE
+EMP003,Rahul Yadav,rahul.yadav@yourtenant.onmicrosoft.com,Finance,cfo@yourtenant.onmicrosoft.com,TRUE
+EMP004,Fatima Ansari,fatima.ansari@yourtenant.onmicrosoft.com,Operations,ops.head@yourtenant.onmicrosoft.com,TRUE
+EMP005,Vikram Rathore,vikram.rathore@yourtenant.onmicrosoft.com,IT,admin@yourtenant.onmicrosoft.com,TRUE
+... (10 more rows)</code></pre><button class="copy" type="button">copy</button></div>
+
+<p>Maker portal → PP-DEV → Dataflows → New dataflow → "Employee Directory":</p>
+<ol>
+<li>Source: upload the CSV</li>
+<li>Power Query transforms:
+  <ul>
+  <li>Rename columns: full_name→toh_fullname, email→toh_email, department→toh_department, manager_email→toh_manageremail, employee_id→toh_employeeid</li>
+  <li>Filter rows: <code>active = "TRUE"</code></li>
+  <li>Add custom column: <code>toh_last_refreshed = DateTime.LocalNow()</code></li>
+  <li>Change type: toh_employeeid → Text (not number)</li>
+  <li>Open Advanced Editor — read the M code; understand the <code>let ... in</code> structure</li>
+  </ul></li>
+<li>Map to: toh_employee table, Load type = Upsert, Alternate key = toh_email</li>
+<li>Schedule: daily at 06:00</li>
+<li>Run now → verify 15 rows appear in toh_employee</li>
+</ol>
+
+<p><strong>Model-Driven App — "IT Admin Portal"</strong></p>
+<p>Solutions → TechOpsHub → New → App → Model-driven app → "IT Admin Portal":</p>
+<ul>
+<li>Add pages: Table → toh_request (main form + views), toh_employee (read-only view)</li>
+<li>Configure views on toh_request:
+  <ul>
+  <li>"All Open Requests" — filter: Status ≠ Completed; sort: Priority desc, Due Date asc</li>
+  <li>"My Assignments" — filter: Assigned To = Current User, Status = In Review</li>
+  <li>"Overdue Requests" — filter: Due Date &lt; Today, Status ≠ Completed and ≠ Rejected</li>
+  </ul></li>
+<li>Configure main form: all columns visible; set toh_approvalnotes field visibility rule: hidden unless user has IT Admin security role</li>
+<li>Add Business Rules on toh_request:
+  <ul>
+  <li>Rule 1: If Priority = Critical → set toh_duedate = DateAdd(Now(), 4, Hours)</li>
+  <li>Rule 2: If toh_estimatedcost &gt; 5000 → show warning "VP approval required"</li>
+  </ul></li>
+</ul>
+
+<div class="proj-state">
+<strong>PROJECT STATE AFTER DAY 4</strong><br>
+✅ Copilot Studio bot "TechOps Assistant" deployed to Teams; 3 topics working<br>
+✅ Bot calls Power Automate action to query real toh_request data<br>
+✅ Dataflow loading 15 employees into toh_employee via upsert on email alternate key<br>
+✅ M code read and understood in Advanced Editor (query folding, let/in, custom column)<br>
+✅ Model-Driven App "IT Admin Portal" — 3 views, business rules, form field visibility<br>
+✅ Adaptive Card approval in Teams tested (from Day 2 child flow)<br>
+⏳ PROD deploy — Day 5<br>
+⏳ End-to-end PROD test — Day 5
+</div>
+</div>
+
 <h3 id="day-5-remaining-gaps-self-audit" class="h2">Day 5 - Remaining Gaps + Self-Audit<a class="anchor" href="#day-5-remaining-gaps-self-audit" aria-label="Link to section">#</a></h3>
 <p>MORNING (3h) - The gaps you can only speak to, not close</p>
 <ul class="checks">
@@ -332,6 +680,68 @@ Get-AdminPowerAppEnvironment</code></pre><button class="copy" type="button">copy
 <li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">If you plan to show ANY code/screens in interview, sanitise it first, or</span></li>
 </ul>
 <p>better: don't. Describe instead.</p>
+
+<div class="proj">
+<h4>PROJECT TRACK — DAY 5: PROD Deploy + End-to-End Test + Numbers Cheat Sheet</h4>
+<p>The project is functionally complete in DEV/UAT. Today you ship it to PROD and do the definitive end-to-end test — the one you will describe in interviews.</p>
+
+<p><strong>Deploy TechOpsHub to PP-PROD</strong></p>
+<div class="codeblock"><span class="lang">powershell</span><pre><code>pac auth select --name DEV
+# Export fresh managed build from DEV
+pac solution export --name TechOpsHub --path ./exports/TechOpsHub_v1_managed.zip --managed
+
+# Deploy to PROD
+pac auth select --name PROD
+pac solution import --path ./exports/TechOpsHub_v1_managed.zip --activate-plugins
+
+# After import: reconnect connection references in PP-PROD
+# Set environment variable values for PROD:
+#   toh_SLAHours = 8
+#   toh_ApprovalThreshold = 5000
+#   toh_NotificationEmail = your email
+#   toh_ApprovalMode = Manual</code></pre><button class="copy" type="button">copy</button></div>
+
+<p><strong>End-to-end test in PP-PROD (do this. It becomes your demo story.)</strong></p>
+<ol>
+<li>Open canvas app (share-play link in PROD environment) → submit a Hardware request, cost ₹6000, priority High</li>
+<li>Within seconds: Teams card should appear for the approver (you)</li>
+<li>Approve from Teams → verify: request status = Approved, email sent to requester</li>
+<li>Check toh_auditlog in PROD Maker Portal → one entry "Request Submitted" with timestamp</li>
+<li>Open IT Admin Portal (Model-Driven App, PROD) → verify "Overdue Requests" view works, business rules fire</li>
+<li>Message TechOps Assistant bot in Teams: "check my request status" → should return the request you just submitted</li>
+<li>Verify SLA: toh_duedate was set to Today + 8 hours (PROD env var = 8)</li>
+<li>Screenshot every screen. This is your interview demo evidence.</li>
+</ol>
+
+<p><strong>Numbers cheat sheet — write this by hand</strong></p>
+<ul>
+<li>Tables: 4 (toh_request, toh_requestitem, toh_employee, toh_auditlog)</li>
+<li>Flows: 4 (Submit Parent, Notify Manager Child, Audit Log Child, SLA Breach Alert)</li>
+<li>Environment Variables: 4 (SLAHours, ApprovalThreshold, NotificationEmail, ApprovalMode)</li>
+<li>Connection References: 3 (Outlook, Teams, Approvals)</li>
+<li>Environments deployed to: 3 (PP-DEV ppdev258, PP-UAT ppuat258, PP-PROD ppprod258)</li>
+<li>Canvas App screens: 3 (Home, New Request, Status)</li>
+<li>MDA views: 3 (All Open, My Assignments, Overdue)</li>
+<li>Copilot Studio topics: 3 (Status, Submit, SLA)</li>
+<li>Dataflow rows: 15 employees</li>
+<li>Build time: 5 days, solo, personal M365 E5 tenant, ₹0 cost</li>
+</ul>
+
+<div class="callout c-warn" style="margin-top:1rem">⚠️ Do NOT use real T-Mobile data, employee names, card numbers, or internal system details anywhere in this project. The project is entirely synthetic by design.</div>
+
+<div class="proj-state">
+<strong>PROJECT STATE AFTER DAY 5 — COMPLETE</strong><br>
+✅ TechOpsHub deployed managed to PP-PROD (ppdev258 → ppuat258 → ppprod258)<br>
+✅ End-to-end test in PROD passed: submit → Teams approval → approve → email → audit log<br>
+✅ Copilot bot returns real PROD request data<br>
+✅ MDA business rules firing in PROD (Critical = 4h due date, high-cost warning)<br>
+✅ Environment variables differ per environment (SLAHours: 48/24/8)<br>
+✅ Numbers cheat sheet written<br>
+✅ Screenshots captured for every layer<br>
+🎯 Project complete. Days 6–7 are about turning this into a compelling story.
+</div>
+</div>
+
 <h3 id="day-6-stories-and-answers-highest-value-day" class="h2">Day 6 - Stories And Answers (Highest Value Day)<a class="anchor" href="#day-6-stories-and-answers-highest-value-day" aria-label="Link to section">#</a></h3>
 <p>MORNING (4h)</p>
 <ul class="checks">
@@ -373,6 +783,46 @@ Get-AdminPowerAppEnvironment</code></pre><button class="copy" type="button">copy
 <ul class="checks">
 <li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Note every question where you rambled or blanked. Fix those tomorrow.</span></li>
 </ul>
+
+<div class="proj">
+<h4>PROJECT TRACK — DAY 6: Turn TechOps Into Your Stories</h4>
+<p>The project is now evidence. Today you convert it into rehearsed answers.</p>
+
+<p><strong>New STAR story — "I built TechOps Hub from scratch"</strong></p>
+<p>Write this in your own words, then say it out loud 5 times:</p>
+<div class="codeblock"><pre><code>SITUATION: I wanted real hands-on evidence of a full Power Platform architect
+  delivery — not just a single app or flow, but the whole stack in a real
+  multi-environment tenant.
+
+TASK: Design and build a production-deployed IT request management system
+  demonstrating every major skill the senior architect role requires.
+
+ACTION: In 5 days on my personal M365 E5 trial tenant, I built TechOps
+  Access Hub — 4 Dataverse tables, a Canvas employee portal with Power Fx
+  wired to env vars for SLA calculation, a parent flow calling two child flows
+  for Teams approval and audit logging, a scheduled SLA breach alert, a
+  Copilot Studio bot integrated via action, a Model-Driven admin app with
+  business rules, a Dataflow ingesting 15 employees via upsert on an alternate
+  key, and the full ALM pipeline: solution exported from PP-DEV, deployed
+  managed to PP-UAT via PAC CLI, then to PP-PROD via Power Platform Pipelines,
+  with different env var values per stage and DLP policies enforced across.
+
+RESULT: A fully deployed, demo-able system across three real environments —
+  ppdev258, ppuat258, ppprod258 — built solo in 5 days at zero cost. I can
+  walk you through any layer of it right now.</code></pre><button class="copy" type="button">copy</button></div>
+
+<p><strong>Map TechOps evidence to the question bank questions it answers</strong></p>
+<ul>
+<li>Q45 "Child flows — when and why?" → Notify Manager Child + Audit Log Child, two separate concerns, reusable</li>
+<li>Q47 "Connection reference — why does it exist?" → toh_Outlook/toh_Teams/toh_Approvals, different credentials per env, no hardcoded connection in flow</li>
+<li>Q48 "Environment variables — definition vs value?" → toh_SLAHours definition in solution, values 48/24/8 set per environment at import time</li>
+<li>Q52 "Describe your ALM process" → PAC CLI export → unpack → inspect structure → import managed; also PP Pipeline with connection reference rebinding per stage</li>
+<li>Q55 "Explain DLP policies" → Tenant "TechOps Standard" vs PP-DEV env override; HTTP works DEV, blocked UAT — tested it myself</li>
+<li>Q57 "CoE Starter Kit — what does it do?" → TechOpsHub visible in CoE inventory after inventory flows ran; same visibility problem my MCP server solved from the other direction</li>
+<li>Q68 "Design a badge request approval system" → just describe TechOps Hub; it IS this system</li>
+</ul>
+</div>
+
 <h3 id="day-7-consolidation-and-mock-rounds" class="h2">Day 7 - Consolidation And Mock Rounds<a class="anchor" href="#day-7-consolidation-and-mock-rounds" aria-label="Link to section">#</a></h3>
 <p>MORNING (3h)</p>
 <ul class="checks">
@@ -400,11 +850,98 @@ Get-AdminPowerAppEnvironment</code></pre><button class="copy" type="button">copy
 <li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Write down your salary number and your walk-away number (PART 6)</span></li>
 <li class=""><span class="box" tabindex="0" role="checkbox" aria-checked="false"></span><span class="ctxt">Rest. Do not cram the night before an actual interview.</span></li>
 </ul>
+
+<div class="proj">
+<h4>PROJECT TRACK — DAY 7: 3-Minute Demo + Whiteboard the Architecture</h4>
+<p>The project is your live demo and your whiteboard answer. Practise both until they are automatic.</p>
+
+<p><strong>3-minute verbal demo (practise this until it is fluid)</strong></p>
+<div class="codeblock"><pre><code>"Let me show you something I built this week to sharpen my hands-on skills.
+
+This is TechOps Access Hub — a full IT request management system on Power Platform,
+deployed across three environments in my own tenant.
+
+[Canvas App — open on screen]
+Employees log in here and see their open requests. They submit a new request —
+type, priority, description, estimated cost. On submit, a Power Fx formula reads
+the toh_SLAHours environment variable to calculate the due date, then fires a
+parent cloud flow via a PowerApps trigger.
+
+[Flow — show run history]
+The parent flow calls two child flows. The first sends a Teams adaptive card to
+the manager with Approve/Reject buttons — using the Approvals connector via a
+connection reference so the credential is per-environment, not hardcoded. The
+second child flow writes an audit log entry to Dataverse.
+
+On approval, the request status updates and the requester gets an email. I have
+a scheduled flow running daily at 8 AM IST that alerts on overdue items — filtered
+via OData on the due date column.
+
+[Model-Driven App — open IT Admin Portal]
+IT admins see this view: open requests sorted by priority and due date. A business
+rule fires: any Critical request auto-sets due date to now plus four hours. Another
+warns if estimated cost exceeds toh_ApprovalThreshold — which is 1000 in DEV,
+5000 in PROD.
+
+[Copilot Studio — Teams]
+Here's the bot — ask it 'check my request status' — it calls a Power Automate
+action that queries toh_request filtered by the caller's email and returns an
+adaptive card with their open requests.
+
+[ALM — show solution in PPAC across all three envs]
+The solution was built in PP-DEV at ppdev258.crm8.dynamics.com, exported managed
+via pac solution export, imported to PP-UAT at ppuat258 via pac solution import,
+then shipped to PP-PROD at ppprod258 through a Power Platform Pipeline. Each stage
+re-binds the three connection references and sets different environment variable
+values — SLAHours is 48 in DEV, 8 in PROD.
+
+DLP: tenant policy puts Outlook, Teams, Approvals, and Dataverse in the Business
+group and HTTP in Non-Business. I added a PP-DEV-only environment policy that moves
+HTTP to Business so I can test raw API calls in DEV — UAT and PROD block it. I tested
+this: the same flow saves in DEV and fails in UAT. That's the DLP precedence rule in
+action: the most restrictive combination wins.
+
+Any questions about any layer?"</code></pre><button class="copy" type="button">copy</button></div>
+
+<p><strong>Whiteboard from memory — 5 minutes, no notes</strong></p>
+<ul>
+<li>Three boxes: PP-DEV → PP-UAT → PP-PROD (arrow = PAC CLI / Pipeline)</li>
+<li>Inside PP-DEV: Solution TechOpsHub — 4 tables, Canvas App, MDA, 4 flows, Dataflow, Copilot Studio</li>
+<li>DLP layer above: Tenant policy (HTTP blocked in UAT/PROD) + DEV env override (HTTP allowed)</li>
+<li>CoE box: separate environment, pointing into all three (inventory visibility)</li>
+<li>Flow sequence: User → Canvas App → Parent Flow → [Child A: Teams approval] + [Child B: Audit log] → Status update → Email</li>
+<li>Label every arrow with the connector or mechanism</li>
+</ul>
+
+<p><strong>Whiteboard questions — all answered by drawing TechOps Hub</strong></p>
+<ul>
+<li>"Design a badge request approval system on Power Platform." → Draw TechOps Hub</li>
+<li>"How would you move a solution from DEV to PROD?" → PAC CLI + connection reference rebinding + env var values per stage</li>
+<li>"Design a DLP policy for a client starting from scratch." → Tenant policy + environment override + precedence rule</li>
+<li>"How do parent and child flows work?" → Submit Parent + two children + what each child handles + Respond action</li>
+</ul>
+</div>
+
+<h2 id="project-deliverable" style="margin-top:2.5rem">PROJECT DELIVERABLE: What You Can Now Honestly Say<a class="anchor" href="#project-deliverable" aria-label="Link to section">#</a></h2>
+<p>By end of Day 5 you have built and deployed a real, working Power Platform solution — not a tutorial app, but a system deployed managed across three real environments in your own M365 E5 tenant. What you can state in an interview without exaggerating:</p>
+<ul>
+<li>"I designed and built TechOps Access Hub — Canvas App, Model-Driven App, four cloud flows using a parent/child pattern, a Copilot Studio agent with a Power Automate action, a Dataflow with M transforms and upsert key mapping, and the full ALM cycle through three environments — in my own tenant, solo, in 5 days."</li>
+<li>"I configured DLP at tenant and environment level and tested the precedence rule hands-on: HTTP was blocked in UAT even though the flow saved in DEV. Most restrictive combination wins — I can show you the error."</li>
+<li>"Connection references decouple credentials from flow definitions. When I deployed managed to PP-UAT and PP-PROD, I re-bound each to environment-specific credentials. Environment variables held per-stage config: SLAHours 48 in DEV, 8 in PROD."</li>
+<li>"The CoE Starter Kit shows TechOpsHub in inventory across all three environments — exactly the governance visibility a real client would need."</li>
+</ul>
+
 <h3 id="day-8-resume-see-part-6-for-full-construction-guide" class="h2">DAY 8 - RESUME (see PART 6 for full construction guide)<a class="anchor" href="#day-8-resume-see-part-6-for-full-construction-guide" aria-label="Link to section">#</a></h3>
 <h4 id="day-9-apply" class="h3">DAY 9 — APPLY<a class="anchor" href="#day-9-apply" aria-label="Link to section">#</a></h4>
 <p><strong>CHECKLIST SUMMARY - TICK AS YOU GO</strong></p>
-<h3 id="dev-tenant-provisioned" class="h2">[ ] Dev tenant provisioned<a class="anchor" href="#dev-tenant-provisioned" aria-label="Link to section">#</a></h3>
-<p><em>[ ] 3 environments created (DEV/TEST/PROD)</em> <em>[ ] PAC CLI installed and authenticated</em> <em>[ ] Admin PowerShell modules installed</em> <em>[ ] CoE Starter Kit deployed, inventory flows running</em> <em>[ ] At least 2 CoE issues debugged and written down</em> <em>[ ] Tenant-level DLP policy authored</em> <em>[ ] Environment-level DLP policy authored</em> <em>[ ] DLP impact tested on a real flow</em> <em>[ ] pac solution export/unpack/pack/import completed</em> <em>[ ] Native Power Platform Pipeline created and used</em> <em>[ ] Copilot Studio agent built AND published</em> <em>[ ] Dataflow built with 6+ Power Query transforms</em> <em>[ ] M code read and understood in Advanced Editor</em> <em>[ ] Model-driven app built (form, view, sitemap, business rule)</em> <em>[ ] Adaptive Card posted to Teams from a flow</em> <em>[ ] One Power Automate Desktop flow built</em> <em>[ ] All 10 STAR stories rehearsed out loud and timed</em> <em>[ ] At least 3 stories recorded and reviewed</em> <em>[ ] Full 45-min mock interview completed</em> <em>[ ] Sanitisation rules decided</em> <em>[ ] Salary number decided</em> <em>[ ] Numbers cheat sheet written</em></p>
+<h3 id="dev-tenant-provisioned" class="h2">[ ] Dev tenant provisioned (ppdev258 / ppuat258 / ppprod258 ✅)<a class="anchor" href="#dev-tenant-provisioned" aria-label="Link to section">#</a></h3>
+<p><em>[ ] PAC CLI installed and authenticated to DEV / UAT / PROD</em> <em>[ ] Admin PowerShell modules installed</em></p>
+<p><strong>TECHOPS ACCESS HUB — BUILD CHECKLIST</strong></p>
+<p><em>[ ] Solution TechOpsHub in PP-DEV — publisher toh, prefix toh_</em> <em>[ ] 4 Dataverse tables: toh_request (10 cols), toh_requestitem (4 cols), toh_employee (6 cols + 2 alt keys), toh_auditlog (4 cols)</em> <em>[ ] 4 Environment Variables: toh_SLAHours / toh_ApprovalThreshold / toh_NotificationEmail / toh_ApprovalMode</em> <em>[ ] 3 Connection References: toh_Outlook / toh_Teams / toh_Approvals</em> <em>[ ] Canvas App 3 screens — Submit button wired, SLA due date from env var toh_SLAHours</em> <em>[ ] Parent flow (Submit Request) + Child A (Notify Manager + approval + email) + Child B (Audit log)</em> <em>[ ] End-to-end test: submit → Teams card → approve → status updated → email sent → audit row created</em> <em>[ ] SLA Breach Alert scheduled flow (daily, OData filter on toh_duedate)</em> <em>[ ] Tenant DLP policy "TechOps Standard" — Outlook/Teams/Approvals/Dataverse in Business, HTTP in Non-Business</em> <em>[ ] PP-DEV env override — HTTP moved to Business for DEV only</em> <em>[ ] DLP precedence tested: flow saves DEV, fails UAT — result written down as war story</em> <em>[ ] pac solution export managed from DEV; unpacked to ./src/TechOpsHub and file structure examined</em> <em>[ ] Solution imported managed to PP-UAT — conn refs reconnected, UAT env vars set (SLAHours=24)</em> <em>[ ] Power Platform Pipeline DEV→UAT→PROD configured</em> <em>[ ] CoE Starter Kit deployed — TechOpsHub visible in CoE solution inventory</em> <em>[ ] Copilot Studio "TechOps Assistant" — 3 topics, 1 knowledge source, deployed to Teams</em> <em>[ ] Bot status action calls Power Automate flow returning real Dataverse data</em> <em>[ ] Dataflow "Employee Directory" — CSV, 5+ M transforms, upsert on toh_email alternate key, 15 rows</em> <em>[ ] M Advanced Editor opened; let/in structure understood; query folding identified</em> <em>[ ] Model-Driven App "IT Admin Portal" — 3 views, 2 business rules (Critical=4h, cost&gt;threshold=warning)</em> <em>[ ] Adaptive Card approval actioned from Teams (Notify Manager child flow)</em> <em>[ ] Solution deployed managed to PP-PROD (SLAHours=8, ApprovalThreshold=5000)</em> <em>[ ] End-to-end test in PP-PROD passed — screenshots captured</em> <em>[ ] Numbers cheat sheet written (4 tables / 4 flows / 4 env vars / 3 conn refs / 3 envs)</em></p>
+<p><strong>GOVERNANCE &amp; GAPS CHECKLIST</strong></p>
+<p><em>[ ] At least 2 CoE issues debugged and written down</em> <em>[ ] One Power Automate Desktop flow built</em> <em>[ ] SOAP gap acknowledged with honest frame</em> <em>[ ] Office Scripts tried or read</em></p>
+<p><strong>INTERVIEW PREP CHECKLIST</strong></p>
+<p><em>[ ] All 10 original STAR stories + TechOps STAR story rehearsed out loud and timed</em> <em>[ ] At least 3 stories recorded and reviewed</em> <em>[ ] Full 45-min mock interview completed</em> <em>[ ] 3-minute TechOps demo rehearsed until automatic</em> <em>[ ] TechOps architecture whiteboarded from memory in under 5 minutes</em> <em>[ ] Q45/Q47/Q48/Q52/Q55/Q57 answered using TechOps evidence</em> <em>[ ] Sanitisation rules decided (what you will/won't say about T-Mobile)</em> <em>[ ] Salary number and walk-away number decided</em> <em>[ ] Numbers cheat sheet from PART 1 refreshed</em></p>
 <p><strong>END OF PART 4 - CONTINUE TO PART 5 (QUESTION BANK)</strong></p><div class="pn"><a href="stories.html"><div class="d">&larr; Part 03</div><div class="t">Domain &amp; STAR Stories</div></a><a class="nx" href="question-bank.html"><div class="d">Part 05 &rarr;</div><div class="t">Question Bank</div></a></div></div></div></main>
 <div id="find" role="dialog" aria-label="Search"><div class="fb">
  <input id="q" placeholder="Search every part&hellip;" autocomplete="off" spellcheck="false">
