@@ -253,32 +253,170 @@ pac org who   # must show ppdev258</code></pre><button class="copy" type="button
 <p>Build the core automation — the parent + child flow pattern that drives the whole approval lifecycle. Then verify CoE Kit shows your solution in inventory.</p>
 
 <p><strong>Flow A — TechOps - Submit Request (Parent)</strong></p>
-<p>Trigger: PowerApps (input: RequestId as text). Inside the solution, using connection reference <code>toh_Approvals</code>:</p>
-<ol>
-<li>Get a row by ID → Requests table, RequestId from trigger</li>
-<li>List rows → SystemUsers → filter: <code>internalemailaddress eq '@{triggerBody()?['RequesterId']}'</code> (get requester to find manager)</li>
-<li>Run child flow <strong>TechOps - Notify Manager (Child)</strong> — pass: ManagerEmail, RequesterName, Subject, Type, EstimatedCost, RequestId</li>
-<li>Run child flow <strong>TechOps - Create Audit Log (Child)</strong> — pass: RequestId, Action = "Request Submitted", PerformedBy = requester UPN</li>
-<li>Respond to PowerApp → <code>{"status":"submitted"}</code></li>
-</ol>
+<p>Trigger: <strong>Power Apps (V2)</strong> — add one text input: Name = <code>RequestId</code>. All Dataverse actions use the solution's connection references. Rename steps in the designer using the "…" menu so expressions reference clean names.</p>
+<table>
+<thead><tr><th>#</th><th>Connector → Action (exact UI name)</th><th>Key fields / expressions</th></tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Microsoft Dataverse → Get a row by ID</strong><br><em>(rename step: Get_request)</em></td>
+<td>Table name: <code>toh_requests</code><br>Row ID: <code>triggerBody()['RequestId']</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Microsoft Dataverse → List rows</strong><br><em>(rename step: Get_requester)</em></td>
+<td>Table name: <code>systemusers</code><br>Filter rows: <code>systemuserid eq '@{outputs('Get_request')?['body/_toh_requester_value']}'</code><br>Select columns: <code>systemuserid,fullname,internalemailaddress</code><br>Top count: <code>1</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Flows → Run a child flow</strong><br><em>Child: TechOps - Notify Manager (Child)</em></td>
+<td>ManagerEmail: <code>first(outputs('Get_requester')?['body/value'])?['internalemailaddress']</code><br>RequesterName: <code>first(outputs('Get_requester')?['body/value'])?['fullname']</code><br>Subject: <code>outputs('Get_request')?['body/toh_subject']</code><br>Type: <code>outputs('Get_request')?['body/toh_type@OData.Community.Display.V1.FormattedValue']</code><br>Cost: <code>string(outputs('Get_request')?['body/toh_estimatedcost'])</code><br>RequestId: <code>triggerBody()['RequestId']</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Flows → Run a child flow</strong><br><em>Child: TechOps - Create Audit Log (Child)</em></td>
+<td>RequestId: <code>triggerBody()['RequestId']</code><br>Action: <code>Request Submitted</code> (static text)<br>PerformedBy: <code>first(outputs('Get_requester')?['body/value'])?['internalemailaddress']</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Power Apps (V2) → Respond to a PowerApp or flow</strong></td>
+<td>Add text output → Name: <code>status</code>, Value: <code>submitted</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codeblock"><span class="lang">expressions — Flow A key references</span><pre><code>// Trigger input (text parameter from PowerApps):
+triggerBody()['RequestId']
+
+// Get a field from "Get a row by ID" (step renamed Get_request):
+outputs('Get_request')?['body/toh_subject']
+
+// Get the GUID of a Lookup column (prefix _ + suffix _value):
+outputs('Get_request')?['body/_toh_requester_value']
+
+// Get Choice column display label instead of raw integer:
+outputs('Get_request')?['body/toh_type@OData.Community.Display.V1.FormattedValue']
+
+// Currency column returns a number — cast to string before passing to child text input:
+string(outputs('Get_request')?['body/toh_estimatedcost'])
+
+// First item from List rows (step renamed Get_requester):
+first(outputs('Get_requester')?['body/value'])?['fullname']
+first(outputs('Get_requester')?['body/value'])?['internalemailaddress']</code></pre><button class="copy" type="button">copy</button></div>
 
 <p><strong>Child Flow B — TechOps - Notify Manager (Child)</strong></p>
-<p>Trigger: Manually trigger a flow — inputs: ManagerEmail, RequesterName, Subject, Type, Cost, RequestId</p>
-<ol>
-<li>Start and wait for approval (Approvals connector via <code>toh_Approvals</code>): Title = <code>concat('Access Request: ', Subject, ' from ', RequesterName)</code>; Assigned to = ManagerEmail; Details = <code>concat('Type: ', Type, '\nEst. Cost: ₹', Cost)</code></li>
-<li>Condition — if <code>Outcome eq 'Approve'</code>:<br>
-  YES: Update row → Status = Approved; Send email (toh_Outlook) to requester: "Your request has been approved."<br>
-  NO: Update row → Status = Rejected, toh_approvalnotes = approval comments; Send email: "Your request was not approved."</li>
-<li>Respond → <code>{"result":"done"}</code></li>
-</ol>
+<p>Trigger: <strong>Manually trigger a flow</strong> — under the "Inputs" tab, add 6 text parameters: <code>ManagerEmail</code>, <code>RequesterName</code>, <code>Subject</code>, <code>Type</code>, <code>Cost</code>, <code>RequestId</code>. These become exactly the fields the parent passes via "Run a child flow". Add a 7th: <code>RequesterEmail</code> so you can send the outcome notification to the requester.</p>
+<table>
+<thead><tr><th>#</th><th>Connector → Action (exact UI name)</th><th>Key fields / expressions</th></tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Approvals → Start and wait for an approval</strong><br><em>via connection reference toh_Approvals. BLOCKING — flow pauses up to 30 days for a human response.</em></td>
+<td>Approval type: <code>Approve/Reject - First to respond</code><br>Title: <code>concat('Access Request: ', triggerBody()['Subject'], ' from ', triggerBody()['RequesterName'])</code><br>Assigned to: <code>triggerBody()['ManagerEmail']</code><br>Details: <code>concat('Type: ', triggerBody()['Type'], ' | Est. Cost: ₹', triggerBody()['Cost'])</code><br>Item link: <code>concat('Request ID: ', triggerBody()['RequestId'])</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Control → Condition</strong></td>
+<td>Left value: <code>outputs('Start_and_wait_for_an_approval')?['body/outcome']</code><br>Operator: <code>is equal to</code><br>Right value: <code>Approve</code> (exact string — capital A)</td>
+</tr>
+<tr>
+<td>2a — YES branch</td>
+<td><strong>Microsoft Dataverse → Update a row</strong></td>
+<td>Table: <code>toh_requests</code><br>Row ID: <code>triggerBody()['RequestId']</code><br>Status (toh_status): select <code>Approved</code> from the dropdown (underlying value: <code>toh_status_approved</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Office 365 Outlook → Send an email (V2)</strong><br><em>via toh_Outlook connection reference</em></td>
+<td>To: <code>triggerBody()['RequesterEmail']</code><br>Subject: <code>concat('Approved: ', triggerBody()['Subject'])</code><br>Body: <code>&lt;b&gt;Your request has been approved.&lt;/b&gt;&lt;br&gt;Approved by: @{outputs('Start_and_wait_for_an_approval')?['body/responses'][0]['responder']['displayName']}</code></td>
+</tr>
+<tr>
+<td>2b — NO branch</td>
+<td><strong>Microsoft Dataverse → Update a row</strong></td>
+<td>Table: <code>toh_requests</code><br>Row ID: <code>triggerBody()['RequestId']</code><br>Status: <code>Rejected</code><br>toh_approvalnotes: <code>outputs('Start_and_wait_for_an_approval')?['body/responses'][0]['comments']</code></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Office 365 Outlook → Send an email (V2)</strong></td>
+<td>To: <code>triggerBody()['RequesterEmail']</code><br>Subject: <code>concat('Not Approved: ', triggerBody()['Subject'])</code><br>Body: <code>Your request was not approved.&lt;br&gt;Reason: @{outputs('Start_and_wait_for_an_approval')?['body/responses'][0]['comments']}</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Power Apps (V2) → Respond to a PowerApp or flow</strong></td>
+<td>Add text output → Name: <code>result</code>, Value: <code>done</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codeblock"><span class="lang">expressions — Flow B key references</span><pre><code>// Trigger inputs (parameters declared on "Manually trigger a flow"):
+triggerBody()['ManagerEmail']
+triggerBody()['RequesterName']
+triggerBody()['Subject']
+triggerBody()['RequestId']
+triggerBody()['RequesterEmail']
+
+// Approval outcome — exact string "Approve" or "Reject":
+outputs('Start_and_wait_for_an_approval')?['body/outcome']
+
+// Approver's display name (first responder):
+outputs('Start_and_wait_for_an_approval')?['body/responses'][0]['responder']['displayName']
+
+// Approver's comments / rejection reason:
+outputs('Start_and_wait_for_an_approval')?['body/responses'][0]['comments']
+
+// Build approval title with concat (never use + for strings in expressions):
+concat('Access Request: ', triggerBody()['Subject'], ' from ', triggerBody()['RequesterName'])
+
+// OData bind — pass lookup relationship in Update row:
+// Field name in action: toh_request@odata.bind
+// Value:
+concat('/toh_requests(', triggerBody()['RequestId'], ')')</code></pre><button class="copy" type="button">copy</button></div>
 
 <p><strong>Child Flow C — TechOps - Create Audit Log (Child)</strong></p>
-<p>Trigger: Manually trigger — inputs: RequestId, Action, PerformedBy</p>
-<ol>
-<li>Create a new row → Audit Log table: toh_action = Action, toh_request = RequestId (lookup), toh_performedby = PerformedBy, toh_timestamp = <code>utcNow()</code></li>
-<li>Respond → <code>{"result":"logged"}</code></li>
-</ol>
+<p>Trigger: <strong>Manually trigger a flow</strong> — define 3 text inputs: <code>RequestId</code>, <code>Action</code>, <code>PerformedBy</code>.</p>
+<table>
+<thead><tr><th>#</th><th>Connector → Action (exact UI name)</th><th>Key fields / expressions</th></tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Microsoft Dataverse → Create a new row</strong></td>
+<td>Table name: <code>toh_auditlogs</code><br>toh_action: <code>triggerBody()['Action']</code><br>toh_performedby: <code>triggerBody()['PerformedBy']</code><br>toh_timestamp: <code>utcNow()</code><br>toh_request (lookup OData bind, field name = <code>toh_request@odata.bind</code>): <code>concat('/toh_requests(', triggerBody()['RequestId'], ')')</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Power Apps (V2) → Respond to a PowerApp or flow</strong></td>
+<td>Add text output → Name: <code>result</code>, Value: <code>logged</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codeblock"><span class="lang">expressions — Flow C + OData bind pattern (critical for interviews)</span><pre><code>// utcNow — correct ISO 8601 timestamp for Dataverse Date/Time column:
+utcNow()
+utcNow('yyyy-MM-ddTHH:mm:ssZ')
 
+// OData bind — REQUIRED pattern for setting any Lookup column in Create/Update row.
+// The field name in the designer must end with @odata.bind (NOT just the column name).
+// The value must be: /tableplural(GUID)
+// Example — setting toh_request lookup in Audit Log:
+concat('/toh_requests(', triggerBody()['RequestId'], ')')
+
+// If you pass just the GUID without the bind format, you get:
+// "Invalid type. Expected Edm.Guid but got Edm.String" — a common interview gotcha.
+
+// Trigger inputs (child flow declared parameters):
+triggerBody()['RequestId']
+triggerBody()['Action']
+triggerBody()['PerformedBy']</code></pre><button class="copy" type="button">copy</button></div>
+
+<p><strong>Parent / Child flows — what interviewers probe</strong></p>
+<div class="callout" style="background:#0a1a10;border-left:3px solid #3FD18B;padding:.8rem 1rem;margin:.75rem 0;font-size:.85rem">
+<p style="margin:.3rem 0"><strong>Q: How does a parent flow call a child flow?</strong><br>
+A: Parent uses connector <strong>Flows → action "Run a child flow"</strong>. Child uses trigger <strong>"Manually trigger a flow"</strong> with defined typed inputs. Both flows must be in the <em>same Dataverse solution</em> (solution-aware). Child returns data to parent via the <strong>"Respond to a PowerApp or flow"</strong> action at the end.</p>
+<p style="margin:.3rem 0"><strong>Q: Can a child flow call another child flow?</strong><br>
+A: Yes — up to 5 levels of nesting. Each must be a separate solution-aware cloud flow.</p>
+<p style="margin:.3rem 0"><strong>Q: "Start and wait for an approval" vs "Create an approval" — when do you use each?</strong><br>
+A: <strong>Start and wait</strong> is BLOCKING — the flow execution pauses (up to 30 days) until a human responds; next steps use the outcome directly. <strong>Create an approval</strong> is non-blocking — flow moves immediately to the next step; you check the result later with "Wait for an approval". Use non-blocking when you want to send parallel approval requests to multiple people simultaneously, then aggregate responses.</p>
+<p style="margin:.3rem 0"><strong>Q: How do you set a Lookup column in a "Create a new row" or "Update a row" action?</strong><br>
+A: The field name must end with <code>@odata.bind</code> and the value must be <code>/tableplural(GUID)</code>. Example: field = <code>toh_request@odata.bind</code>, value = <code>concat('/toh_requests(', triggerBody()['RequestId'], ')')</code>. Passing just the GUID gives "Invalid argument — lookups require OData bind".</p>
+<p style="margin:.3rem 0"><strong>Q: Why can't a child flow access the parent's variables?</strong><br>
+A: They are separate flow run instances with isolated execution contexts. All data must be passed explicitly as declared inputs on the child's "Manually trigger a flow" trigger. If you forget to declare an input, the "Run a child flow" action won't show it as a field to populate.</p>
+</div>
 <p><strong>Wire up the Canvas App Submit button</strong></p>
 <div class="codeblock"><span class="lang">powerfx</span><pre><code>// NewRequestScreen → Submit button → OnSelect
 Patch(toh_requests, Defaults(toh_requests), {
@@ -410,12 +548,107 @@ Navigate(HomeScreen)</code></pre><button class="copy" type="button">copy</button
 </ol>
 
 <p><strong>SLA Breach Alert flow (add to solution — scheduled)</strong></p>
-<p>Trigger: Recurrence — every 1 day, start at 08:00 UTC+5:30 (IST)</p>
-<ol>
-<li>List rows → toh_request table — OData filter: <code>toh_status ne 'toh_status_completed' and toh_status ne 'toh_status_rejected' and toh_duedate lt @{formatDateTime(utcNow(),'yyyy-MM-dd')}</code></li>
-<li>Apply to each: Send email (toh_Outlook to toh_NotificationEmail env var): Subject = <code>concat('[OVERDUE] ', item()?['toh_subject'])</code>; Body includes requester name, priority, due date</li>
-</ol>
+<p>Trigger: <strong>Recurrence</strong> (built-in, no connector) — Interval: <code>1</code>, Frequency: <code>Day</code>, Start time: <code>2026-09-05T02:30:00Z</code> (= 08:00 IST). Time zone: <code>India Standard Time</code>.</p>
+<table>
+<thead><tr><th>#</th><th>Connector → Action (exact UI name)</th><th>Key fields / expressions</th></tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Microsoft Dataverse → List rows</strong><br><em>(rename: List_overdue)</em></td>
+<td>Table name: <code>toh_requests</code><br>Filter rows (OData):<br><code>toh_status ne 'toh_status_completed' and toh_status ne 'toh_status_rejected' and toh_duedate lt @{formatDateTime(utcNow(),'yyyy-MM-dd')}</code><br>Select columns: <code>toh_requestid,toh_subject,toh_duedate,toh_priority</code><br>Order by: <code>toh_duedate asc</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Microsoft Dataverse → List rows</strong><br><em>(rename: Get_notify_email — reads env var value from Dataverse)</em></td>
+<td>Table name: <code>environmentvariabledefinitions</code><br>Filter rows: <code>schemaname eq 'toh_NotificationEmail'</code><br>Expand query: <code>environmentvariablevalues($select=value)</code><br>→ Read the value as: <code>first(outputs('Get_notify_email')?['body/value'])?['environmentvariablevalues'][0]['value']</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Control → Condition</strong></td>
+<td>Left: <code>length(outputs('List_overdue')?['body/value'])</code><br>Operator: <code>is greater than</code><br>Right: <code>0</code><br>(Guard — skip email if no overdue records)</td>
+</tr>
+<tr>
+<td>3a — YES branch</td>
+<td><strong>Control → Apply to each</strong></td>
+<td>Select output: <code>outputs('List_overdue')?['body/value']</code></td>
+</tr>
+<tr>
+<td>(inside loop)</td>
+<td><strong>Office 365 Outlook → Send an email (V2)</strong><br><em>via toh_Outlook connection reference</em></td>
+<td>To: <code>first(outputs('Get_notify_email')?['body/value'])?['environmentvariablevalues'][0]['value']</code><br>Subject: <code>concat('[OVERDUE] ', items('Apply_to_each')?['toh_subject'])</code><br>Body (HTML): <code>&lt;b&gt;Overdue:&lt;/b&gt; @{items('Apply_to_each')?['toh_subject']}&lt;br&gt;Due: @{formatDateTime(items('Apply_to_each')?['toh_duedate'],'dd MMM yyyy')}&lt;br&gt;Priority: @{items('Apply_to_each')?['toh_priority@OData.Community.Display.V1.FormattedValue']}&lt;br&gt;ID: @{items('Apply_to_each')?['toh_requestid']}</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codeblock"><span class="lang">expressions — SLA Breach Alert</span><pre><code>// OData filter for overdue open requests (dynamic date injected with @{}):
+toh_status ne 'toh_status_completed'
+  and toh_status ne 'toh_status_rejected'
+  and toh_duedate lt @{formatDateTime(utcNow(),'yyyy-MM-dd')}
 
+// Guard before looping — avoid Apply to each on empty array:
+length(outputs('List_overdue')?['body/value'])   // compare > 0
+
+// Inside Apply to each — reference current loop item:
+items('Apply_to_each')?['toh_subject']
+items('Apply_to_each')?['toh_requestid']
+items('Apply_to_each')?['toh_priority@OData.Community.Display.V1.FormattedValue']
+
+// Format date for display in email body:
+formatDateTime(items('Apply_to_each')?['toh_duedate'], 'dd MMM yyyy')
+
+// Read environment variable value from Dataverse (first result's nested collection):
+first(outputs('Get_notify_email')?['body/value'])?['environmentvariablevalues'][0]['value']</code></pre><button class="copy" type="button">copy</button></div>
+
+<div class="callout" style="background:#0d1525;border-left:3px solid #4DA3FF;padding:.8rem 1rem;margin:1.25rem 0">
+<p style="margin:0 0 .5rem"><strong>Power Automate Expression Cheat Sheet — know these cold</strong></p>
+<div class="codeblock" style="margin:.5rem 0"><span class="lang">expressions</span><pre><code>// ─── TIME ────────────────────────────────────────────────────────────
+utcNow()                                               // ISO 8601 UTC timestamp
+utcNow('yyyy-MM-ddTHH:mm:ssZ')                         // explicit format
+formatDateTime(utcNow(), 'yyyy-MM-dd')                 // date-only (use in OData filters)
+formatDateTime(utcNow(), 'dd MMM yyyy HH:mm')          // human-readable display
+convertTimeZone(utcNow(),'UTC','India Standard Time','dd MMM yyyy HH:mm')  // IST
+addDays(utcNow(), -1)                                  // yesterday
+addHours(utcNow(), int(variables('SLAHours')))         // add SLA hours from variable
+
+// ─── STRINGS ─────────────────────────────────────────────────────────
+// Always use concat() — never + for strings (+ only works on numbers)
+concat('Prefix: ', triggerBody()['Subject'], ' — ID: ', triggerBody()['RequestId'])
+string(outputs('Get_request')?['body/toh_estimatedcost'])  // number → string
+int('48')                                              // string → integer
+toUpper('hello')                                       // HELLO
+toLower('HELLO')                                       // hello
+trim(' hello ')                                        // 'hello'
+
+// ─── ARRAYS / DATAVERSE RESULTS ──────────────────────────────────────
+first(body('List_rows')?['value'])                     // first record
+length(body('List_rows')?['value'])                    // row count (check before looping)
+empty(body('List_rows')?['value'])                     // true if no results
+items('Apply_to_each')?['toh_subject']                // field in current loop item
+items('Apply_to_each')?['toh_type@OData.Community.Display.V1.FormattedValue']  // choice label
+
+// ─── ACTION OUTPUTS ──────────────────────────────────────────────────
+outputs('ActionName')?['body/columnname']              // single record field (Get row by ID)
+outputs('ActionName')?['body/value']                   // collection from List rows
+triggerBody()?['fieldname']                            // trigger input
+
+// ─── NULL SAFETY ─────────────────────────────────────────────────────
+coalesce(outputs('Get')?['body/toh_notes'], 'No notes')   // fallback if null
+if(empty(body('List_rows')?['value']), 'None', first(body('List_rows')?['value'])?['name'])
+
+// ─── LOOKUP COLUMNS (REQUIRED pattern — interview gotcha) ────────────
+// Field name in the action designer: columnname@odata.bind
+// Field value:                       /tableplural(GUID)
+concat('/toh_requests(', triggerBody()['RequestId'], ')')
+
+// ─── APPROVAL OUTPUTS ─────────────────────────────────────────────────
+outputs('Start_and_wait_for_an_approval')?['body/outcome']                       // "Approve" or "Reject"
+outputs('Start_and_wait_for_an_approval')?['body/responses'][0]['comments']      // rejection notes
+outputs('Start_and_wait_for_an_approval')?['body/responses'][0]['responder']['displayName']  // approver name
+
+// ─── MISC ─────────────────────────────────────────────────────────────
+json(outputs('Compose'))                               // parse string → object
+base64(body('Get_file_content'))                       // encode file for attachment
+if(equals(variables('x'), 'y'), 'true-val', 'false-val')  // inline ternary</code></pre><button class="copy" type="button">copy</button></div>
+</div>
 <p><strong>PAC CLI export and deploy (real commands against your environments)</strong></p>
 <div class="codeblock"><span class="lang">powershell</span><pre><code>pac auth select --name DEV
 
