@@ -1,0 +1,660 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 09 — Glossary &amp; Abbreviations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+:root{--acc:#B47FFF;--tint:#1A1231;--h:290}
+.gl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:1.1rem;margin:1.25rem 0 2.5rem}
+.gl-card{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.35rem;transition:border-color .15s}
+.gl-card:hover{border-color:hsl(290 50% 45%)}
+.gl-card h5{font-family:var(--disp);font-weight:700;font-size:.95rem;color:var(--acc);margin:0 0 .45rem;letter-spacing:-.01em}
+.gl-card .def{margin:.3rem 0;font-size:.875rem;line-height:1.65;color:var(--tx)}
+.gl-card .eg{font-size:.8rem;color:var(--tx3);border-top:1px solid var(--line);margin-top:.7rem;padding-top:.6rem;line-height:1.55}
+.gl-card .prj{font-size:.8rem;color:hsl(290 55% 75%);font-style:italic;margin-top:.3rem;line-height:1.55}
+.gl-card .tag{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;border-radius:3px;background:hsl(290 40% 20%);color:hsl(290 70% 75%);margin-bottom:.5rem}
+.abbr-table{width:100%;border-collapse:collapse;margin:1rem 0 2rem}
+.abbr-table th{background:var(--panel2);color:var(--acc);font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1rem;text-align:left;border-bottom:2px solid var(--line)}
+.abbr-table td{padding:.45rem 1rem;border-bottom:1px solid var(--line);font-size:.85rem;vertical-align:top}
+.abbr-table td:first-child{font-family:var(--mono);color:var(--acc);font-weight:600;white-space:nowrap;width:9rem}
+.abbr-table td:nth-child(2){color:var(--tx);white-space:nowrap;width:14rem}
+.abbr-table td:nth-child(3){color:var(--tx2)}
+.abbr-table tr:hover td{background:rgba(255,255,255,.03)}
+.cat-intro{color:var(--tx2);font-size:.92rem;margin:0 0 .9rem;max-width:74ch}
+</style>
+</head><body data-page="glossary">
+<button id="burger" aria-label="Menu">&#9776;</button>
+<aside id="rail">
+ <div class="brand"><a href="index.html">
+   <div class="who">Shubham Singh</div>
+   <div class="role">Interview Dossier &middot; Aug 2026</div></a>
+   <div class="pmeter"><div class="bar"><div class="fill"></div></div>
+     <div class="lab"><span>ON THIS PAGE</span><span id="pct">0%</span></div></div>
+ </div>
+ <nav id="nav">
+   <a class="np" href="index.html" style="--h:210"><span class="n">&#9679;</span>Overview</a>
+   <a class="np" href="tenant-setup.html" style="--h:8"><span class="n">00</span>Tenant Setup</a><a class="np" href="profile.html" style="--h:45"><span class="n">01</span>Profile &amp; Evidence</a><a class="np" href="mcp-server.html" style="--h:160"><span class="n">02</span>MCP Server Deep Dive</a><a class="np" href="stories.html" style="--h:190"><span class="n">03</span>Domain &amp; STAR Stories</a><a class="np" href="seven-day-plan.html" style="--h:210"><span class="n">04</span>The 7-Day Plan</a><a class="np" href="question-bank.html" style="--h:265"><span class="n">05</span>Question Bank</a><a class="np" href="resume-cert-pay.html" style="--h:320"><span class="n">06</span>Resume &middot; PL-600 &middot; Pay</a><a class="np" href="labs.html" style="--h:140"><span class="n">07</span>Lab Setup &amp; Costs</a><a class="np" href="logistics.html" style="--h:25"><span class="n">08</span>Research &amp; Logistics</a><a class="np on" href="glossary.html" style="--h:290"><span class="n">09</span>Glossary</a><ul class="subs"><li><a href="#platform">Power Platform Suite</a></li><li><a href="#environments">Environments &amp; Tenants</a></li><li><a href="#alm">ALM &amp; Deployment</a></li><li><a href="#dataverse">Dataverse</a></li><li><a href="#canvas">Canvas Apps &amp; Power Fx</a></li><li><a href="#automate">Power Automate &amp; Flows</a></li><li><a href="#connectors">Connectors &amp; Connections</a></li><li><a href="#security">Security &amp; Governance</a></li><li><a href="#mcp">MCP &amp; AI Integration</a></li><li><a href="#abbreviations">Abbreviations A–Z</a></li></ul>
+ </nav>
+ <div class="rfoot"><button id="sbtn">SEARCH /</button>
+   <button id="resetc">RESET <span id="ccount"></span></button></div>
+</aside>
+<main><header class="phead"><div class="wrap">
+ <div class="crumb"><span class="dot"></span><a href="index.html">Dossier</a>
+   <span>/</span><span>Reference</span></div>
+ <span class="pnum">PART 09</span>
+ <h1>Glossary &amp; Abbreviations</h1><p class="bl">Every term from Power Platform, Dataverse, ALM, DLP, Flows, MCP, and AI integration — plain English with a general example and a real project example for each.</p>
+ <div class="strip" style="--sh:290"><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="cur"></i></div>
+</div></header>
+<div class="wrap"><div class="body">
+
+<!-- ═══════════════════════════════════════ PLATFORM SUITE ═══════════ -->
+<h3 id="platform" class="h2">Power Platform — The Suite<a class="anchor" href="#platform" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">Microsoft's low-code / no-code ecosystem. Five pillars sharing one identity layer (Azure AD), one data layer (Dataverse), and one admin center (PPAC).</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Suite</span>
+<h5>Power Platform</h5>
+<p class="def">Five tools — Power Apps, Power Automate, Power BI, Power Pages, Copilot Studio — that share Dataverse as a common data layer, Azure AD for identity, and PPAC for admin governance. You can build an app, automate a workflow, and visualize data without leaving Microsoft's cloud.</p>
+<p class="eg">📌 General: A team builds a leave-request form (Power Apps), auto-emails the manager (Power Automate), and tracks approvals in a dashboard (Power BI) — all connected to the same Dataverse table.</p>
+<p class="prj">🔧 Project: The T-Mobile MCP server exposes all three layers — Apps, Automate, and Dataverse — via 111 tools, letting Claude Code read and manage the entire platform over SSO.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">App building</span>
+<h5>Power Apps</h5>
+<p class="def">The app-building pillar. Two models: Canvas App (you design every pixel; uses Power Fx) and Model-Driven App (UI auto-generated from Dataverse schema; best for structured data portals).</p>
+<p class="eg">📌 General: A field-service app where technicians fill in inspection forms on a tablet with a custom logo and color scheme.</p>
+<p class="prj">🔧 Project: MCP tools <code>list_apps</code>, <code>get_app</code> enumerate all Power Apps in an environment so Claude can report which apps exist without opening the maker portal.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Automation</span>
+<h5>Power Automate</h5>
+<p class="def">The workflow automation pillar. Builds "when… do…" recipes called flows. Formerly Microsoft Flow. Three types: Cloud Flow (server-side, event or schedule), Desktop Flow (RPA, controls desktop UIs), Business Process Flow (guided multi-step process for users).</p>
+<p class="eg">📌 General: When a SharePoint form is submitted, send an approval email, wait for response, then update a Dataverse row.</p>
+<p class="prj">🔧 Project: MCP tools <code>list_flows</code>, <code>run_flow</code>, <code>get_flow_run_history</code> let Claude trigger and inspect flows without using the maker portal UI.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Analytics</span>
+<h5>Power BI</h5>
+<p class="def">Business intelligence and data visualization. Connects to data sources, transforms data with Power Query (M language), builds a semantic model with DAX measures, and publishes interactive reports. Supports Row-Level Security (RLS) using <code>USERPRINCIPALNAME()</code>.</p>
+<p class="eg">📌 General: A monthly sales dashboard with slicers by region and a bar chart of revenue by product category.</p>
+<p class="prj">🔧 Project: A library usage report showing top borrowed books and overdue rates — RLS ensures each member sees only their own loan history via <code>USERPRINCIPALNAME()</code> DAX filter.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">AI Agents</span>
+<h5>Copilot Studio</h5>
+<p class="def">No-code canvas for building AI chatbots and copilots. Formerly Power Virtual Agents. Can call flows, query Dataverse, invoke Azure OpenAI, and integrate with Teams. Topics define conversation paths; knowledge sources feed the AI for generative answers.</p>
+<p class="eg">📌 General: An HR chatbot that answers leave-policy questions from a SharePoint document and escalates to a human agent when stuck.</p>
+<p class="prj">🔧 Project: The JD cites Copilot Studio. Your stronger answer: the MCP server IS the tool layer that Copilot Studio agents run on — you built the plumbing, not just the surface.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Web portals</span>
+<h5>Power Pages</h5>
+<p class="def">Build external-facing websites connected to Dataverse. Supports anonymous and authenticated access, configurable security, and Liquid templating. Replaces the old "Power Apps Portals" branding.</p>
+<p class="eg">📌 General: A partner portal where external vendors submit support tickets that land directly in a Dataverse table without needing a Microsoft account.</p>
+</div>
+
+</div><!-- /gl-grid -->
+
+<!-- ═══════════════════════════════════════ ENVIRONMENTS ════════════ -->
+<h3 id="environments" class="h2">Environments &amp; Tenants<a class="anchor" href="#environments" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">The isolation boundary between DEV, UAT, and PRD — and between different organizations sharing Microsoft's cloud.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Identity</span>
+<h5>Tenant</h5>
+<p class="def">An organization's dedicated, isolated space in Microsoft's cloud, identified by a domain (e.g. <code>contoso.onmicrosoft.com</code>). One Microsoft 365 contract = one tenant. All users, licenses, and environments for that org live inside it. Users in different tenants cannot see each other's environments by default.</p>
+<p class="eg">📌 General: Accenture is one tenant; T-Mobile is a separate tenant — employees cannot see each other's Dataverse environments.</p>
+<p class="prj">🔧 Project: Your E5 trial tenant is <code>shubhamrk2.onmicrosoft.com</code>. The MCP server authenticates against this tenant via browser SSO — the bearer token is tenant-scoped.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Container</span>
+<h5>Environment</h5>
+<p class="def">An isolated container inside a tenant that holds apps, flows, Dataverse tables, and connections. Types: <strong>Default</strong> (everyone can access — avoid for production), <strong>Developer</strong> (personal, free, for building), <strong>Sandbox</strong> (resettable, for testing), <strong>Production</strong> (live users). URL pattern: <code>orgname.crm8.dynamics.com</code>.</p>
+<p class="eg">📌 General: DEV environment for building, UAT for testing, PRD for 500 live users — each a separate container so a DEV mistake can never affect PRD.</p>
+<p class="prj">🔧 Project: PP-DEV (<code>ppdev258.crm8.dynamics.com</code>), PP-UAT, PP-PRD — three Developer environments, the maximum per user on the Developer Plan. MCP tool <code>list_environments</code> enumerates all of them.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Admin</span>
+<h5>Admin Center (PPAC)</h5>
+<p class="def">Power Platform Admin Center at <code>admin.powerplatform.microsoft.com</code>. Where Global Admins and Power Platform Admins manage: environments, DLP policies, user licenses, Dataverse capacity, analytics, and audit logs. The GUI equivalent of <code>Get-AdminPowerAppEnvironment</code> in PowerShell.</p>
+<p class="eg">📌 General: An admin creates a new Sandbox environment, assigns 3 users as Environment Admins, and applies a DLP policy — all from PPAC.</p>
+<p class="prj">🔧 Project: Day 1 of the 7-day plan — verify DLP authoring is available at PPAC → Policies → Data policies. <code>Get-DlpPolicy</code> returned <code>{}</code> confirming no tenant-level policies block you.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Build URL</span>
+<h5>Maker Portal</h5>
+<p class="def"><code>make.powerapps.com</code> — where makers build canvas apps, model-driven apps, flows, and solutions. Always check the environment picker (top-right) before building — the wrong environment is the #1 cause of "missing" components.</p>
+<p class="eg">📌 General: Switch environment dropdown from "Default" to "PP-DEV" before creating a new table, otherwise the table lands in the wrong environment.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ ALM ═══════════════════ -->
+<h3 id="alm" class="h2">ALM &amp; Deployment<a class="anchor" href="#alm" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">Moving apps from DEV to UAT to PRD in a controlled, repeatable, auditable way.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Process</span>
+<h5>ALM — Application Lifecycle Management</h5>
+<p class="def">The discipline of moving apps through controlled stages: DEV (build) → UAT (test) → PRD (live users). Prevents "cowboy fixes" directly in production. In Power Platform, ALM is implemented via Solutions (export/import) or Power Platform Pipelines (one-click automated). Pairs with source control via PAC CLI.</p>
+<p class="eg">📌 General: A team builds a flow in DEV, tests it with UAT users for two weeks, then deploys the managed solution to PRD — changes are traceable and reversible.</p>
+<p class="prj">🔧 Project: Day 3 of the 7-day plan is ALM + PAC CLI. You'll demo <code>pac solution export --managed</code> then import into TEST environment — a live walkthrough of the full pipeline.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Container</span>
+<h5>Solution</h5>
+<p class="def">A zip-like deployment container that packages Power Platform components — apps, flows, tables, security roles, environment variables, connection references — for moving between environments. Every customization that needs to be promoted to UAT/PRD must be inside a solution.</p>
+<p class="eg">📌 General: "HR Onboarding Solution v2.3" contains 2 canvas apps, 4 flows, 6 tables, 1 model-driven app, 3 environment variables.</p>
+<p class="prj">🔧 Project: MCP tool <code>list_solutions</code> returns all solutions in the current environment; <code>export_solution</code> triggers an async export job and downloads the zip.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Deployment</span>
+<h5>Managed Solution</h5>
+<p class="def">A solution exported in locked/read-only mode. Once imported to UAT or PRD, nobody — not even the creator — can edit apps or flows directly in that environment. All changes must go through DEV → export → re-import. Enforces ALM discipline and protects live environments.</p>
+<p class="eg">📌 General: You import a managed payroll app to production — the CFO can run it but nobody can accidentally modify the approval logic at 5pm on a Friday.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Dev only</span>
+<h5>Unmanaged Solution</h5>
+<p class="def">The editable version of a solution, kept in the DEV environment. All components are fully customizable. When you export, you choose: Managed (for UAT/PRD) or Unmanaged (for backup or to share with another developer). The DEV environment always holds the unmanaged solution — it's the source of truth.</p>
+<p class="eg">📌 General: A developer opens the unmanaged solution in DEV, edits a flow, then exports it as Managed and imports to UAT — the UAT version is locked, the DEV version remains editable.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Namespace</span>
+<h5>Publisher</h5>
+<p class="def">An identifier for the creator of a solution, prepended as a prefix to all custom table and column schema names. Prevents naming collisions when multiple solutions coexist in the same environment. Format: <code>prefix_columnname</code>. Default Dataverse publisher uses prefix <code>cr</code>.</p>
+<p class="eg">📌 General: Publisher "Contoso HR" with prefix <code>chr</code> → all custom columns are <code>chr_employee_id</code>, <code>chr_department</code> — distinguishable from other solutions' columns.</p>
+<p class="prj">🔧 Project: When querying Dataverse via OData in the MCP server, custom table/column names always include the publisher prefix. Knowing this avoids the common mistake of using display names instead of schema names in filter queries.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Config per env</span>
+<h5>Environment Variable</h5>
+<p class="def">A named value stored in a solution that holds different values per environment without changing any code. Types: String, Number, Boolean, JSON, Data Source. Flows and apps read the variable by name — you set the value during solution import into each environment. Essential for clean ALM.</p>
+<p class="eg">📌 General: <code>ApiEndpoint</code> = <code>https://dev-api.company.com</code> in DEV; <code>https://api.company.com</code> in PRD. The same flow works in both environments; only the variable value differs.</p>
+<p class="prj">🔧 Project: A library system uses <code>LoanPeriodDays</code> = 14 in DEV (generous for testing) and 7 in PRD. The canvas app reads this via <code>LookUp()</code> instead of hard-coding 14 — no code change needed when promoting.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">ALM</span>
+<h5>Connection Reference</h5>
+<p class="def">A solution-level named pointer to a connection (an authenticated connector instance). Instead of hard-coding "which Outlook account sends emails," the solution stores a connection reference. When you deploy to UAT, an admin reconnects it with UAT credentials during the import wizard — zero code changes. The connection itself is NOT inside the solution; only the reference is.</p>
+<p class="eg">📌 General: "NotifyViaOutlook" connection reference → <code>dev@company.com</code> in DEV, <code>prod-notify@company.com</code> in PRD — same solution, different connections.</p>
+<p class="prj">🔧 Project: Any solution with Outlook or Dataverse flows needs connection references — demonstrating this during the interview is a strong signal you understand real ALM, not just theory.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Automation</span>
+<h5>Pipeline (Power Platform Pipelines)</h5>
+<p class="def">A free, built-in tool that automates DEV→UAT→PRD deployment with a single "Deploy" button. Replaces the manual export→download→upload cycle. Configured in the admin center. On deployment, prompts to reconnect connection references and set environment variable values per target environment.</p>
+<p class="eg">📌 General: Set up a pipeline with DEV as source, UAT as first stage, PRD as second stage. A maker clicks "Deploy to UAT" and the pipeline handles export + import + validation.</p>
+<p class="prj">🔧 Project: Day 3 of the 7-day plan — demo Pipelines as the "one-click ALM" story for the interview, contrasted with the PAC CLI approach for advanced scenarios.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">CLI</span>
+<h5>PAC CLI</h5>
+<p class="def">Power Apps CLI (<code>pac</code> command) — a cross-platform command-line tool for Power Platform. Installed via .NET SDK. Key commands: <code>pac auth create</code>, <code>pac env list</code>, <code>pac solution export --managed</code>, <code>pac solution import</code>, <code>pac canvas pack/unpack</code> (for source control). The scriptable alternative to the maker portal UI.</p>
+<p class="eg">📌 General: <code>pac solution export --path ./myapp.zip --managed</code> exports a managed solution to a local zip, ready to commit to Git or import elsewhere.</p>
+<p class="prj">🔧 Project: Day 3 of the 7-day plan. <code>pac auth create --url https://ppdev258.crm8.dynamics.com</code> authenticates against PP-DEV; <code>pac solution list</code> shows all solutions in that environment.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ DATAVERSE ═══════════════ -->
+<h3 id="dataverse" class="h2">Dataverse<a class="anchor" href="#dataverse" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">Microsoft's managed cloud-relational database built for Power Platform. Formerly Common Data Service (CDS). The backbone of all serious Power Platform solutions.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Database</span>
+<h5>Dataverse</h5>
+<p class="def">Microsoft's managed, cloud-hosted relational database built specifically for Power Platform. Provides built-in security roles, row-level security, audit logging, field-level security, business rules, relationships, and a REST API (OData). URL hint: <code>crm8</code> in your environment URL = CRM/Dataverse backend, region 8 = India/APAC. Formerly Common Data Service (CDS).</p>
+<p class="eg">📌 General: Store customer records in Dataverse instead of Excel — it scales to millions of rows, has built-in role-based access control, and connects natively to Power Apps and Automate.</p>
+<p class="prj">🔧 Project: The MCP server's Dataverse tools call the OData API (<code>/api/data/v9.2/</code>) with SSO bearer tokens. <code>list_tables</code> → GET /EntityDefinitions. <code>get_rows</code> → GET /tablename?$filter=... <code>create_row</code> → POST /tablename (write-mode only).</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Schema</span>
+<h5>Table</h5>
+<p class="def">Dataverse equivalent of a database table (formerly "Entity"). Contains columns (fields) and rows (records). Has a Display Name (human-readable, e.g. "Loan") and a Schema Name (code name with publisher prefix, e.g. <code>cl_loan</code>). System tables like Account and Contact come pre-built; custom tables are prefixed.</p>
+<p class="eg">📌 General: An <code>Order</code> table holds OrderDate, CustomerName, TotalAmount — one row per order placed.</p>
+<p class="prj">🔧 Project: MCP <code>list_tables</code> returns both system and custom tables. In the library system, <code>cl_book</code>, <code>cl_member</code>, <code>cl_loan</code> are custom tables with the <code>cl</code> publisher prefix.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Schema</span>
+<h5>Column (Field)</h5>
+<p class="def">A field/attribute in a Dataverse table (formerly "Attribute"). Has a data type: Text, Number, Date/Time, Choice, Lookup, Boolean (Yes/No), Currency, Image, File, Multiline Text, Calculated, Rollup. Choice and Lookup are the two most important to understand for relationships and validation.</p>
+<p class="eg">📌 General: An <code>Email</code> column — data type: Email (validates format), required, max 200 chars.</p>
+<p class="prj">🔧 Project: MCP <code>get_table_metadata</code> returns column definitions including schema names — critical because OData filters must use schema names, not display names.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Data</span>
+<h5>Row (Record)</h5>
+<p class="def">One record in a Dataverse table. Has a unique GUID as its primary key (the <code>tablename + id</code> column, e.g. <code>cl_loanid</code>). All operations on a specific record require its GUID. Rows have an owner (a user or team) which drives row-level security.</p>
+<p class="eg">📌 General: One customer record in the Customers table — GUID: <code>3f4a5b6c-1234-5678-abcd-ef9012345678</code>.</p>
+<p class="prj">🔧 Project: MCP <code>get_row(table, row_id)</code> fetches one specific Dataverse row by its GUID. <code>update_row</code> and <code>delete_row</code> also require the GUID — you cannot update by name, only by ID.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Identity</span>
+<h5>GUID</h5>
+<p class="def">Globally Unique Identifier — a 36-character alphanumeric string that uniquely identifies every row in Dataverse and most Microsoft systems. Format: <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>. Generated automatically. Cannot be changed after row creation. The <code>?$select=columnname&amp;$filter=id eq guid'...'</code> pattern in OData always uses GUIDs.</p>
+<p class="eg">📌 General: Every Dataverse row, every Azure resource, every M365 user has a GUID. When you see a long hex string in a URL or API response, that's a GUID.</p>
+<p class="prj">🔧 Project: MCP <code>run_flow</code> takes the flow's GUID, not its display name. <code>_resolve_args</code> in the server translates human-readable names ("Daily Overdue Reminder") to GUIDs before calling the API — that name-resolution logic was a key design decision.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Schema</span>
+<h5>Relationship (1:N / N:N)</h5>
+<p class="def">A link between two Dataverse tables that maintains referential integrity. Most common: One-to-Many (1:N) — created by adding a Lookup column on the "many" side. Many-to-Many (N:N) — uses an intersection table. Relationships enable navigation in OData: <code>$expand=cl_book($select=cl_title)</code> fetches the related book's title in one query.</p>
+<p class="eg">📌 General: Customer (1) → Orders (N) — the Orders table has a CustomerID lookup column pointing to the Customers table.</p>
+<p class="prj">🔧 Project: The library system: Books 1:N Loans, Members 1:N Loans. In MCP OData queries, <code>$expand</code> avoids N+1 queries — fetch all loans and their book titles in one API call instead of one call per loan.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Column type</span>
+<h5>Lookup Column</h5>
+<p class="def">A column that stores the GUID of a row in another table, creating a relationship. Rendered as a dropdown showing the primary name column of the target table. In OData responses, lookups appear as <code>_fieldname_value</code> (the GUID) and <code>_fieldname_value@OData.Community.Display.V1.FormattedValue</code> (the display name).</p>
+<p class="eg">📌 General: <code>ManagerID</code> lookup on an Employee table → points to another Employee row (the manager). Power Apps renders this as a searchable dropdown of all employees.</p>
+<p class="prj">🔧 Project: MCP OData filter on Loans: <code>_cl_member_value eq guid'...'</code> — the lookup column is referenced with the <code>_value</code> suffix in OData, not the column's display name.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Column type</span>
+<h5>Choice Column (Option Set)</h5>
+<p class="def">A column with a fixed set of selectable values (like a dropdown). Values are stored internally as integers, displayed as labels. Two types: Local (defined on this column only) and Global (shared across multiple columns/tables). Formerly called "Option Set." In OData, filter by integer value: <code>statuscode eq 1</code>.</p>
+<p class="eg">📌 General: <code>Priority</code> column: Low(1), Medium(2), High(3), Critical(4) — stored as 1-4 in the DB, shown as text labels in the UI.</p>
+<p class="prj">🔧 Project: <code>cr_membership_type</code> Choice column with values Premium, Standard, Senior, Student. OData filter: <code>cr_membership_type eq 879840000</code> (the integer code for "Premium").</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Query</span>
+<h5>OData Filter</h5>
+<p class="def">The query language for filtering Dataverse rows via REST API. Appended to the URL as <code>?$filter=expression</code>. Operators: <code>eq</code>, <code>ne</code>, <code>lt</code>, <code>gt</code>, <code>le</code>, <code>ge</code>, <code>and</code>, <code>or</code>. Functions: <code>contains()</code>, <code>startswith()</code>, <code>endswith()</code>. Also supports <code>$select</code> (columns), <code>$expand</code> (related tables), <code>$orderby</code>, <code>$top</code>.</p>
+<p class="eg">📌 General: <code>GET /cl_loans?$filter=cr_returned eq false and cr_due_date lt 2025-01-01&amp;$select=cr_loan_date,cr_due_date&amp;$expand=_cl_member_value($select=cr_email)</code></p>
+<p class="prj">🔧 Project: MCP <code>get_rows</code> takes an OData filter string as input. Users type natural language; the server (or Claude) translates it to OData. E.g. "all overdue loans" → <code>cr_returned eq false and cr_due_date lt @{utcNow()}</code>.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">No-code logic</span>
+<h5>Business Rule</h5>
+<p class="def">Logic applied directly on a Dataverse table or form — no code, no flow. Fires when a record opens or a field changes. Can: show/hide fields, set field values, validate, lock/unlock fields, display error messages. Runs on the server (always) and client (when supported). Cannot access related tables or run async operations.</p>
+<p class="eg">📌 General: If <code>Contract Type = Fixed Price</code>, make the <code>Budget</code> field required and lock the <code>Hourly Rate</code> field — no code, configured as a rule in the table designer.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ CANVAS & POWER FX ════════ -->
+<h3 id="canvas" class="h2">Canvas Apps &amp; Power Fx<a class="anchor" href="#canvas" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">The pixel-control app model and its Excel-like formula language. Different from Power Automate expressions — same platform, completely different syntax.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">App type</span>
+<h5>Canvas App</h5>
+<p class="def">An app where you design every pixel of the UI — drag controls onto screens, set properties with Power Fx formulas. Best for mobile apps, custom UX, or when the UI must match a specific design. Connects to Dataverse, SharePoint, SQL, REST APIs, or any connector. Runs in a browser or the Power Apps mobile app.</p>
+<p class="eg">📌 General: A field technician app with a custom logo, barcode scanner input, and a gallery showing nearby work orders — exact pixel placement, company colors, custom navigation.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">App type</span>
+<h5>Model-Driven App</h5>
+<p class="def">UI auto-generated from your Dataverse schema — you configure views, forms, and sitemap rather than designing pixels. Best for data-heavy admin portals and structured workflow apps. Includes built-in search, related records, business process flows, dashboards. Always requires Dataverse.</p>
+<p class="eg">📌 General: A customer service portal for agents — standard form layouts, sidebar navigation, drill-down into related cases — configuration-driven, no design time needed.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Power Fx</span>
+<h5>Power Fx</h5>
+<p class="def">The Excel-like formula language of canvas apps. Declarative: you describe WHAT the result should be, not HOW to compute it. No semicolons between arguments (uses commas). Dot notation for control properties: <code>GalleryName.Selected.cr_title</code>. Everything re-evaluates automatically when inputs change — like a spreadsheet cell.</p>
+<p class="eg">📌 General: <code>If(IsBlank(EmailInput.Text), "Required", EmailInput.Text)</code> — if the text box is empty, show "Required"; otherwise show the typed value.</p>
+<p class="prj">🔧 Key formulas: <code>Filter(table, condition)</code> · <code>Search(table, text, column)</code> · <code>LookUp(table, condition)</code> · <code>Patch(table, record, changes)</code> · <code>Remove(table, record)</code> · <code>Navigate(screen)</code> · <code>Notify(msg, type)</code> · <code>CountRows(table)</code> · <code>DateAdd(date, n, Days)</code> · <code>User().Email</code></p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Control</span>
+<h5>Gallery</h5>
+<p class="def">A canvas app control that repeats a template for every row in a data source — like a list view. The <code>Items</code> property is a Power Fx expression (usually <code>Filter()</code> or <code>Search()</code>). <code>Gallery.Selected</code> holds the currently tapped item. Supports vertical, horizontal, and flexible-height layouts.</p>
+<p class="eg">📌 General: A gallery connected to <code>Filter(SupportTickets, Status = "Open")</code> — shows one card per open ticket, updating live as tickets are closed.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Control</span>
+<h5>Form (EditForm / DisplayForm)</h5>
+<p class="def">Canvas app controls for viewing (<code>DisplayForm</code>) or editing (<code>EditForm</code>) one Dataverse row at a time. Key functions: <code>SubmitForm(BookForm)</code> saves changes; <code>NewForm(BookForm)</code> clears for a new record; <code>EditForm(BookForm)</code> switches to edit mode; <code>ResetForm(BookForm)</code> discards changes. <code>BookForm.Valid</code> is true only when all required fields are filled.</p>
+<p class="eg">📌 General: An <code>EditForm</code> connected to the Employees table lets an HR manager update salary and department — <code>SubmitForm</code> button saves to Dataverse instantly.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Security</span>
+<h5>Row-Level Security in Canvas Apps</h5>
+<p class="def">Filter gallery Items using <code>User().Email</code> — the currently signed-in user's UPN — so each person sees only their own rows. This is a client-side filter and should always be backed by Dataverse security role access levels (User scope) to enforce it server-side too.</p>
+<p class="eg">📌 General: <code>Filter(Loans, 'cr_member (Members)'.cr_email = User().Email &amp;&amp; cr_returned = false)</code> — each member sees only their own active loans, regardless of what's in the table.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ AUTOMATE ════════════════ -->
+<h3 id="automate" class="h2">Power Automate &amp; Flows<a class="anchor" href="#automate" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">The when/do automation engine. Cloud flows run server-side; expressions inside flows use Azure Logic Apps syntax — NOT Power Fx.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Workflow</span>
+<h5>Flow</h5>
+<p class="def">An automated workflow in Power Automate. Has exactly one trigger and one or more actions. Three types: <strong>Cloud Flow</strong> (runs in Microsoft's cloud — most common), <strong>Desktop Flow</strong> (RPA — controls desktop UIs via UI automation), <strong>Business Process Flow</strong> (guided multi-step process shown to users on a model-driven form).</p>
+<p class="eg">📌 General: "When a new row is added to the Leads table, send a welcome email and create a follow-up task" — a Cloud Flow with an automated trigger.</p>
+<p class="prj">🔧 Project: MCP tools <code>list_flows</code>, <code>get_flow</code>, <code>run_flow</code>, <code>get_flow_run_history</code> — you can trigger any instant flow and poll its run history entirely through the MCP server without touching the maker portal.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Trigger</span>
+<h5>Trigger Types</h5>
+<p class="def">What starts a flow. Every flow has exactly one. <strong>Automated</strong>: fires when an event happens (Dataverse row added/modified, email received, Teams message). <strong>Scheduled</strong>: fires at a set time (daily at 9 AM, every 15 minutes). <strong>Instant</strong>: fires when a human clicks a button (in a flow app, Teams, or Power Apps button). <strong>PowerApps</strong>: a special instant trigger called by a canvas app — enables passing parameters to the flow and receiving outputs back.</p>
+<p class="eg">📌 General: Scheduled trigger → "every day at 9 AM, check for overdue loans and email each member." Instant trigger → "Return Book" button in an app calls the flow with a loan ID.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Step</span>
+<h5>Action</h5>
+<p class="def">One step inside a flow that does something. Examples: Get a row (Dataverse), Send an email (Outlook), Post a message (Teams), HTTP (raw API call), Condition (if-else), Apply to each (loop), Scope (group/try-catch), Initialize variable, Set variable, Compose, Delay. Each action produces output (accessible via dynamic content or expressions in subsequent steps).</p>
+<p class="eg">📌 General: Action 1: "Get a row" from Dataverse (loan record). Action 2: "Send an email" to the member's email address retrieved from Action 1's output.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Logic</span>
+<h5>Condition &amp; Apply to Each</h5>
+<p class="def"><strong>Condition</strong>: if-else branch — evaluates a true/false expression, runs different actions on each branch. Can be nested. <strong>Apply to each</strong>: a loop — runs a sequence of actions for every item in an array (usually from a "List rows" Dataverse action). Equivalent to <code>forEach</code> in code. Heavy loops can hit flow run time limits (30 days max; 5000 actions per run default).</p>
+<p class="eg">📌 General: "List rows" returns 15 overdue loan records. "Apply to each" loops over them: Condition checks if days overdue &gt; 30 → Yes branch sends escalation email; No branch sends standard reminder.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Formula</span>
+<h5>Expression (Flow)</h5>
+<p class="def">Formula language used inside Power Automate action fields. Based on Azure Logic Apps expression language — different from Power Fx. Written in the expression tab of the dynamic content picker. Wrapped in <code>@{...}</code> when embedded in strings. Key functions: <code>utcNow()</code>, <code>addDays()</code>, <code>formatDateTime()</code>, <code>items('loop_name')?['column']</code>, <code>outputs('action_name')?['body/field']</code>, <code>if()</code>, <code>mul()</code>, <code>div()</code>, <code>ticks()</code>.</p>
+<p class="eg">📌 General: <code>addDays(triggerBody()?['cr_loan_date'], 14)</code> — calculates due date 14 days after loan date. <code>formatDateTime(utcNow(), 'dd MMM yyyy')</code> — today's date formatted for email body.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Reusable</span>
+<h5>Child Flow</h5>
+<p class="def">A flow designed to be called BY another flow (the parent). Must use "Manually trigger a flow" as its trigger with defined input parameters. Must be in the same solution as the parent. Executes its logic, then returns output values via "Respond to a PowerApp or flow" action. Cannot call itself (no recursion). Cannot be triggered directly by a user.</p>
+<p class="eg">📌 General: "Calculate Tax" child flow — receives Amount (number), applies tax logic, returns TaxAmount (number). Any sales flow that needs tax calls this one flow instead of duplicating the logic.</p>
+<p class="prj">🔧 Interview answer for "how do you create a parent flow calling a child flow?": (1) Build child with Manually trigger a flow trigger + input params. (2) End child with Respond to a PowerApp or flow + output params. (3) Both must be in the same solution. (4) In parent, add action "Run a child flow" (Flow connector), select child, map inputs, read outputs from dynamic content.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Caller</span>
+<h5>Parent Flow</h5>
+<p class="def">A flow that calls one or more child flows using the "Run a child flow" action (found under the Flow connector in Power Automate). Passes inputs to the child and reads the child's returned outputs via dynamic content. Key constraint: parent and child must be in the same solution and same environment. Parent can call multiple children sequentially or (with parallel branches) concurrently.</p>
+<p class="eg">📌 General: "Process Book Return (Parent)" → calls "Calculate Late Fee (Child)" → calls "Send Return Confirmation (Child)" → updates the loan row in Dataverse. The parent orchestrates; the children execute reusable logic.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Output</span>
+<h5>Respond to a PowerApp or flow</h5>
+<p class="def">The action that returns output values from a child flow (or from any flow triggered by PowerApps) back to the caller. Must be the last action in the flow. Without this action, the parent flow cannot read any result from the child — it just calls it and moves on blind. Each output is named and typed (Text, Number, Boolean, Object).</p>
+<p class="eg">📌 General: Child flow "Get Manager Name" ends with this action, returning <code>manager_name</code> (Text) and <code>manager_email</code> (Text). Parent reads both from dynamic content after the "Run a child flow" step.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Error handling</span>
+<h5>Scope</h5>
+<p class="def">A container action that groups other actions. Primary use: error handling (try/catch pattern). Set the "catch" scope's "Configure run after" to "has failed" — it runs only when the try scope fails. The catch scope can send an alert email, log to Dataverse, or retry. Without Scopes, a failing action stops the entire flow.</p>
+<p class="eg">📌 General: Scope "Try" → create row, send email. Scope "Catch" (runs if Try fails) → send alert to admin@company.com with the error message from <code>result('Try_scope')?[0]['error']['message']</code>.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Utility</span>
+<h5>Compose</h5>
+<p class="def">A simple action that calculates and stores a single value — like a named variable but for any expression. Useful when the same expression is needed in multiple later steps (avoids repeating the expression). Output accessed as <code>outputs('Compose_action_name')</code>.</p>
+<p class="eg">📌 General: Compose "TodayFormatted" = <code>formatDateTime(utcNow(), 'yyyy-MM-dd')</code>. Three later steps reference <code>outputs('TodayFormatted')</code> instead of repeating the expression — one change updates all three.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ CONNECTORS ══════════════ -->
+<h3 id="connectors" class="h2">Connectors &amp; Connections<a class="anchor" href="#connectors" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">The bridges between Power Platform and external services. Standard = free. Premium = requires per-user license or Developer Plan.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Bridge</span>
+<h5>Connector</h5>
+<p class="def">A pre-built API wrapper that connects Power Platform to an external service. Hides raw HTTP behind a friendly action/trigger interface. <strong>Standard</strong> (free with M365/Power Platform): SharePoint, Outlook, Teams, OneDrive, Excel Online, Office 365 Users, Approvals, Notifications, Microsoft Lists. <strong>Premium</strong> (requires Developer Plan or per-user license): Dataverse (direct), HTTP, SQL Server, SAP, Salesforce, Azure services, Custom connectors.</p>
+<p class="eg">📌 General: The SharePoint connector lets you "Get items from a list" without knowing the SharePoint REST API — authentication, URL construction, pagination all handled for you.</p>
+<p class="prj">🔧 Project: The MCP server is effectively the Python equivalent of a premium custom connector — it wraps Power Platform REST APIs with authentication, error handling, and a typed interface. But it runs outside Power Platform, so no DLP policy applies.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Auth</span>
+<h5>Connection</h5>
+<p class="def">One authenticated instance of a connector — the specific "who" behind a connector. Created when a maker signs in to a service while adding a connector action. Connections are per-user and per-environment. They are NOT stored in solutions (connection references are). A flow's connections are visible under Power Automate → My connections.</p>
+<p class="eg">📌 General: Outlook connector connected as admin@company.com = one connection. Same connector connected as notifications@company.com = a different connection. Two people running the same flow use their own connections for their own actions.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">ALM</span>
+<h5>Connection Reference</h5>
+<p class="def">A solution-level named pointer to a connection. Stored inside the solution; the actual connection it points to is set per-environment during deployment. When you import a solution to UAT, the wizard prompts you to link each connection reference to an existing connection in that environment — no flow code changes needed.</p>
+<p class="eg">📌 General: "OutlookNotifyRef" connection reference in the solution → linked to <code>dev@co.com</code> in DEV, <code>prod-alerts@co.com</code> in PRD. Same flow YAML, different senders per environment.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Premium</span>
+<h5>HTTP Connector</h5>
+<p class="def">Allows a flow to make raw REST API calls to any URL with custom headers, body, and auth (Basic, API Key, OAuth). The most flexible connector — if a service has an API, HTTP can reach it. Requires Premium license. Subject to DLP policies — admins can block it or restrict it to specific environments.</p>
+<p class="eg">📌 General: Call a weather API, pass city name as query param, get temperature JSON back — no dedicated weather connector needed.</p>
+<p class="prj">🔧 Project: The MCP server is the Python equivalent of the HTTP connector — it calls Power Platform REST APIs with bearer tokens. The advantage: it runs outside Power Platform entirely, so no connector license, no DLP restriction.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Custom</span>
+<h5>Custom Connector</h5>
+<p class="def">A user-defined connector built from an OpenAPI (Swagger) spec or built manually. Appears alongside built-in connectors in the maker portal. Can define authentication (API key, OAuth), actions (GET/POST/PATCH endpoints), and triggers (webhook-based). Requires Premium for use in production.</p>
+<p class="eg">📌 General: An internal HR API (<code>api.hr.company.com</code>) wrapped as a custom connector — makers can now add "Get Employee by ID" as a flow action without knowing the API URL or auth mechanism.</p>
+<p class="prj">🔧 Project: If you wanted to expose MCP server functionality back into Power Automate, a custom connector wrapping the server's HTTP API would be the approach. This would be an interesting interview talking point.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Push</span>
+<h5>Webhook</h5>
+<p class="def">An HTTP callback — your server registers a URL; when an event occurs, the event source POSTs data to that URL. Used in automated flow triggers where services push events rather than being polled. Power Automate manages webhook registration/deregistration automatically for supported connectors.</p>
+<p class="eg">📌 General: A payment gateway POSTs to your flow's webhook URL when a payment completes — your flow processes the result without polling the gateway every minute.</p>
+<p class="prj">🔧 Project: The MCP server uses stdio transport (not HTTP webhooks) for Claude-to-server communication — but the conceptual model is similar: an event arrives, the receiver processes it asynchronously.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ SECURITY ════════════════ -->
+<h3 id="security" class="h2">Security &amp; Governance<a class="anchor" href="#security" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">Two layers: (1) Dataverse security roles control who can read/write which rows. (2) DLP policies control which connectors can combine in flows. Both are essential for enterprise governance stories.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Permissions</span>
+<h5>Security Role</h5>
+<p class="def">A permission set in Dataverse defining what a user can Create, Read, Write, Delete, Append, Append To, Assign, and Share on each table, at a specific scope. Assigned to users directly or via teams. Two levels always assigned: Environment role (System Admin or Basic User — set in Admin Center) and Dataverse security role (custom roles you create in the environment settings).</p>
+<p class="eg">📌 General: "Sales Manager" role: full CRUD on Opportunities org-wide, Read-only on Accounts org-wide, no access to HR tables at all.</p>
+<p class="prj">🔧 Project: MCP server operates under the authenticated user's security role — if that user is Basic User with Read-only on Flows, the MCP <code>run_flow</code> tool will fail with a 403. This is the "secure by default" design: users only ever see what their own permissions allow.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Permissions</span>
+<h5>Access Level (Privilege Scope)</h5>
+<p class="def">The scope at which a privilege applies within a security role. Four levels: <strong>User</strong> (rows you own only), <strong>Business Unit</strong> (rows owned by members of your BU), <strong>Parent: Child Business Units</strong> (BU + child BUs), <strong>Organization</strong> (all rows regardless of owner). This is what drives row-level security in Dataverse without any code.</p>
+<p class="eg">📌 General: A salesperson has "Read" at User level on Opportunities → sees only their own opportunities. A sales director has "Read" at Organization level → sees all 10,000 opportunities company-wide.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">RLS</span>
+<h5>Row-Level Security (RLS)</h5>
+<p class="def">Ensuring each user sees only data they're authorized to see. Three implementations: (1) Dataverse: security role access levels + row ownership. (2) Canvas App: <code>Filter(table, column = User().Email)</code> client-side. (3) Power BI: DAX role filter using <code>USERPRINCIPALNAME()</code> — each viewer sees a different slice of the same report.</p>
+<p class="eg">📌 General: Three regional managers see the same Power BI report but each sees only their region's data — enforced by a DAX filter on the Region table that compares <code>[ManagerEmail]</code> to <code>USERPRINCIPALNAME()</code>.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Governance</span>
+<h5>DLP — Data Loss Prevention</h5>
+<p class="def">Admin-level policies controlling which connectors can be combined in a single flow. Three categories: <strong>Business</strong> (can mix with other Business connectors), <strong>Non-Business</strong> (isolated — cannot mix with Business), <strong>Blocked</strong> (cannot be used at all). Applied at tenant level (all environments) or environment level (specific environments). Enforced when a flow is saved, not just when it runs.</p>
+<p class="eg">📌 General: DLP puts Office 365 connectors in Business group and blocks HTTP → nobody can build a flow that reads from SharePoint and POSTs the data to an arbitrary URL — data exfiltration prevented.</p>
+<p class="prj">🔧 Project: T-Mobile's DLP policies were a constraint the MCP server needed to work around. The solution: the server operates entirely outside Power Platform — it calls Power Platform APIs directly in Python using SSO tokens, bypassing connector/DLP restrictions entirely.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Governance kit</span>
+<h5>CoE Starter Kit</h5>
+<p class="def">Center of Excellence Starter Kit — free, open-source set of apps, flows, and Power BI dashboards from Microsoft for governing a Power Platform tenant. Covers: maker activity tracking, app/flow inventory, compliance requests, DLP impact analysis, unused resource cleanup, onboarding new makers. Installed in the Default environment. Takes 4–8 hours to fully configure.</p>
+<p class="eg">📌 General: An admin installs CoE Kit; within a day they know which 47 apps have 0 active users, which flows error daily, and which makers need DLP training.</p>
+<p class="prj">🔧 Project: Day 2 of the 7-day plan — the "long pole" task. Deploying and exploring CoE Kit gives you hands-on governance stories for the interview: "I can see all flows in the tenant, identify orphaned apps, and trigger compliance workflows."</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Audit</span>
+<h5>Audit Log</h5>
+<p class="def">A tamper-evident record of significant actions in Dataverse: who created, updated, or deleted which row, when, using which app. Must be enabled per environment (Settings → Auditing). Admin Center shows high-level analytics; individual table audit history shows row-level changes with old and new values.</p>
+<p class="eg">📌 General: A compliance officer queries the audit log for all rows deleted from the Contracts table in the past 30 days — who deleted them and when, with the deleted values preserved.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ MCP & AI ════════════════ -->
+<h3 id="mcp" class="h2">MCP &amp; AI Integration<a class="anchor" href="#mcp" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">Your strongest differentiator. MCP is the plumbing that makes AI assistants actionable. You built the Power Platform layer of this.</p>
+<div class="gl-grid">
+
+<div class="gl-card">
+<span class="tag">Protocol</span>
+<h5>MCP — Model Context Protocol</h5>
+<p class="def">An open protocol by Anthropic that standardizes how AI assistants communicate with external tools. The server declares tools as JSON Schema; the client (Claude Code) discovers them via <code>tools/list</code> and invokes them via <code>tools/call</code>. Replaces bespoke AI integrations with a standard interface — like REST was for web APIs. MCP servers can use stdio transport (local subprocess) or HTTP/SSE (remote).</p>
+<p class="eg">📌 General: Any AI client that implements MCP can use any MCP server — a single standard, many implementations. Like USB: any USB device works with any USB port.</p>
+<p class="prj">🔧 Project: "I built a local MCP server exposing T-Mobile's Power Platform via 111 tools. The design constraint: no app registration, no admin role, no shared secrets. Users authenticate as themselves via browser SSO and see only what their permissions allow."</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Process</span>
+<h5>MCP Server</h5>
+<p class="def">A process implementing the MCP protocol that exposes tools to an AI client. Declares tools with name, description (the AI reads this), and inputSchema (JSON Schema). Can run locally (stdio transport — Claude Code launches it as a subprocess) or remotely (HTTP+SSE). Authentication and API calls are the server's responsibility.</p>
+<p class="eg">📌 General: A GitHub MCP server exposes tools like <code>create_issue</code>, <code>list_pull_requests</code>, <code>get_file_contents</code> — Claude can now manage GitHub without needing the GitHub UI.</p>
+<p class="prj">🔧 Project: <code>power-platform-mcp-server</code> (Python) exposes 111 tools: Dataverse tools (list_tables, get_rows, create_row), Flow tools (list_flows, run_flow, get_flow_run_history), Solution tools (list_solutions, export_solution). All use SSO bearer tokens.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Transport</span>
+<h5>stdio Transport</h5>
+<p class="def">MCP communication method where the client launches the server as a child process and sends JSON-RPC messages via stdin/stdout. Each message is a newline-delimited JSON object. The server writes responses to stdout. Simple, secure (no network port), and the default for local MCP servers. Logs go to stderr so they don't interfere with the protocol.</p>
+<p class="eg">📌 General: Claude Code's <code>claude.json</code> config specifies the command to launch the server: <code>"command": "python", "args": ["server.py"]</code>. Claude Code forks the process and communicates over stdin/stdout.</p>
+<p class="prj">🔧 Project: The MCP server uses stdio. Claude Code sends: <code>{"jsonrpc":"2.0","method":"tools/call","params":{"name":"list_tables","arguments":{}},"id":1}</code> on stdin. Server responds with the table list JSON on stdout.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Protocol</span>
+<h5>JSON-RPC</h5>
+<p class="def">JSON Remote Procedure Call 2.0 — a lightweight protocol for invoking functions over a transport using JSON messages. Request format: <code>{"jsonrpc":"2.0","method":"tools/call","params":{...},"id":1}</code>. Response: <code>{"jsonrpc":"2.0","result":{...},"id":1}</code>. Error: <code>{"jsonrpc":"2.0","error":{"code":-32602,"message":"..."},"id":1}</code>. MCP uses JSON-RPC 2.0 for all client-server communication.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Callable</span>
+<h5>Tool (MCP)</h5>
+<p class="def">A callable function exposed by an MCP server. Defined by: <code>name</code> (string identifier), <code>description</code> (natural language — the AI model reads this to decide when to call it), <code>inputSchema</code> (JSON Schema for parameters with types and required fields). The model reasons about WHICH tool to call and with what arguments; the server owns auth, validation, and the actual API call.</p>
+<p class="eg">📌 General: <code>get_table_rows</code> tool — description: "Retrieve rows from a Dataverse table with optional OData filter, select, and orderby." The AI calls it automatically when asked "show me all Premium members."</p>
+<p class="prj">🔧 Project: 111 tools across 4 domains. The most important design decision: descriptions must be precise enough that Claude calls the right tool, but not so wordy that they consume excess context. <code>_resolve_args</code> translates human names to GUIDs before any API call.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Auth</span>
+<h5>SSO — Single Sign-On</h5>
+<p class="def">Authentication where one browser login grants access to all connected Microsoft services (M365, Power Platform, Dynamics 365, Azure) via Azure AD OAuth 2.0 tokens. No re-entering credentials. Tokens are short-lived (60–90 min) and refreshed automatically by MSAL.</p>
+<p class="eg">📌 General: A user logs into their Microsoft account once — they're automatically authenticated in Teams, SharePoint, Power Apps, and Dynamics 365 without additional logins.</p>
+<p class="prj">🔧 Project: MCP server has no app registration. On first run, it opens a browser for device code flow or interactive auth. The resulting tokens (access + refresh) are cached locally. Every API call uses the current user's token — users only see what their own Azure AD permissions allow. This is the "secure by default" story.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Auth</span>
+<h5>Bearer Token / JWT</h5>
+<p class="def">An OAuth 2.0 access token passed in the HTTP Authorization header: <code>Authorization: Bearer eyJ0eXAiO...</code>. Bearer tokens for Microsoft APIs are JWTs (JSON Web Tokens) — base64-encoded signed JSON with claims (upn, scp, aud, exp). Azure AD validates the signature. Tokens expire (60–90 min) and must be refreshed via the refresh token.</p>
+<p class="eg">📌 General: Paste a bearer token into jwt.io — you can read the decoded claims: your UPN, the scopes granted, the tenant ID, and the expiry time.</p>
+<p class="prj">🔧 Project: The MCP server acquires tokens via MSAL Python library. Access token is passed in <code>headers["Authorization"] = f"Bearer {token}"</code> for every Power Platform API request. Refresh happens automatically before expiry.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Security</span>
+<h5>TLS Interception (Zscaler)</h5>
+<p class="def">Corporate proxies like Zscaler intercept HTTPS traffic by replacing the server's TLS certificate with their own corporate CA. This breaks Python's ssl module (and many other tools) because the Zscaler CA isn't in Python's default certificate bundle — resulting in <code>[SSL: CERTIFICATE_VERIFY_FAILED]</code> errors for all HTTPS requests.</p>
+<p class="eg">📌 General: On a corporate laptop, <code>curl https://api.example.com</code> works (curl uses OS cert store, includes Zscaler CA), but Python <code>requests.get("https://api.example.com")</code> fails — Python uses its own bundled CA store.</p>
+<p class="prj">🔧 Project: <code>_tls_bootstrap.py</code> is imported FIRST in the MCP server before any other imports. It detects the Zscaler CA cert from the OS cert store and patches Python's <code>ssl.create_default_context</code> to trust it. This solved the 403/SSL errors blocking all API calls on T-Mobile laptops. This is your best war story — it demonstrates deep debugging under production constraints.</p>
+</div>
+
+<div class="gl-card">
+<span class="tag">Security design</span>
+<h5>Read-only by Default</h5>
+<p class="def">A security design principle where all write operations (create, update, delete) are disabled at startup and must be explicitly enabled per-session. Prevents accidental destructive operations from AI hallucinations or misunderstood commands. Aligns with "principle of least privilege" — start with minimum permissions, grant more only when needed.</p>
+<p class="eg">📌 General: A database connection library that opens in read-only mode by default — you must call <code>enable_writes()</code> to allow INSERT/UPDATE/DELETE. A developer who only needs to inspect data never risks accidentally mutating production records.</p>
+<p class="prj">🔧 Project: MCP server starts with all write tools (create_row, update_row, delete_row, delete_solution) disabled. User must explicitly call <code>enable_writes()</code> in the session. This prevents "Claude, show me all loans" from accidentally triggering a <code>delete_row</code> due to a misunderstood command. It's the governance story for an enterprise tool.</p>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ ABBREVIATIONS ═══════════ -->
+<h3 id="abbreviations" class="h2">Abbreviations A–Z<a class="anchor" href="#abbreviations" aria-label="Link to section">#</a></h3>
+<p class="cat-intro">Quick-reference for every acronym you'll encounter in Power Platform interviews, docs, and admin consoles.</p>
+<table class="abbr-table">
+<tr><th>Abbr.</th><th>Full Form</th><th>One-line explanation</th></tr>
+<tr><td>ALM</td><td>Application Lifecycle Management</td><td>DEV→UAT→PRD discipline; moving solutions between environments in a controlled way</td></tr>
+<tr><td>API</td><td>Application Programming Interface</td><td>A contract for how software systems talk to each other; REST APIs use HTTP verbs + JSON</td></tr>
+<tr><td>CDS</td><td>Common Data Service</td><td>Old name for Dataverse (pre-2021); still appears in some SDK references and legacy docs</td></tr>
+<tr><td>CLI</td><td>Command Line Interface</td><td>Text-based tool; PAC CLI = <code>pac</code> command for Power Platform automation</td></tr>
+<tr><td>CoE</td><td>Center of Excellence</td><td>Team, tools, and practices for governing Power Platform at scale; CoE Starter Kit is Microsoft's free governance package</td></tr>
+<tr><td>CRM</td><td>Customer Relationship Management</td><td>Historical context: Dynamics 365 (and Dataverse) evolved from CRM platform; hence <code>crm8</code> in environment URLs (region 8 = India/APAC)</td></tr>
+<tr><td>CRUD</td><td>Create, Read, Update, Delete</td><td>The four fundamental database operations; security roles in Dataverse grant these per table</td></tr>
+<tr><td>DAX</td><td>Data Analysis Expressions</td><td>Formula language used in Power BI and Analysis Services for calculated measures and columns</td></tr>
+<tr><td>DLP</td><td>Data Loss Prevention</td><td>Admin policies controlling which connectors can be combined in flows; prevents data exfiltration</td></tr>
+<tr><td>GUID</td><td>Globally Unique Identifier</td><td>36-char hex string uniquely identifying every Dataverse row, Azure resource, and M365 user</td></tr>
+<tr><td>HTTP</td><td>HyperText Transfer Protocol</td><td>Foundation of REST APIs; verbs: GET (read), POST (create), PATCH (partial update), PUT (full update), DELETE</td></tr>
+<tr><td>JSON</td><td>JavaScript Object Notation</td><td>Lightweight text data format used by all modern APIs: <code>{"name":"Rohit","type":"Premium"}</code></td></tr>
+<tr><td>JSON-RPC</td><td>JSON Remote Procedure Call</td><td>Protocol for calling functions over stdio or HTTP using JSON messages; MCP uses JSON-RPC 2.0</td></tr>
+<tr><td>JWT</td><td>JSON Web Token</td><td>Signed, base64-encoded token format; Microsoft bearer tokens are JWTs containing claims (upn, scp, exp)</td></tr>
+<tr><td>M</td><td>Power Query M Language</td><td>Functional language for data transformation in Power BI Desktop, Dataflows, and Excel Power Query</td></tr>
+<tr><td>MCP</td><td>Model Context Protocol</td><td>Anthropic's open standard for AI-to-tool communication; enables Claude Code to call external tools via JSON-RPC</td></tr>
+<tr><td>MSAL</td><td>Microsoft Authentication Library</td><td>SDK for acquiring OAuth 2.0 tokens for Microsoft APIs; used in the MCP server for SSO token acquisition</td></tr>
+<tr><td>OData</td><td>Open Data Protocol</td><td>REST query standard used by Dataverse API; supports $filter, $select, $expand, $orderby, $top</td></tr>
+<tr><td>OAuth</td><td>Open Authorization</td><td>Industry-standard authorization framework; OAuth 2.0 is what Azure AD uses for token-based auth</td></tr>
+<tr><td>PAC CLI</td><td>Power Apps CLI</td><td>Command-line tool for Power Platform: <code>pac auth create</code>, <code>pac solution export</code>, <code>pac solution import</code></td></tr>
+<tr><td>PCF</td><td>Power Apps Component Framework</td><td>Framework for building custom code components (React/TypeScript) that embed in canvas or model-driven apps</td></tr>
+<tr><td>PPAC</td><td>Power Platform Admin Center</td><td><code>admin.powerplatform.microsoft.com</code> — admin UI for environments, DLP, capacity, analytics</td></tr>
+<tr><td>REST</td><td>Representational State Transfer</td><td>Architectural style for APIs: stateless, HTTP-based, resource-oriented; Dataverse API is REST/OData</td></tr>
+<tr><td>RLS</td><td>Row-Level Security</td><td>Per-user data visibility control; implemented in Dataverse via access levels, canvas apps via User().Email filter, Power BI via DAX role</td></tr>
+<tr><td>RPA</td><td>Robotic Process Automation</td><td>Automating desktop UIs — Power Automate Desktop flows click UI elements like a human; used when APIs don't exist</td></tr>
+<tr><td>SDK</td><td>Software Development Kit</td><td>Libraries and tools for building against a platform's API; MSAL is an SDK; PAC CLI is a CLI tool</td></tr>
+<tr><td>SSO</td><td>Single Sign-On</td><td>One login for all connected Microsoft services via Azure AD; no re-entering credentials across M365, Power Platform, Azure</td></tr>
+<tr><td>SSE</td><td>Server-Sent Events</td><td>HTTP-based streaming mechanism; used by MCP HTTP transport for server→client event push</td></tr>
+<tr><td>TLS</td><td>Transport Layer Security</td><td>Encryption protocol for HTTPS; Zscaler corporate proxies intercept TLS, breaking Python's ssl module</td></tr>
+<tr><td>UAT</td><td>User Acceptance Testing</td><td>Testing stage before production; real users validate the app; managed solution deployed here</td></tr>
+<tr><td>UPN</td><td>User Principal Name</td><td>Microsoft 365 login email (e.g. shubham@company.com); what <code>User().Email</code> returns in canvas apps; used in Power BI RLS via <code>USERPRINCIPALNAME()</code></td></tr>
+<tr><td>URL</td><td>Uniform Resource Locator</td><td>Web address; Dataverse environment URL pattern: <code>orgname.crm8.dynamics.com</code> (crm8 = India/APAC region)</td></tr>
+<tr><td>XML</td><td>Extensible Markup Language</td><td>Older data format; Power Platform solution files are XML inside the zip; FetchXML is Dataverse's older query language</td></tr>
+</table>
+
+</div></div></main>
+<script src="assets/site.js"></script>
+</body></html>
